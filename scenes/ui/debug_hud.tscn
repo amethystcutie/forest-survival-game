@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://cdex0gpj15r41"]
+
+[ext_resource type="Script" uid="uid://dbtfu86te2mum" path="res://scripts/ui/debug/performance.gd" id="1_b7bo0"]
+
+[node name="DebugHUD" type="CanvasLayer" unique_id=770356309]
+layer = 999
+
+[node name="Performance" type="Control" parent="." unique_id=889182041]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_b7bo0")
+
+[node name="Panel" type="Panel" parent="Performance" unique_id=1346141825]
+layout_mode = 1
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 163.0
+offset_bottom = 81.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Performance/Panel" unique_id=1218542715]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FPS" type="Label" parent="Performance/Panel/VBoxContainer" unique_id=2092302938]
+layout_mode = 2
+text = "FPS: 0"
