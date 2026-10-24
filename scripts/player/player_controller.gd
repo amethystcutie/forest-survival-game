@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody3D
 
 @export var speed := 5.0
@@ -6,6 +7,8 @@ extends CharacterBody3D
 @export var sensitivity := 0.015
 @export var zoom_step := 0.2
 @export var max_zoom := 4.0
+@export var inventory: Inventory
+
 var camera_length := 4.0
 var first_person := false
 var unlock_camera := false
@@ -14,6 +17,7 @@ var unlock_camera := false
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	Global.player = self
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and unlock_camera:
@@ -65,3 +69,5 @@ func _process(delta: float) -> void:
 	else: Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	
 	$CanvasLayer/Crosshair.visible = first_person
+	
+	# print(inventory.items)

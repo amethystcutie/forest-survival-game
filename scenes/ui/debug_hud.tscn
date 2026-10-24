@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://cdex0gpj15r41"]
 
 [ext_resource type="Script" uid="uid://dbtfu86te2mum" path="res://scripts/ui/debug/performance.gd" id="1_b7bo0"]
+[ext_resource type="PackedScene" uid="uid://clhiaqw47a7ve" path="res://scenes/ui/container_slot.tscn" id="2_j6o1s"]
+[ext_resource type="Script" uid="uid://d4bwq6cuybri4" path="res://scripts/ui/debug/inventory.gd" id="2_r00s7"]
 
 [node name="DebugHUD" type="CanvasLayer" unique_id=770356309]
 layer = 999
@@ -16,10 +18,14 @@ script = ExtResource("1_b7bo0")
 
 [node name="Panel" type="Panel" parent="Performance" unique_id=1346141825]
 layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
 offset_left = 16.0
-offset_top = 16.0
+offset_top = -44.0
 offset_right = 163.0
-offset_bottom = 81.0
+offset_bottom = -12.0
+grow_vertical = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Performance/Panel" unique_id=1218542715]
 layout_mode = 1
@@ -31,4 +37,37 @@ grow_vertical = 2
 
 [node name="FPS" type="Label" parent="Performance/Panel/VBoxContainer" unique_id=2092302938]
 layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
 text = "FPS: 0"
+
+[node name="Inventory" type="Control" parent="." unique_id=414744853]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_r00s7")
+slot_scene = ExtResource("2_j6o1s")
+
+[node name="Panel" type="Panel" parent="Inventory" unique_id=1212344405]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 336.0
+offset_bottom = 176.0
+
+[node name="Label" type="Label" parent="Inventory/Panel" unique_id=967936079]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Inventory"
+
+[node name="GridContainer" type="GridContainer" parent="Inventory/Panel" unique_id=425832730]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 32.0
+offset_right = 300.0
+offset_bottom = 136.0
+columns = 8

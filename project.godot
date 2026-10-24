@@ -15,6 +15,10 @@ run/main_scene="uid://c1qf51tjgpht1"
 config/features=PackedStringArray("4.8", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Global="*uid://bqk1ow07fkb6p"
+
 [display]
 
 window/size/viewport_width=960
@@ -226,6 +230,14 @@ rotate_cam={
 "script": null
 )]
 }
+
+[layer_names]
+
+3d_physics/layer_1="Terrain"
+3d_physics/layer_2="Player"
+3d_physics/layer_3="Items"
+3d_physics/layer_4="Props"
+3d_physics/layer_5="Buildings"
 
 [physics]
 
