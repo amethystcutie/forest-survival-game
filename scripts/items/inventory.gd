@@ -51,6 +51,9 @@ func add(stack: ItemStack) -> bool:
 	
 	return false
 
+func set_item(id: int, stack: ItemStack) -> void:
+	items[id] = stack
+
 func get_item(id: int) -> ItemStack:
 	if !items.keys().has(id): return ItemStack.empty()
 	return items[id]
