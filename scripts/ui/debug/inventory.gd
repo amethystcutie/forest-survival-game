@@ -44,6 +44,8 @@ func _process(_delta: float) -> void:
 		if stack.is_empty():
 			slots[i].get_node("TextureRect").texture = null
 			slots[i].get_node("Label").text = ""
+			slots[i].tooltip_text = ""
 		else:
 			slots[i].get_node("TextureRect").texture = stack.item.texture
 			slots[i].get_node("Label").text = str(stack.count)
+			slots[i].tooltip_text = stack.item.name

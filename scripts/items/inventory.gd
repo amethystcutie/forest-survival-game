@@ -57,3 +57,18 @@ func set_item(id: int, stack: ItemStack) -> void:
 func get_item(id: int) -> ItemStack:
 	if !items.keys().has(id): return ItemStack.empty()
 	return items[id]
+
+func has(test: ItemStack) -> bool:
+	var amount: int = 0
+	for stack in items.values():
+		if stack.item == test.item:
+			amount += stack.count
+			
+	return amount >= test.count
+
+func has_all(tests: Array[ItemStack]) -> bool:
+	for test in tests:
+		if !has(test): 
+			return false
+	return true
+		

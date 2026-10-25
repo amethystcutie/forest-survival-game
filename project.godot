@@ -246,6 +246,7 @@ rotate_cam={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+textures/streaming/enabled=true
 rendering_device/driver.windows="d3d12"
 scaling_3d/mode=1
 scaling_3d/mode.ios=3
