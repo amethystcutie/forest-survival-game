@@ -16,6 +16,11 @@ var first_person := false
 var unlock_camera := false
 var opacity: float
 
+var selected_slot: int = 0
+
+var swing_cooldown := false
+signal swing(tool: Item)
+
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	Global.player = self
@@ -31,6 +36,9 @@ func _input(event: InputEvent) -> void:
 	camera_length = clamp(camera_length, 0, max_zoom)
 		
 	if event.is_action_pressed("pause"): get_tree().quit()
+
+	if event.as_text().to_int() in range(1, 8):
+		selected_slot = event.as_text().to_int() - 1
 
 func _physics_process(delta: float) -> void:
 	# gravity
@@ -78,6 +86,26 @@ func _process(delta: float) -> void:
 	if first_person: update_model_rotation(delta)
 	
 	$Model/witch/GeneralSkeleton/ChibiWitch.transparency = 1.0 - opacity
+	
+	var held_item = inventory.get_item(selected_slot)
+	var item_cd = 0.4
+	
+	if held_item.is_empty():
+		$RightHand/Sprite3D.texture = null
+	else:
+		item_cd = held_item.item.use_time
+		$RightHand/Sprite3D.texture = held_item.item.texture
+		$RightHand/Sprite3D.offset = held_item.item.get_handle_offset()
+		
+	if Input.is_action_pressed("swing") and !swing_cooldown:
+		bored_time = 0.0
+		swing_cooldown = true
+		get_tree().create_timer(item_cd).timeout.connect(func():
+			swing_cooldown = false)
+			
+		swing.emit(held_item)
+		
+		print(swing_cooldown)
 	
 func update_model_rotation(delta: float):
 	$Model.rotation.y = rotate_toward($Model.rotation.y, $CameraPivot.rotation.y, acceleration * delta)

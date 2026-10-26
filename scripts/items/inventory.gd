@@ -71,4 +71,10 @@ func has_all(tests: Array[ItemStack]) -> bool:
 		if !has(test): 
 			return false
 	return true
-		
+
+func take(stack: ItemStack) -> bool:
+	if !has(stack): return false
+	
+	
+	
+	return true

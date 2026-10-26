@@ -10,6 +10,8 @@ extends StaticBody3D
 @export var hit_sound: AudioStream
 @export var break_sound: AudioStream
 
+var player: Player
+
 func _ready() -> void:
 	pass # Replace with function body.
 

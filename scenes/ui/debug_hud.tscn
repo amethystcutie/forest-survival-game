@@ -4,6 +4,30 @@
 [ext_resource type="PackedScene" uid="uid://clhiaqw47a7ve" path="res://scenes/ui/container_slot.tscn" id="2_j6o1s"]
 [ext_resource type="Script" uid="uid://d4bwq6cuybri4" path="res://scripts/ui/debug/inventory.gd" id="2_r00s7"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dm63b"]
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.17233974, 0.12524006, 0.24418163, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r00s7"]
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.7028652, 0.79515165, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
 [node name="DebugHUD" type="CanvasLayer" unique_id=770356309]
 layer = 999
 
@@ -58,6 +82,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_r00s7")
+normal_slot_style = SubResource("StyleBoxFlat_dm63b")
+select_slot_style = SubResource("StyleBoxFlat_r00s7")
 slot_scene = ExtResource("2_j6o1s")
 
 [node name="Panel" type="Panel" parent="Inventory" unique_id=1212344405]

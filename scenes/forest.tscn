@@ -5,6 +5,7 @@
 [ext_resource type="Shader" uid="uid://cvd0x7lon1ur6" path="res://addons/sky_3d/shaders/SkyMaterial.gdshader" id="4_dabdc"]
 [ext_resource type="PackedScene" uid="uid://cdex0gpj15r41" path="res://scenes/ui/debug_hud.tscn" id="4_yj5dr"]
 [ext_resource type="Texture2D" uid="uid://cfqk60lpl5ljv" path="res://addons/sky_3d/assets/resources/SNoise.tres" id="5_cf55d"]
+[ext_resource type="Resource" uid="uid://dr5skulf2tuwd" path="res://items/leaf.tres" id="5_eos0w"]
 [ext_resource type="Texture2D" uid="uid://cecwdqjol0ckd" path="res://addons/sky_3d/assets/textures/noiseClouds.png" id="6_di0nb"]
 [ext_resource type="Texture2D" uid="uid://2r8ylu6rg5dp" path="res://addons/sky_3d/assets/thirdparty/textures/moon/MoonMap.png" id="7_pyn53"]
 [ext_resource type="Texture2D" uid="uid://djpfuyxkryegn" path="res://addons/sky_3d/assets/textures/noise.jpg" id="8_uwbj1"]
@@ -14,6 +15,7 @@
 [ext_resource type="Script" uid="uid://b4tkplvh7fq40" path="res://addons/sky_3d/src/SkyDome.gd" id="12_qavbn"]
 [ext_resource type="Script" uid="uid://cjmkcj8hwm7ts" path="res://addons/sky_3d/src/TimeOfDay.gd" id="13_c2vyo"]
 [ext_resource type="Script" uid="uid://cdu2cg43ub8dd" path="res://scripts/items/item_stack.gd" id="14_cf55d"]
+[ext_resource type="Resource" uid="uid://ba3c8un817ufp" path="res://items/stick.tres" id="14_di0nb"]
 [ext_resource type="Texture2D" uid="uid://vom0tkdeswuv" path="res://assets/textures/terrain/grass/Grass002_1K-JPG_Color.jpg" id="16_3h1w1"]
 [ext_resource type="Texture2D" uid="uid://bsm2njwjumg1v" path="res://assets/textures/terrain/grass/Grass002_1K-JPG_NormalGL.jpg" id="17_qavbn"]
 [ext_resource type="Texture2D" uid="uid://dywhr0103ryi7" path="res://assets/textures/terrain/grass/Grass002_1K-JPG_Roughness.jpg" id="18_c2vyo"]
@@ -42,9 +44,31 @@
 [ext_resource type="Image" uid="uid://bedjfk65urvfo" path="res://scenes/Forest/Foliage_0_0_0.res" id="36_eos0w"]
 [ext_resource type="Image" uid="uid://d3hckt3civi20" path="res://scenes/Forest/Water_0_0.res" id="38_o06ba"]
 [ext_resource type="Shader" uid="uid://dsgsecsjl1mf6" path="res://shaders/water.gdshader" id="42_eomrh"]
+[ext_resource type="PackedScene" uid="uid://cpucb4nhx41al" path="res://scenes/objects/resource_node.tscn" id="43_a88r6"]
 
-[sub_resource type="Resource" id="Resource_di0nb"]
+[sub_resource type="Resource" id="Resource_txw86"]
+script = ExtResource("14_cf55d")
+item = ExtResource("22_c2vyo")
+metadata/_custom_type_script = "uid://cdu2cg43ub8dd"
+
+[sub_resource type="Resource" id="Resource_6u8po"]
+script = ExtResource("14_cf55d")
+item = ExtResource("14_di0nb")
+metadata/_custom_type_script = "uid://cdu2cg43ub8dd"
+
+[sub_resource type="Resource" id="Resource_ja30q"]
+script = ExtResource("14_cf55d")
+item = ExtResource("5_eos0w")
+count = 3
+metadata/_custom_type_script = "uid://cdu2cg43ub8dd"
+
+[sub_resource type="Resource" id="Resource_lvx2t"]
 script = ExtResource("3_pyn53")
+items = Dictionary[int, ExtResource("14_cf55d")]({
+0: SubResource("Resource_txw86"),
+1: SubResource("Resource_6u8po"),
+2: SubResource("Resource_ja30q")
+})
 metadata/_custom_type_script = "uid://cn28ajqmkw05v"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_65srx"]
@@ -100,8 +124,8 @@ shader_parameter/cirrus_absorption = 2.0
 shader_parameter/cirrus_sky_tint_fade = 0.5
 shader_parameter/cirrus_size = 1.0
 shader_parameter/cirrus_uv = Vector2(0.16, 0.11)
-shader_parameter/cirrus_position1 = Vector2(0.27441093, 0.27441093)
-shader_parameter/cirrus_position2 = Vector2(0.27441093, 0.27441093)
+shader_parameter/cirrus_position1 = Vector2(0.12233742, 0.12233742)
+shader_parameter/cirrus_position2 = Vector2(0.12233742, 0.12233742)
 shader_parameter/cirrus_texture = ExtResource("5_cf55d")
 shader_parameter/cumulus_visible = true
 shader_parameter/cumulus_intensity = 0.6
@@ -111,7 +135,7 @@ shader_parameter/cumulus_absorption = 2.0
 shader_parameter/cumulus_noise_freq = 2.7
 shader_parameter/cumulus_sky_tint_fade = 0.0
 shader_parameter/cumulus_size = 0.5
-shader_parameter/cumulus_position = Vector2(1.3719748, 1.3719748)
+shader_parameter/cumulus_position = Vector2(0.6116113, 0.6116113)
 shader_parameter/cumulus_texture = ExtResource("6_di0nb")
 shader_parameter/cumulus_partial_mie_phase = Vector3(0.957564, 1.042436, 0.412)
 shader_parameter/cumulus_mie_intensity = 1.0
@@ -263,7 +287,7 @@ shader_parameter/displacement_amount = 0.3
 [node name="Forest" type="Node3D" unique_id=2055480750]
 
 [node name="Player" parent="." unique_id=1810151707 instance=ExtResource("1_j3csf")]
-inventory = SubResource("Resource_di0nb")
+inventory = SubResource("Resource_lvx2t")
 
 [node name="DebugHUD" parent="." unique_id=770356309 instance=ExtResource("4_yj5dr")]
 
@@ -325,3 +349,5 @@ time = 10.0
 transform = Transform3D(0.99533033, 0, -0.09652713, 0, 1, 0, 0.09652713, 0, 0.99533033, -0.1628151, -13.568578, 29.1128)
 mesh = SubResource("BoxMesh_igjew")
 surface_material_override/0 = SubResource("ShaderMaterial_a8hxt")
+
+[node name="ResourceNode" parent="." unique_id=2101333332 instance=ExtResource("43_a88r6")]

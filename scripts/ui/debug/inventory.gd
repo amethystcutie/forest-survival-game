@@ -1,5 +1,8 @@
 extends Control
 
+@export var normal_slot_style: StyleBox
+@export var select_slot_style: StyleBox
+
 @export var slot_scene: PackedScene
 var slots: Array[Control]
 
@@ -12,6 +15,12 @@ func _ready() -> void:
 		slots.append(slot)
 		slot.pressed.connect(func():
 			var slot_item = Global.player.inventory.get_item(i)
+			
+			if !slot_item or slot_item.is_empty():
+				Global.player.inventory.set_item(i, mouse_item)
+				mouse_item = slot_item
+				return
+			
 			if slot_item.item == mouse_item.item:
 				var space_left = slot_item.item.max_count - slot_item.count
 				var to_add = min(mouse_item.count, space_left)
@@ -29,6 +38,8 @@ func _ready() -> void:
 		)
 
 func _process(_delta: float) -> void:
+	
+	
 	if mouse_item.is_empty():
 		$MouseItem/TextureRect.texture = null
 		$MouseItem/Label.text = ""
@@ -39,6 +50,11 @@ func _process(_delta: float) -> void:
 		$MouseItem.set_global_position(get_global_mouse_position(), true)
 	
 	for i in range(slots.size()):
+		if i == Global.player.selected_slot:
+			slots[i].get_node("Panel").add_theme_stylebox_override("panel", select_slot_style)
+		else:
+			slots[i].get_node("Panel").add_theme_stylebox_override("panel", normal_slot_style)
+		
 		var stack = Global.player.inventory.get_item(i)
 		
 		if stack.is_empty():
