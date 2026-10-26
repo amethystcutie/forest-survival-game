@@ -8,6 +8,44 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_a72pd"]
 radius = 1.5
 
+[sub_resource type="Animation" id="Animation_t8k3g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6whfk"]
+resource_name = "bwaa"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.245, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2mmu4"]
+_data = {
+&"RESET": SubResource("Animation_t8k3g"),
+&"bwaa": SubResource("Animation_6whfk")
+}
+
 [node name="Item" type="RigidBody3D" unique_id=2110216004]
 collision_layer = 4
 lock_rotation = true
@@ -17,6 +55,7 @@ script = ExtResource("1_t8k3g")
 offset = Vector2(0, 64)
 billboard = 2
 shaded = true
+texture_filter = 0
 texture = ExtResource("2_t8k3g")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1973044896]
@@ -29,3 +68,7 @@ collision_mask = 3
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=72809757]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("SphereShape3D_a72pd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=926613285]
+libraries/ = SubResource("AnimationLibrary_2mmu4")
+autoplay = &"bwaa"

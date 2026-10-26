@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cpucb4nhx41al"]
+
+[ext_resource type="Script" uid="uid://gkhloxpurx50" path="res://scripts/resource_node.gd" id="1_0001q"]
+
+[node name="ResourceNode" type="StaticBody3D" unique_id=2101333332]
+script = ExtResource("1_0001q")

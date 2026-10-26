@@ -13,37 +13,38 @@
 [ext_resource type="Script" uid="uid://deo0gxkmk2ahd" path="res://addons/sky_3d/src/Sky3D.gd" id="11_3h1w1"]
 [ext_resource type="Script" uid="uid://b4tkplvh7fq40" path="res://addons/sky_3d/src/SkyDome.gd" id="12_qavbn"]
 [ext_resource type="Script" uid="uid://cjmkcj8hwm7ts" path="res://addons/sky_3d/src/TimeOfDay.gd" id="13_c2vyo"]
-[ext_resource type="PackedScene" uid="uid://co6ml5s0hw0i" path="res://scenes/objects/item.tscn" id="13_dabdc"]
 [ext_resource type="Script" uid="uid://cdu2cg43ub8dd" path="res://scripts/items/item_stack.gd" id="14_cf55d"]
-[ext_resource type="Resource" uid="uid://ba3c8un817ufp" path="res://items/stick.tres" id="14_di0nb"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1e11a"]
-albedo_color = Color(7.2196127e-07, 0.40869102, 0.22528353, 1)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_b7bo0"]
-material = SubResource("StandardMaterial3D_1e11a")
-size = Vector2(100, 100)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_bgcxa"]
-data = PackedVector3Array(50, 0, 50, -50, 0, 50, 50, 0, -50, -50, 0, 50, -50, 0, -50, 50, 0, -50)
-
-[sub_resource type="Resource" id="Resource_i1j6r"]
-script = ExtResource("14_cf55d")
-item = ExtResource("14_di0nb")
-metadata/_custom_type_script = "uid://cdu2cg43ub8dd"
-
-[sub_resource type="Resource" id="Resource_pyn53"]
-script = ExtResource("14_cf55d")
-item = ExtResource("14_di0nb")
-count = 3
-metadata/_custom_type_script = "uid://cdu2cg43ub8dd"
+[ext_resource type="Texture2D" uid="uid://vom0tkdeswuv" path="res://assets/textures/terrain/grass/Grass002_1K-JPG_Color.jpg" id="16_3h1w1"]
+[ext_resource type="Texture2D" uid="uid://bsm2njwjumg1v" path="res://assets/textures/terrain/grass/Grass002_1K-JPG_NormalGL.jpg" id="17_qavbn"]
+[ext_resource type="Texture2D" uid="uid://dywhr0103ryi7" path="res://assets/textures/terrain/grass/Grass002_1K-JPG_Roughness.jpg" id="18_c2vyo"]
+[ext_resource type="Image" uid="uid://dvsti7llxil40" path="res://scenes/Forest/Heightmap_0_0.res" id="19_65srx"]
+[ext_resource type="Texture2D" uid="uid://dmokt7tvfqrfe" path="res://assets/textures/terrain/dirt/Ground038_1K-JPG_Color.jpg" id="19_igjew"]
+[ext_resource type="Image" uid="uid://dgpj3sp8e5i5v" path="res://scenes/Forest/Splatmap_0_0_0.res" id="20_di3lw"]
+[ext_resource type="Texture2D" uid="uid://4rsvq7vjpauy" path="res://assets/textures/terrain/dirt/Ground038_1K-JPG_NormalGL.jpg" id="20_o06ba"]
+[ext_resource type="Texture2D" uid="uid://dlih6xnlfhad7" path="res://assets/textures/terrain/dirt/Ground038_1K-JPG_Roughness.jpg" id="21_a8hxt"]
+[ext_resource type="PackedScene" uid="uid://bdom7t3rb0ajb" path="res://scenes/objects/item_spawner.tscn" id="21_qavbn"]
+[ext_resource type="Texture2D" uid="uid://5ios4rx86msg" path="res://assets/textures/terrain/rock/Rock051_1K-JPG_Color.jpg" id="22_7q4h0"]
+[ext_resource type="Resource" uid="uid://bnfr26e27sukl" path="res://items/rock.tres" id="22_c2vyo"]
+[ext_resource type="Texture2D" uid="uid://d2mxdn2l6l0cb" path="res://assets/textures/terrain/rock/Rock051_1K-JPG_Displacement.jpg" id="23_igjew"]
+[ext_resource type="Texture2D" uid="uid://dh3766fs6f4vy" path="res://assets/textures/terrain/rock/Rock051_1K-JPG_NormalGL.jpg" id="23_lr7uy"]
+[ext_resource type="Texture2D" uid="uid://xak0b3yt5ihm" path="res://assets/textures/terrain/rock/Rock051_1K-JPG_Roughness.jpg" id="24_igjew"]
+[ext_resource type="Texture2D" uid="uid://707doj4mclj4" path="res://assets/textures/terrain/sand/Ground087_1K-JPG_Color.jpg" id="25_o06ba"]
+[ext_resource type="Texture2D" uid="uid://bos38gw5b7mjk" path="res://assets/textures/terrain/sand/Ground087_1K-JPG_NormalGL.jpg" id="26_a8hxt"]
+[ext_resource type="Texture2D" uid="uid://b7x82157q4irb" path="res://assets/textures/terrain/sand/Ground087_1K-JPG_Roughness.jpg" id="27_eomrh"]
+[ext_resource type="Texture2D" uid="uid://oaexdmr344vv" path="res://assets/textures/terrain/snow/Snow010A_1K-JPG_Color.jpg" id="28_a88r6"]
+[ext_resource type="Texture2D" uid="uid://bd4ioqs61ib3l" path="res://assets/textures/terrain/snow/Snow010A_1K-JPG_NormalGL.jpg" id="29_okwed"]
+[ext_resource type="Texture2D" uid="uid://c263my4etawvh" path="res://assets/textures/terrain/snow/Snow010A_1K-JPG_Roughness.jpg" id="30_eos0w"]
+[ext_resource type="Image" uid="uid://b4dbhqqgab1he" path="res://scenes/Forest/Splatmap_0_0_1.res" id="33_len2l"]
+[ext_resource type="Texture2D" uid="uid://d2x624aeqe34m" path="res://assets/textures/terrain/ground/Ground040_1K-JPG_Color.jpg" id="33_o06ba"]
+[ext_resource type="Texture2D" uid="uid://kc0h52eu5vyo" path="res://assets/textures/terrain/ground/Ground040_1K-JPG_NormalGL.jpg" id="34_a8hxt"]
+[ext_resource type="Texture2D" uid="uid://c0kmvulyj7rps" path="res://assets/textures/terrain/ground/Ground040_1K-JPG_Roughness.jpg" id="35_eomrh"]
+[ext_resource type="Image" uid="uid://bjqmocpnuttfr" path="res://scenes/Forest/Snow_0_0.res" id="36_a8hxt"]
+[ext_resource type="Image" uid="uid://bedjfk65urvfo" path="res://scenes/Forest/Foliage_0_0_0.res" id="36_eos0w"]
+[ext_resource type="Image" uid="uid://d3hckt3civi20" path="res://scenes/Forest/Water_0_0.res" id="38_o06ba"]
+[ext_resource type="Shader" uid="uid://dsgsecsjl1mf6" path="res://shaders/water.gdshader" id="42_eomrh"]
 
 [sub_resource type="Resource" id="Resource_di0nb"]
 script = ExtResource("3_pyn53")
-items = Dictionary[int, ExtResource("14_cf55d")]({
-0: SubResource("Resource_i1j6r"),
-5: SubResource("Resource_pyn53")
-})
 metadata/_custom_type_script = "uid://cn28ajqmkw05v"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_65srx"]
@@ -99,8 +100,8 @@ shader_parameter/cirrus_absorption = 2.0
 shader_parameter/cirrus_sky_tint_fade = 0.5
 shader_parameter/cirrus_size = 1.0
 shader_parameter/cirrus_uv = Vector2(0.16, 0.11)
-shader_parameter/cirrus_position1 = Vector2(0.008862411, 0.008862411)
-shader_parameter/cirrus_position2 = Vector2(0.008862411, 0.008862411)
+shader_parameter/cirrus_position1 = Vector2(0.27441093, 0.27441093)
+shader_parameter/cirrus_position2 = Vector2(0.27441093, 0.27441093)
 shader_parameter/cirrus_texture = ExtResource("5_cf55d")
 shader_parameter/cumulus_visible = true
 shader_parameter/cumulus_intensity = 0.6
@@ -110,7 +111,7 @@ shader_parameter/cumulus_absorption = 2.0
 shader_parameter/cumulus_noise_freq = 2.7
 shader_parameter/cumulus_sky_tint_fade = 0.0
 shader_parameter/cumulus_size = 0.5
-shader_parameter/cumulus_position = Vector2(0.044311903, 0.044311903)
+shader_parameter/cumulus_position = Vector2(1.3719748, 1.3719748)
 shader_parameter/cumulus_texture = ExtResource("6_di0nb")
 shader_parameter/cumulus_partial_mie_phase = Vector3(0.957564, 1.042436, 0.412)
 shader_parameter/cumulus_mie_intensity = 1.0
@@ -135,25 +136,131 @@ tonemap_agx_contrast = 1.32
 ssao_enabled = true
 glow_enabled = true
 glow_bloom = 0.65
+fog_sky_affect = 0.0
+volumetric_fog_albedo = Color(0.76, 0.89599997, 1, 1)
+volumetric_fog_sky_affect = 0.0
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_lhlip"]
 
-[sub_resource type="Resource" id="Resource_uwbj1"]
+[sub_resource type="TextureSetResource" id="TextureSetResource_uo5au"]
+name = "Grass"
+albedoTexture = ExtResource("16_3h1w1")
+normalTexture = ExtResource("17_qavbn")
+roughnessTexture = ExtResource("18_c2vyo")
+specular = 0.0
+resource_name = "Grass"
+
+[sub_resource type="TextureSetResource" id="TextureSetResource_bamcy"]
+name = "Dirt"
+albedoTexture = ExtResource("19_igjew")
+normalTexture = ExtResource("20_o06ba")
+roughnessTexture = ExtResource("21_a8hxt")
+specular = 0.0
+resource_name = "Dirt"
+
+[sub_resource type="TextureSetResource" id="TextureSetResource_c2vyo"]
+name = "Rock"
+albedoTexture = ExtResource("22_7q4h0")
+normalTexture = ExtResource("23_lr7uy")
+roughnessTexture = ExtResource("24_igjew")
+heightTexture = ExtResource("23_igjew")
+textureDetail = 10
+specular = 0.0
+resource_name = "Rock"
+
+[sub_resource type="TextureSetResource" id="TextureSetResource_65srx"]
+name = "Sand"
+albedoTexture = ExtResource("25_o06ba")
+normalTexture = ExtResource("26_a8hxt")
+roughnessTexture = ExtResource("27_eomrh")
+specular = 0.0
+resource_name = "Sand"
+
+[sub_resource type="TextureSetResource" id="TextureSetResource_len2l"]
+name = "Ground"
+albedoTexture = ExtResource("33_o06ba")
+normalTexture = ExtResource("34_a8hxt")
+roughnessTexture = ExtResource("35_eomrh")
+textureDetail = 15
+specular = 0.0
+resource_name = "Ground"
+
+[sub_resource type="TextureSetsResource" id="TextureSetsResource_i4ufp"]
+textureSets = Array[TextureSetResource]([SubResource("TextureSetResource_uo5au"), SubResource("TextureSetResource_bamcy"), SubResource("TextureSetResource_c2vyo"), SubResource("TextureSetResource_65srx"), SubResource("TextureSetResource_len2l")])
+
+[sub_resource type="SnowResource" id="SnowResource_lr7uy"]
+snowColorTexture = ExtResource("28_a88r6")
+snowColorNormal = ExtResource("29_okwed")
+snowColorRoughness = ExtResource("30_eos0w")
+
+[sub_resource type="ZoneResource" id="ZoneResource_8wf4g"]
+heightMapImage = ExtResource("19_65srx")
+splatmapsImage = Array[Image]([ExtResource("20_di3lw"), ExtResource("33_len2l")])
+foliagesImage = Array[Image]([ExtResource("36_eos0w")])
+waterImage = ExtResource("38_o06ba")
+snowImage = ExtResource("36_a8hxt")
+
+[sub_resource type="ZonesResource" id="ZonesResource_lhlip"]
+zones = Array[ZoneResource]([SubResource("ZoneResource_8wf4g")])
+
+[sub_resource type="Resource" id="Resource_c2vyo"]
 script = ExtResource("14_cf55d")
-item = ExtResource("14_di0nb")
-count = 53
+item = ExtResource("22_c2vyo")
 metadata/_custom_type_script = "uid://cdu2cg43ub8dd"
 
+[sub_resource type="BoxMesh" id="BoxMesh_igjew"]
+size = Vector3(283.32806, 20, 91.69301)
+subdivide_width = 90
+subdivide_depth = 30
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_eomrh"]
+noise_type = 2
+frequency = 0.0069
+fractal_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dn1w7"]
+noise = SubResource("FastNoiseLite_eomrh")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_okwed"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lvx2t"]
+noise = SubResource("FastNoiseLite_okwed")
+seamless = true
+as_normal_map = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_a88r6"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jyv4r"]
+noise = SubResource("FastNoiseLite_a88r6")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a8hxt"]
+render_priority = 0
+shader = ExtResource("42_eomrh")
+shader_parameter/surface_color = Color(0.30638734, 0.45521718, 0.3861206, 1)
+shader_parameter/depth_color = Color(0.071253784, 0.12306348, 0.15829188, 1)
+shader_parameter/foam_color = Color(1, 1, 1, 1)
+shader_parameter/depth_size = 12.0
+shader_parameter/surface_roughness = 0.08999999798832
+shader_parameter/foam_roughness = 0.56999998725936
+shader_parameter/wave_texture = SubResource("NoiseTexture2D_jyv4r")
+shader_parameter/wave_normal_texture = SubResource("NoiseTexture2D_lvx2t")
+shader_parameter/wave_softness = 3.0
+shader_parameter/wave_scale = Vector2(0.02, 0.02)
+shader_parameter/wave_layer_scale = Vector2(1.5, 1.5)
+shader_parameter/wave_highlight = 0.5
+shader_parameter/wave_velocity = Vector2(-0.4, 0.02)
+shader_parameter/foam_texture = SubResource("NoiseTexture2D_dn1w7")
+shader_parameter/edge_foam_depth_size = 1.35
+shader_parameter/wave_foam_amount = 0.42999999038864
+shader_parameter/foam_start = 0.15
+shader_parameter/foam_end = 1.0
+shader_parameter/foam_exponent = 2.0
+shader_parameter/refraction_amount = 0.5
+shader_parameter/refraction_exponent = 0.5
+shader_parameter/displacement_amount = 0.3
+
 [node name="Forest" type="Node3D" unique_id=2055480750]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1557821180]
-mesh = SubResource("PlaneMesh_b7bo0")
-metadata/_edit_lock_ = true
-
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=86347983]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=1098987147]
-shape = SubResource("ConcavePolygonShape3D_bgcxa")
 
 [node name="Player" parent="." unique_id=1810151707 instance=ExtResource("1_j3csf")]
 inventory = SubResource("Resource_di0nb")
@@ -197,22 +304,24 @@ day = 23
 month = 10
 year = 2026
 
-[node name="Item" parent="." unique_id=2110216004 instance=ExtResource("13_dabdc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.606842, 2.185317, 3.5495763)
-stack = SubResource("Resource_uwbj1")
+[node name="TerraBrush" type="TerraBrush" parent="." unique_id=1124876626]
+dataPath = "res://scenes/Forest"
+textureSets = SubResource("TextureSetsResource_i4ufp")
+textureDetail = 20
+useAntiTile = false
+nearestTextureFilter = true
+useSharpTransitions = true
+snowDefinition = SubResource("SnowResource_lr7uy")
+terrainZones = SubResource("ZonesResource_lhlip")
+physics_interpolation_mode = 2
+metadata/_edit_lock_ = false
 
-[node name="Item2" parent="." unique_id=44513852 instance=ExtResource("13_dabdc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.583571, 2.185317, -4.391978)
-stack = SubResource("Resource_uwbj1")
+[node name="ItemSpawner" parent="." unique_id=1128196208 instance=ExtResource("21_qavbn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.0345917, -7.000125)
+stack = SubResource("Resource_c2vyo")
+time = 10.0
 
-[node name="Item3" parent="." unique_id=1639144202 instance=ExtResource("13_dabdc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.921047, 2.185317, 0.65862036)
-stack = SubResource("Resource_uwbj1")
-
-[node name="Item4" parent="." unique_id=606753690 instance=ExtResource("13_dabdc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.036734, 2.185317, -2.5113614)
-stack = SubResource("Resource_uwbj1")
-
-[node name="Item5" parent="." unique_id=366654916 instance=ExtResource("13_dabdc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.834206, 2.185317, -18.635328)
-stack = SubResource("Resource_uwbj1")
+[node name="Water" type="MeshInstance3D" parent="." unique_id=1758717302]
+transform = Transform3D(0.99533033, 0, -0.09652713, 0, 1, 0, 0.09652713, 0, 0.99533033, -0.1628151, -13.568578, 29.1128)
+mesh = SubResource("BoxMesh_igjew")
+surface_material_override/0 = SubResource("ShaderMaterial_a8hxt")
