@@ -7,5 +7,4 @@
 script = ExtResource("1_7mv65")
 name = "Stick"
 texture = ExtResource("2_30qhw")
-tool_type = null
 metadata/_custom_type_script = "uid://cuiua2byhdlix"

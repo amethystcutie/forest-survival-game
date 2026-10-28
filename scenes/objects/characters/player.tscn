@@ -13,6 +13,42 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t1kql"]
 shader = ExtResource("3_a72pd")
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_oqg1i"]
+animation = &"UAL1_Standard/Punch_Cross"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mjlu2"]
+animation = &"UAL2_Standard/TreeChopping"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_q1v31"]
+xfade_time = 0.3
+advance_mode = 2
+advance_expression = "swing_anim == 1"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1hyi1"]
+xfade_time = 0.3
+advance_mode = 2
+advance_expression = "swing_anim == 0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_iiywc"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vax4r"]
+break_loop_at_end = true
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_oqg1i"]
+state_machine_type = 1
+states/End/position = Vector2(775, 86)
+states/Start/position = Vector2(136, 86)
+states/UAL1_Standard_Punch_Cross/node = SubResource("AnimationNodeAnimation_oqg1i")
+states/UAL1_Standard_Punch_Cross/position = Vector2(458, 41)
+states/UAL2_Standard_TreeChopping/node = SubResource("AnimationNodeAnimation_mjlu2")
+states/UAL2_Standard_TreeChopping/position = Vector2(458, 122)
+transitions = ["Start", "UAL2_Standard_TreeChopping", SubResource("AnimationNodeStateMachineTransition_q1v31"), "Start", "UAL1_Standard_Punch_Cross", SubResource("AnimationNodeStateMachineTransition_1hyi1"), "UAL1_Standard_Punch_Cross", "End", SubResource("AnimationNodeStateMachineTransition_iiywc"), "UAL2_Standard_TreeChopping", "End", SubResource("AnimationNodeStateMachineTransition_vax4r")]
+graph_offset = Vector2(39, -119)
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tpw5s"]
 animation = &"UAL1_Standard/Dance"
 
@@ -33,9 +69,6 @@ animation = &"UAL1_Standard/Punch_Cross"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ja30q"]
 animation = &"UAL1_Standard/Walk"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mjlu2"]
-animation = &"UAL2_Standard/TreeChopping"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wl8hw"]
 advance_mode = 2
@@ -97,31 +130,36 @@ advance_expression = "bored_time >= 10"
 advance_mode = 2
 advance_expression = "bored_time < 10"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_oqg1i"]
-xfade_time = 0.3
-advance_mode = 2
-advance_expression = "swing_cooldown"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_q1v31"]
-xfade_time = 0.3
-break_loop_at_end = true
-switch_mode = 2
-advance_mode = 2
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2jal4"]
 xfade_time = 0.3
 break_loop_at_end = true
 advance_mode = 2
-advance_expression = "swing_cooldown"
+advance_expression = "swing_anim >= 0"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3owji"]
 xfade_time = 0.3
 break_loop_at_end = true
 switch_mode = 2
 advance_mode = 2
+advance_expression = "swing_anim < 0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_oqg1i"]
+xfade_time = 0.3
+break_loop_at_end = true
+advance_mode = 2
+advance_expression = "swing_anim >= 0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_obdwy"]
+xfade_time = 0.3
+break_loop_at_end = true
+switch_mode = 2
+advance_mode = 2
+advance_expression = "swing_anim < 0"
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_hkjby"]
 states/Start/position = Vector2(139, 72)
+states/Swing/node = SubResource("AnimationNodeStateMachine_oqg1i")
+states/Swing/position = Vector2(481, -200.1488)
 states/UAL1_Standard_Dance/node = SubResource("AnimationNodeAnimation_tpw5s")
 states/UAL1_Standard_Dance/position = Vector2(243, -114)
 states/UAL1_Standard_Idle/node = SubResource("AnimationNodeAnimation_txw86")
@@ -136,10 +174,8 @@ states/UAL1_Standard_Punch_Cross/node = SubResource("AnimationNodeAnimation_sn6v
 states/UAL1_Standard_Punch_Cross/position = Vector2(991, -107.1488)
 states/UAL1_Standard_Walk/node = SubResource("AnimationNodeAnimation_ja30q")
 states/UAL1_Standard_Walk/position = Vector2(641, 23)
-states/UAL2_Standard_TreeChopping/node = SubResource("AnimationNodeAnimation_mjlu2")
-states/UAL2_Standard_TreeChopping/position = Vector2(596, -180.1488)
-transitions = ["Start", "UAL1_Standard_Idle", SubResource("AnimationNodeStateMachineTransition_wl8hw"), "UAL1_Standard_Idle", "UAL1_Standard_Walk", SubResource("AnimationNodeStateMachineTransition_tpw5s"), "UAL1_Standard_Walk", "UAL1_Standard_Idle", SubResource("AnimationNodeStateMachineTransition_ww86x"), "UAL1_Standard_Walk", "UAL1_Standard_Jump_Start", SubResource("AnimationNodeStateMachineTransition_txw86"), "UAL1_Standard_Jump_Start", "UAL1_Standard_Jump", SubResource("AnimationNodeStateMachineTransition_6u8po"), "UAL1_Standard_Walk", "UAL1_Standard_Jump", SubResource("AnimationNodeStateMachineTransition_ja30q"), "UAL1_Standard_Idle", "UAL1_Standard_Jump_Start", SubResource("AnimationNodeStateMachineTransition_sn6vh"), "UAL1_Standard_Idle", "UAL1_Standard_Jump", SubResource("AnimationNodeStateMachineTransition_mjlu2"), "UAL1_Standard_Jump", "UAL1_Standard_Jump_Land", SubResource("AnimationNodeStateMachineTransition_ju7gm"), "UAL1_Standard_Jump_Land", "UAL1_Standard_Idle", SubResource("AnimationNodeStateMachineTransition_vj4dc"), "UAL1_Standard_Jump_Start", "UAL1_Standard_Jump_Land", SubResource("AnimationNodeStateMachineTransition_3uvc8"), "UAL1_Standard_Idle", "UAL1_Standard_Dance", SubResource("AnimationNodeStateMachineTransition_5u4ob"), "UAL1_Standard_Dance", "UAL1_Standard_Idle", SubResource("AnimationNodeStateMachineTransition_eq6tj"), "UAL1_Standard_Idle", "UAL2_Standard_TreeChopping", SubResource("AnimationNodeStateMachineTransition_oqg1i"), "UAL2_Standard_TreeChopping", "UAL1_Standard_Idle", SubResource("AnimationNodeStateMachineTransition_q1v31"), "UAL1_Standard_Walk", "UAL2_Standard_TreeChopping", SubResource("AnimationNodeStateMachineTransition_2jal4"), "UAL2_Standard_TreeChopping", "UAL1_Standard_Walk", SubResource("AnimationNodeStateMachineTransition_3owji")]
-graph_offset = Vector2(-9, -274.1488)
+transitions = ["Start", "UAL1_Standard_Idle", SubResource("AnimationNodeStateMachineTransition_wl8hw"), "UAL1_Standard_Idle", "UAL1_Standard_Walk", SubResource("AnimationNodeStateMachineTransition_tpw5s"), "UAL1_Standard_Walk", "UAL1_Standard_Idle", SubResource("AnimationNodeStateMachineTransition_ww86x"), "UAL1_Standard_Walk", "UAL1_Standard_Jump_Start", SubResource("AnimationNodeStateMachineTransition_txw86"), "UAL1_Standard_Jump_Start", "UAL1_Standard_Jump", SubResource("AnimationNodeStateMachineTransition_6u8po"), "UAL1_Standard_Walk", "UAL1_Standard_Jump", SubResource("AnimationNodeStateMachineTransition_ja30q"), "UAL1_Standard_Idle", "UAL1_Standard_Jump_Start", SubResource("AnimationNodeStateMachineTransition_sn6vh"), "UAL1_Standard_Idle", "UAL1_Standard_Jump", SubResource("AnimationNodeStateMachineTransition_mjlu2"), "UAL1_Standard_Jump", "UAL1_Standard_Jump_Land", SubResource("AnimationNodeStateMachineTransition_ju7gm"), "UAL1_Standard_Jump_Land", "UAL1_Standard_Idle", SubResource("AnimationNodeStateMachineTransition_vj4dc"), "UAL1_Standard_Jump_Start", "UAL1_Standard_Jump_Land", SubResource("AnimationNodeStateMachineTransition_3uvc8"), "UAL1_Standard_Idle", "UAL1_Standard_Dance", SubResource("AnimationNodeStateMachineTransition_5u4ob"), "UAL1_Standard_Dance", "UAL1_Standard_Idle", SubResource("AnimationNodeStateMachineTransition_eq6tj"), "UAL1_Standard_Walk", "Swing", SubResource("AnimationNodeStateMachineTransition_2jal4"), "Swing", "UAL1_Standard_Walk", SubResource("AnimationNodeStateMachineTransition_3owji"), "UAL1_Standard_Idle", "Swing", SubResource("AnimationNodeStateMachineTransition_oqg1i"), "Swing", "UAL1_Standard_Idle", SubResource("AnimationNodeStateMachineTransition_obdwy")]
+graph_offset = Vector2(44, -389.1488)
 
 [node name="Player" type="CharacterBody3D" unique_id=1810151707]
 collision_layer = 2
@@ -162,37 +198,9 @@ transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0, 0)
 
 [node name="GeneralSkeleton" parent="Model/witch" index="0" unique_id=684220577]
-bones/0/position = Vector3(-0.0020361268, 0.80880237, -0.07996467)
-bones/0/rotation = Quaternion(-0.04593031, -0.11589036, -0.0053648115, 0.992185)
 bones/1/rotation = Quaternion(0.010954639, -0.010485722, 0.015103955, 0.99977094)
-bones/2/rotation = Quaternion(0.09178022, 0.000112446585, 0.00025427196, 0.9957793)
-bones/3/rotation = Quaternion(0.091780186, 0.00032003556, 0.00024765206, 0.9957793)
-bones/4/rotation = Quaternion(-0.091790296, -0.00021655942, -0.0002605305, 0.9957784)
-bones/5/rotation = Quaternion(0.07871616, 0.09571883, 0.007982379, 0.9922591)
-bones/7/rotation = Quaternion(0.48774463, 0.52652663, 0.52646387, -0.455753)
-bones/8/rotation = Quaternion(-0.061814878, 0.81774265, -0.5721711, 0.009800329)
-bones/9/rotation = Quaternion(0.1905526, -0.6510029, 0.18364638, 0.71144855)
-bones/10/rotation = Quaternion(0.09913024, 0.70686626, 0.0629003, 0.69753635)
 bones/11/rotation = Quaternion(0.06821108, -0.00028288364, -0.04073584, 0.9968389)
-bones/12/rotation = Quaternion(0.6295969, -4.0978193e-08, -4.61936e-06, 0.77692205)
-bones/13/rotation = Quaternion(0.62334186, 2.9802322e-08, -4.261732e-06, 0.78194946)
-bones/14/rotation = Quaternion(0.62334144, -2.2351742e-07, -4.4703484e-06, 0.78194976)
-bones/15/rotation = Quaternion(0.53997964, -0.47443193, -0.47475308, -0.5078837)
-bones/16/rotation = Quaternion(0.09007829, 0.8248295, -0.5580778, -0.00955874)
-bones/17/rotation = Quaternion(0.29231182, 0.54226506, -0.2046914, 0.7606602)
-bones/18/rotation = Quaternion(0.12024976, -0.69903094, -0.056890074, 0.702609)
 bones/19/rotation = Quaternion(0.06821147, 0.00028304753, 0.040735897, 0.99683887)
-bones/20/rotation = Quaternion(0.6295971, 3.7252903e-08, 4.172325e-06, 0.7769218)
-bones/21/rotation = Quaternion(0.62334144, 1.825392e-07, 4.470348e-06, 0.7819497)
-bones/22/rotation = Quaternion(0.62334156, 1.00582824e-07, 4.2319293e-06, 0.78194964)
-bones/23/rotation = Quaternion(-0.0008037736, 0.11786328, 0.98635817, -0.11491433)
-bones/24/rotation = Quaternion(0.01554192, 0.9832638, -0.14232886, 0.11266482)
-bones/25/rotation = Quaternion(-0.09804714, 0.7310674, -0.6751543, 0.009692003)
-bones/26/rotation = Quaternion(4.664862e-08, 1, 5.9604645e-08, 2.7766912e-08)
-bones/28/rotation = Quaternion(0.0007903344, -0.108502634, 0.98765326, 0.1129944)
-bones/29/rotation = Quaternion(-0.03102848, 0.9285147, -0.086711325, -0.3596926)
-bones/30/rotation = Quaternion(0.16936116, 0.6418349, -0.74790686, -0.00024265051)
-bones/31/rotation = Quaternion(-6.703263e-08, 1, 8.940697e-08, 2.1454163e-09)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Model/witch" unique_id=995350853]
 libraries/UAL1_Standard = ExtResource("5_wl8hw")

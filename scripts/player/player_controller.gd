@@ -9,6 +9,8 @@ extends CharacterBody3D
 @export var max_zoom := 4.0
 @export var inventory: Inventory
 
+var swing_anim := -1
+
 var bored_time: float = 0
 
 var camera_length := 4.0
@@ -102,10 +104,15 @@ func _process(delta: float) -> void:
 		swing_cooldown = true
 		get_tree().create_timer(item_cd).timeout.connect(func():
 			swing_cooldown = false)
-			
-		swing.emit(held_item)
 		
 		print(swing_cooldown)
+		
+		if !held_item.is_empty(): swing_anim = held_item.item.swing_anim
+		else: swing_anim = 0
+		
+		get_tree().create_timer(0.2).timeout.connect(func(): 
+			swing.emit(held_item.item)
+			swing_anim = -1)
 	
 func update_model_rotation(delta: float):
 	$Model.rotation.y = rotate_toward($Model.rotation.y, $CameraPivot.rotation.y, acceleration * delta)

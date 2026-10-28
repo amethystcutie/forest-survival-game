@@ -44,7 +44,7 @@
 [ext_resource type="Image" uid="uid://bedjfk65urvfo" path="res://scenes/Forest/Foliage_0_0_0.res" id="36_eos0w"]
 [ext_resource type="Image" uid="uid://d3hckt3civi20" path="res://scenes/Forest/Water_0_0.res" id="38_o06ba"]
 [ext_resource type="Shader" uid="uid://dsgsecsjl1mf6" path="res://shaders/water.gdshader" id="42_eomrh"]
-[ext_resource type="PackedScene" uid="uid://cpucb4nhx41al" path="res://scenes/objects/resource_node.tscn" id="43_a88r6"]
+[ext_resource type="PackedScene" uid="uid://dotvw5487djh" path="res://scenes/objects/resource_nodes/maple_tree.tscn" id="45_eos0w"]
 
 [sub_resource type="Resource" id="Resource_txw86"]
 script = ExtResource("14_cf55d")
@@ -124,8 +124,8 @@ shader_parameter/cirrus_absorption = 2.0
 shader_parameter/cirrus_sky_tint_fade = 0.5
 shader_parameter/cirrus_size = 1.0
 shader_parameter/cirrus_uv = Vector2(0.16, 0.11)
-shader_parameter/cirrus_position1 = Vector2(0.12233742, 0.12233742)
-shader_parameter/cirrus_position2 = Vector2(0.12233742, 0.12233742)
+shader_parameter/cirrus_position1 = Vector2(0.09178599, 0.09178599)
+shader_parameter/cirrus_position2 = Vector2(0.09178599, 0.09178599)
 shader_parameter/cirrus_texture = ExtResource("5_cf55d")
 shader_parameter/cumulus_visible = true
 shader_parameter/cumulus_intensity = 0.6
@@ -135,7 +135,7 @@ shader_parameter/cumulus_absorption = 2.0
 shader_parameter/cumulus_noise_freq = 2.7
 shader_parameter/cumulus_sky_tint_fade = 0.0
 shader_parameter/cumulus_size = 0.5
-shader_parameter/cumulus_position = Vector2(0.6116113, 0.6116113)
+shader_parameter/cumulus_position = Vector2(0.45889276, 0.45889276)
 shader_parameter/cumulus_texture = ExtResource("6_di0nb")
 shader_parameter/cumulus_partial_mie_phase = Vector3(0.957564, 1.042436, 0.412)
 shader_parameter/cumulus_mie_intensity = 1.0
@@ -160,7 +160,10 @@ tonemap_agx_contrast = 1.32
 ssao_enabled = true
 glow_enabled = true
 glow_bloom = 0.65
+fog_mode = 1
+fog_density = 0.6934
 fog_sky_affect = 0.0
+fog_depth_curve = 0.51763505
 volumetric_fog_albedo = Color(0.76, 0.89599997, 1, 1)
 volumetric_fog_sky_affect = 0.0
 
@@ -297,6 +300,7 @@ camera_attributes = SubResource("CameraAttributesPractical_lhlip")
 script = ExtResource("11_3h1w1")
 editor_time_enabled = false
 minutes_per_day = 12.0
+update_interval = 0.032
 tonemap_exposure = 1.2
 wind_direction = 2.35619451204804
 metadata/_custom_type_script = "uid://deo0gxkmk2ahd"
@@ -304,11 +308,13 @@ metadata/_custom_type_script = "uid://deo0gxkmk2ahd"
 [node name="SunLight" type="DirectionalLight3D" parent="Sky3D" unique_id=700731045]
 transform = Transform3D(0.41074032, -0.46605024, 0.7836388, 0, 0.8594864, 0.51115876, -0.9117524, -0.20995352, 0.3530257, 0.7836387, 0.5111587, 0.35302567)
 shadow_enabled = true
+directional_shadow_mode = 0
 
 [node name="MoonLight" type="DirectionalLight3D" parent="Sky3D" unique_id=979509963]
 transform = Transform3D(0, -0.9512174, -0.3085214, -0.26449287, 0.29753423, -0.9173423, 0.96438766, 0.08160171, -0.25159022, -0.3085214, -0.9173423, -0.25159022)
 light_color = Color(0.572549, 0.776471, 0.956863, 1)
 light_energy = 0.0
+directional_shadow_mode = 0
 
 [node name="SkyDome" type="Node" parent="Sky3D" unique_id=2072858362]
 script = ExtResource("12_qavbn")
@@ -324,6 +330,7 @@ script = ExtResource("13_c2vyo")
 editor_time_enabled = false
 dome_path = NodePath("../SkyDome")
 minutes_per_day = 12.0
+update_interval = 0.032
 day = 23
 month = 10
 year = 2026
@@ -350,4 +357,5 @@ transform = Transform3D(0.99533033, 0, -0.09652713, 0, 1, 0, 0.09652713, 0, 0.99
 mesh = SubResource("BoxMesh_igjew")
 surface_material_override/0 = SubResource("ShaderMaterial_a8hxt")
 
-[node name="ResourceNode" parent="." unique_id=2101333332 instance=ExtResource("43_a88r6")]
+[node name="MapleTree" parent="." unique_id=2101333332 instance=ExtResource("45_eos0w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.41843, 0.19821072, -14.461781)

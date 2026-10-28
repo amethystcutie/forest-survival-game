@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://c8fphxwvo02ue"]
+
+[ext_resource type="Script" uid="uid://cuiua2byhdlix" path="res://scripts/items/item.gd" id="1_emvyq"]
+[ext_resource type="Texture2D" uid="uid://2f2jfop7hap3" path="res://assets/textures/items/log.png" id="2_emvyq"]
+
+[resource]
+script = ExtResource("1_emvyq")
+name = "Log"
+texture = ExtResource("2_emvyq")
+tool_type = null
+metadata/_custom_type_script = "uid://cuiua2byhdlix"
