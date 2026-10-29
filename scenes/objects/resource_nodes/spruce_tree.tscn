@@ -1,0 +1,164 @@
+[gd_scene format=3 uid="uid://c6r2yqhmfm85l"]
+
+[ext_resource type="PackedScene" uid="uid://cpucb4nhx41al" path="res://scenes/objects/resource_node.tscn" id="1_oe3ug"]
+[ext_resource type="Script" uid="uid://cdu2cg43ub8dd" path="res://scripts/items/item_stack.gd" id="2_630vq"]
+[ext_resource type="Resource" uid="uid://ba3c8un817ufp" path="res://items/stick.tres" id="3_2o7ix"]
+[ext_resource type="Resource" uid="uid://c8fphxwvo02ue" path="res://items/log.tres" id="4_55xtq"]
+[ext_resource type="Resource" uid="uid://dr5skulf2tuwd" path="res://items/leaf.tres" id="5_2caav"]
+[ext_resource type="AudioStream" uid="uid://dqiow3djt2g2i" path="res://assets/sounds/wood.ogg" id="6_7g4ca"]
+[ext_resource type="ArrayMesh" uid="uid://bay8q11c1p1we" path="res://assets/models/terrain/trees/spruce_tree.glb" id="7_oe3ug"]
+[ext_resource type="Texture2D" uid="uid://bdftnsa5h8arn" path="res://assets/textures/terrain/bark/Bark014_1K-JPG_Color.jpg" id="8_d2d1m"]
+[ext_resource type="Texture2D" uid="uid://cbrdgygu2wb78" path="res://assets/textures/terrain/bark/Bark014_1K-JPG_AmbientOcclusion.jpg" id="9_vaalt"]
+[ext_resource type="Texture2D" uid="uid://ctqyhs7pxjhgv" path="res://assets/textures/terrain/bark/Bark014_1K-JPG_NormalGL.jpg" id="10_bsaw1"]
+[ext_resource type="Texture2D" uid="uid://cghbhxbx0r6ua" path="res://assets/textures/terrain/bark/Bark014_1K-JPG_Roughness.jpg" id="11_t7nav"]
+[ext_resource type="Shader" uid="uid://co7vt81sou20q" path="res://shaders/leaves.gdshader" id="12_4gyes"]
+[ext_resource type="Texture2D" uid="uid://cmr07oe35vlnu" path="res://assets/textures/terrain/leaves/spruce_branch.png" id="13_630vq"]
+[ext_resource type="AnimationLibrary" uid="uid://s2idsp8kbf6h" path="res://assets/animations/objects/tree.res" id="14_oe3ug"]
+
+[sub_resource type="Resource" id="Resource_7jawt"]
+script = ExtResource("2_630vq")
+item = ExtResource("3_2o7ix")
+count = 2
+metadata/_custom_type_script = "uid://cdu2cg43ub8dd"
+
+[sub_resource type="Resource" id="Resource_jyv4r"]
+script = ExtResource("2_630vq")
+item = ExtResource("4_55xtq")
+count = 3
+metadata/_custom_type_script = "uid://cdu2cg43ub8dd"
+
+[sub_resource type="Resource" id="Resource_y2sss"]
+script = ExtResource("2_630vq")
+item = ExtResource("5_2caav")
+count = 5
+metadata/_custom_type_script = "uid://cdu2cg43ub8dd"
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_y2sss"]
+height = 7.345093
+radius = 2.347168
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s6cnt"]
+albedo_texture = ExtResource("8_d2d1m")
+roughness_texture = ExtResource("11_t7nav")
+normal_enabled = true
+normal_texture = ExtResource("10_bsaw1")
+ao_enabled = true
+ao_texture = ExtResource("9_vaalt")
+texture_filter = 2
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_y2sss"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_r04tw"]
+noise = SubResource("FastNoiseLite_y2sss")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pq6fm"]
+render_priority = 0
+shader = ExtResource("12_4gyes")
+shader_parameter/albedo = ExtResource("13_630vq")
+shader_parameter/wind_noise = SubResource("NoiseTexture2D_r04tw")
+shader_parameter/wind_strength = 0.1
+shader_parameter/wind_speed = 0.05
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oe3ug"]
+shading_mode = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_630vq"]
+shading_mode = 0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_r04tw"]
+height = 8.5
+radius = 0.7246094
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2o7ix"]
+animation = &"RESET"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_55xtq"]
+animation = &"fell"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_oe3ug"]
+animation = &"grow"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_630vq"]
+animation = &"hit"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2o7ix"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2caav"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_55xtq"]
+advance_mode = 2
+advance_expression = "hit"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7g4ca"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_o1h7k"]
+advance_mode = 2
+advance_expression = "depleted"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_oe3ug"]
+switch_mode = 2
+advance_mode = 2
+advance_expression = "!depleted"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_v38mc"]
+states/RESET/node = SubResource("AnimationNodeAnimation_2o7ix")
+states/RESET/position = Vector2(470, 100)
+states/fell/node = SubResource("AnimationNodeAnimation_55xtq")
+states/fell/position = Vector2(470, -6)
+states/grow/node = SubResource("AnimationNodeAnimation_oe3ug")
+states/grow/position = Vector2(325, 100)
+states/hit/node = SubResource("AnimationNodeAnimation_630vq")
+states/hit/position = Vector2(470, 222)
+transitions = ["Start", "grow", SubResource("AnimationNodeStateMachineTransition_2o7ix"), "hit", "RESET", SubResource("AnimationNodeStateMachineTransition_2caav"), "RESET", "hit", SubResource("AnimationNodeStateMachineTransition_55xtq"), "grow", "RESET", SubResource("AnimationNodeStateMachineTransition_7g4ca"), "RESET", "fell", SubResource("AnimationNodeStateMachineTransition_o1h7k"), "fell", "grow", SubResource("AnimationNodeStateMachineTransition_oe3ug")]
+graph_offset = Vector2(-9, -86)
+
+[node name="SpruceTree" unique_id=2101333332 node_paths=PackedStringArray("model", "hitbox", "collider") instance=ExtResource("1_oe3ug")]
+drops = Array[ExtResource("2_630vq")]([SubResource("Resource_7jawt"), SubResource("Resource_jyv4r"), SubResource("Resource_y2sss")])
+model = NodePath("Model")
+hitbox = NodePath("Area3D")
+collider = NodePath("CollisionShape3D")
+max_health = 6
+hit_sound = ExtResource("6_7g4ca")
+break_sound = ExtResource("6_7g4ca")
+
+[node name="Area3D" type="Area3D" parent="." index="0" unique_id=308182233]
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0" unique_id=988825724]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.27739388, 3.8401659, -0.11270523)
+shape = SubResource("CylinderShape3D_y2sss")
+
+[node name="Model" type="Node3D" parent="." index="1" unique_id=675240133]
+transform = Transform3D(0.9465788, 0, -0.3224733, 0, 1, 0, 0.32247344, 0, 0.9465784, 0, 1.3000001, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model" index="0" unique_id=1691074954]
+transform = Transform3D(4.44, 0, 0, 0, 4.44, 0, 0, 0, 4.44, 0, -1.676546, 0)
+cast_shadow = 0
+instance_shader_parameters/tint = Color(0.08248039, 0.47165346, 0.53136903, 0.9098039)
+mesh = ExtResource("7_oe3ug")
+surface_material_override/0 = SubResource("StandardMaterial3D_s6cnt")
+surface_material_override/1 = SubResource("ShaderMaterial_pq6fm")
+
+[node name="ShadowTree" type="MeshInstance3D" parent="Model" index="1" unique_id=1564835675]
+transform = Transform3D(4.44, 0, 0, 0, 4.44, 0, 1.1920929e-07, 0, 4.44, 0, 11.345822, 0)
+cast_shadow = 3
+mesh = ExtResource("7_oe3ug")
+surface_material_override/0 = SubResource("StandardMaterial3D_oe3ug")
+surface_material_override/1 = SubResource("StandardMaterial3D_630vq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2" unique_id=775302494]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.029982507, 4.25, 0)
+shape = SubResource("CylinderShape3D_r04tw")
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="3" unique_id=1357090697]
+tree_root = SubResource("AnimationNodeStateMachine_v38mc")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4" unique_id=1517252435]
+libraries/ = ExtResource("14_oe3ug")

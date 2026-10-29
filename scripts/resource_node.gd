@@ -21,6 +21,8 @@ extends StaticBody3D
 var depleted := false
 var player: Player
 
+var hit := false
+
 func _ready() -> void:
 	hitbox.body_entered.connect(on_hitbox_enter)
 	hitbox.body_exited.connect(on_hitbox_leave)
@@ -51,14 +53,16 @@ func on_player_hit(tool: Item) -> void:
 			if respawns:
 				lives -= 1
 				depleted = true
-				model.hide()
 				collider.set_deferred("disabled", true)
 				
 				if lives == 0: respawns = false
 				get_tree().create_timer(randf_range(min_respawn_time, max_respawn_time)).timeout.connect(func():
 					depleted = false
 					health = max_health
-					model.show()
 					collider.set_deferred("disabled", false))
 			else:
 				queue_free()
+		else:
+			hit = true
+		get_tree().create_timer(0.1).timeout.connect(func():
+			hit = false)

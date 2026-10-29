@@ -45,6 +45,8 @@
 [ext_resource type="Image" uid="uid://d3hckt3civi20" path="res://scenes/Forest/Water_0_0.res" id="38_o06ba"]
 [ext_resource type="Shader" uid="uid://dsgsecsjl1mf6" path="res://shaders/water.gdshader" id="42_eomrh"]
 [ext_resource type="PackedScene" uid="uid://dotvw5487djh" path="res://scenes/objects/resource_nodes/maple_tree.tscn" id="45_eos0w"]
+[ext_resource type="PackedScene" uid="uid://c0jetnrex8nhm" path="res://scenes/objects/resource_nodes/oak_tree.tscn" id="46_7jawt"]
+[ext_resource type="PackedScene" uid="uid://c6r2yqhmfm85l" path="res://scenes/objects/resource_nodes/spruce_tree.tscn" id="47_jyv4r"]
 
 [sub_resource type="Resource" id="Resource_txw86"]
 script = ExtResource("14_cf55d")
@@ -124,8 +126,8 @@ shader_parameter/cirrus_absorption = 2.0
 shader_parameter/cirrus_sky_tint_fade = 0.5
 shader_parameter/cirrus_size = 1.0
 shader_parameter/cirrus_uv = Vector2(0.16, 0.11)
-shader_parameter/cirrus_position1 = Vector2(0.09178599, 0.09178599)
-shader_parameter/cirrus_position2 = Vector2(0.09178599, 0.09178599)
+shader_parameter/cirrus_position1 = Vector2(0.09023013, 0.09023013)
+shader_parameter/cirrus_position2 = Vector2(0.09023013, 0.09023013)
 shader_parameter/cirrus_texture = ExtResource("5_cf55d")
 shader_parameter/cumulus_visible = true
 shader_parameter/cumulus_intensity = 0.6
@@ -135,7 +137,7 @@ shader_parameter/cumulus_absorption = 2.0
 shader_parameter/cumulus_noise_freq = 2.7
 shader_parameter/cumulus_sky_tint_fade = 0.0
 shader_parameter/cumulus_size = 0.5
-shader_parameter/cumulus_position = Vector2(0.45889276, 0.45889276)
+shader_parameter/cumulus_position = Vector2(0.45111543, 0.45111543)
 shader_parameter/cumulus_texture = ExtResource("6_di0nb")
 shader_parameter/cumulus_partial_mie_phase = Vector3(0.957564, 1.042436, 0.412)
 shader_parameter/cumulus_mie_intensity = 1.0
@@ -358,4 +360,31 @@ mesh = SubResource("BoxMesh_igjew")
 surface_material_override/0 = SubResource("ShaderMaterial_a8hxt")
 
 [node name="MapleTree" parent="." unique_id=2101333332 instance=ExtResource("45_eos0w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.41843, 0.19821072, -14.461781)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.385193, -0.8604555, -7.5787582)
+
+[node name="MapleTree2" parent="." unique_id=1216193578 instance=ExtResource("45_eos0w")]
+transform = Transform3D(-0.23384504, 0, -0.9722739, 0, 1, 0, 0.9722739, 0, -0.23384504, -20.04876, -0.32115173, -28.644394)
+
+[node name="MapleTree3" parent="." unique_id=1411618418 instance=ExtResource("45_eos0w")]
+transform = Transform3D(0.109489694, 0, -0.9939879, 0, 1, 0, 0.9939879, 0, 0.109489694, -59.492386, 0.23459625, -53.885376)
+
+[node name="OakTree" parent="." unique_id=174041360 instance=ExtResource("46_7jawt")]
+transform = Transform3D(0.43851075, 0, -0.8987259, 0, 1, 0, 0.8987259, 0, 0.43851075, -35.752773, -0.27948666, -32.21473)
+
+[node name="OakTree2" parent="." unique_id=2139009012 instance=ExtResource("46_7jawt")]
+transform = Transform3D(-0.6240666, 0, -0.7813713, 0, 1, 0, 0.7813713, 0, -0.6240666, 4.6403427, 0.041506767, -49.943626)
+
+[node name="SpruceTree" parent="." unique_id=2021189596 instance=ExtResource("47_jyv4r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.055372, -0.8481482, -10.912575)
+
+[node name="SpruceTree2" parent="." unique_id=1994645293 instance=ExtResource("47_jyv4r")]
+transform = Transform3D(0.56242645, 0, -0.8268473, 0, 1, 0, 0.8268473, 0, 0.56242645, 23.002832, 1.3785896, -44.80623)
+
+[node name="SpruceTree3" parent="." unique_id=371704038 instance=ExtResource("47_jyv4r")]
+transform = Transform3D(0.8368071, 0, -0.54749805, 0, 1, 0, 0.54749805, 0, 0.8368071, -54.27908, -0.2860279, -28.614857)
+
+[node name="SpruceTree4" parent="." unique_id=671778371 instance=ExtResource("47_jyv4r")]
+transform = Transform3D(0.40322933, 0, -0.915099, 0, 1, 0, 0.915099, 0, 0.40322933, -15.0974045, 0.33039474, -53.961056)
+
+[node name="SpruceTree5" parent="." unique_id=1415312391 instance=ExtResource("47_jyv4r")]
+transform = Transform3D(-0.5148551, 0, -0.8572773, 0, 1, 0, 0.8572773, 0, -0.5148551, 64.026436, 1.7588215, -50.098385)
