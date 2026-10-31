@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://dbtfu86te2mum" path="res://scripts/ui/debug/performance.gd" id="1_b7bo0"]
 [ext_resource type="PackedScene" uid="uid://clhiaqw47a7ve" path="res://scenes/ui/container_slot.tscn" id="2_j6o1s"]
 [ext_resource type="Script" uid="uid://d4bwq6cuybri4" path="res://scripts/ui/debug/inventory.gd" id="2_r00s7"]
+[ext_resource type="Texture2D" uid="uid://cfc74105cdsqg" path="res://assets/textures/ui/icons/health.png" id="4_hcidf"]
+[ext_resource type="Script" uid="uid://d2mqvtktrkbhr" path="res://scripts/ui/debug/stats.gd" id="4_l6uss"]
+[ext_resource type="Texture2D" uid="uid://bupawcp00qb56" path="res://assets/textures/ui/icons/hunger.png" id="5_l6uss"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dm63b"]
 draw_center = false
@@ -27,6 +30,54 @@ corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lvx2t"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.38590547, 0.009345764, 0.14578149, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jyv4r"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.99380475, 0.44208944, 0.56145483, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6sryq"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.38946742, 0.15720075, 0.0066135023, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dn1w7"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.984731, 0.49170917, 0.20870999, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
 
 [node name="DebugHUD" type="CanvasLayer" unique_id=770356309]
 layer = 999
@@ -81,6 +132,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("2_r00s7")
 normal_slot_style = SubResource("StyleBoxFlat_dm63b")
 select_slot_style = SubResource("StyleBoxFlat_r00s7")
@@ -138,3 +190,78 @@ grow_horizontal = 0
 grow_vertical = 0
 horizontal_alignment = 2
 vertical_alignment = 2
+
+[node name="Stats" type="Control" parent="." unique_id=728299198]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -12.0
+offset_right = -16.0
+offset_bottom = -12.0
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("4_l6uss")
+
+[node name="Panel" type="Panel" parent="Stats" unique_id=525141215]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -216.0
+offset_top = -50.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Stats/Panel" unique_id=664134425]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="GridContainer" type="GridContainer" parent="Stats/Panel/MarginContainer" unique_id=1214044860]
+layout_mode = 2
+columns = 2
+
+[node name="HealthIcon" type="TextureRect" parent="Stats/Panel/MarginContainer/GridContainer" unique_id=1965855422]
+modulate = Color(0.99380475, 0.44208944, 0.56145483, 1)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("4_hcidf")
+expand_mode = 3
+
+[node name="HealthBar" type="ProgressBar" parent="Stats/Panel/MarginContainer/GridContainer" unique_id=928066832]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_lvx2t")
+theme_override_styles/fill = SubResource("StyleBoxFlat_jyv4r")
+value = 50.0
+show_percentage = false
+
+[node name="HungerIcon" type="TextureRect" parent="Stats/Panel/MarginContainer/GridContainer" unique_id=1156482346]
+modulate = Color(0.984731, 0.49170917, 0.20870999, 1)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("5_l6uss")
+expand_mode = 3
+
+[node name="HungerBar" type="ProgressBar" parent="Stats/Panel/MarginContainer/GridContainer" unique_id=2037578663]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_6sryq")
+theme_override_styles/fill = SubResource("StyleBoxFlat_dn1w7")
+value = 50.0
+show_percentage = false

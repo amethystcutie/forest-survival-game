@@ -8,6 +8,7 @@ extends CharacterBody3D
 @export var zoom_step := 0.5
 @export var max_zoom := 4.0
 @export var inventory: Inventory
+@export var spawn_point: Marker3D
 
 var swing_anim := -1
 
@@ -20,12 +21,87 @@ var opacity: float
 
 var selected_slot: int = 0
 
+@export var max_health := 100
+@export var max_hunger := 100
+
+@onready var health := max_health
+@onready var hunger := max_hunger
+
 var swing_cooldown := false
 signal swing(tool: Item)
 
+var dead := false
+
+@onready var effect_player: AnimationPlayer = $CanvasLayer/AnimationPlayer
+
+func feed(amount: int) -> void:
+	hunger += amount
+	if hunger > max_hunger:
+		hunger = max_hunger
+		
+func hurt(amount: int) -> void:
+	if dead: return
+	
+	if amount < 0:
+		heal(-amount)
+		return
+		
+	health -= amount
+	effect_player.play("hurt")
+	if health <= 0:
+		die()
+		
+func heal(amount: int) -> void:
+	if dead: return
+	
+	if amount < 0:
+		hurt(-amount)
+		return
+	
+	health += amount
+	if health > max_health:
+		health = max_health
+		effect_player.play("heal")
+		
+func die() -> void:
+	dead = true
+	
+	effect_player.play("fade_out")
+	await effect_player.animation_finished
+	
+	var death_pos := global_position
+	
+	global_position = spawn_point.global_position
+	
+	for i in inventory.items:
+		Global.spawn_item(inventory.get_item(i), death_pos + Vector3.UP)
+		
+	inventory.items.clear()
+	
+	health = max_health
+	hunger = max_hunger
+	
+	effect_player.play("fade_in")
+	
+	dead = false
+		
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	Global.player = self
+	
+	global_position = spawn_point.global_position
+	effect_player.play("fade_in")
+	
+	Global.player_ready.emit()
+	
+	$HungerTimer.timeout.connect(func():
+		if hunger >= 1:
+			if velocity.length() > 0.2:
+				hunger -= 3
+			else:
+				hunger -= 1
+		else:
+			hurt(5))
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and unlock_camera:
@@ -56,7 +132,7 @@ func _physics_process(delta: float) -> void:
 	
 	var direction := (transform.basis.rotated(Vector3.UP, $CameraPivot.rotation.y) * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
-	if direction:
+	if direction and not dead:
 		bored_time = 0
 		update_model_rotation(delta)
 		velocity.x = move_toward(velocity.x, direction.x * speed, acceleration * delta)

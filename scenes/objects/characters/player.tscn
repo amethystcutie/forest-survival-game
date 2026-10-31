@@ -13,6 +13,121 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t1kql"]
 shader = ExtResource("3_a72pd")
 
+[sub_resource type="Gradient" id="Gradient_oqg1i"]
+offsets = PackedFloat32Array(0.81401616, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.40784314)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_oqg1i"]
+gradient = SubResource("Gradient_oqg1i")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Animation" id="Animation_wl8hw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EffectVignette:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EffectFlash:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_txw86"]
+resource_name = "fade_in"
+length = 0.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EffectFlash:color")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6u8po"]
+resource_name = "fade_out"
+length = 0.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EffectFlash:color")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_oqg1i"]
+resource_name = "heal"
+length = 0.39999999999999997
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EffectVignette:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.57226926, 1, 0.4759028, 1), Color(0.47421145, 1, 0.71057457, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ww86x"]
+resource_name = "hurt"
+length = 0.39999999999999997
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EffectVignette:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0.21661219, 0.3209167, 1), Color(1, 0.21661219, 0.3209167, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_txw86"]
+_data = {
+&"RESET": SubResource("Animation_wl8hw"),
+&"fade_in": SubResource("Animation_txw86"),
+&"fade_out": SubResource("Animation_6u8po"),
+&"heal": SubResource("Animation_oqg1i"),
+&"hurt": SubResource("Animation_ww86x")
+}
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_oqg1i"]
 animation = &"UAL1_Standard/Punch_Cross"
 
@@ -198,36 +313,36 @@ transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0, 0)
 
 [node name="GeneralSkeleton" parent="Model/witch" index="0" unique_id=684220577]
-bones/0/position = Vector3(-0.00028847894, 0.8039034, -0.08038528)
-bones/0/rotation = Quaternion(-0.04178751, -0.11591174, -0.0048809233, 0.9923681)
+bones/0/position = Vector3(0.0032145723, 0.80376256, -0.080431536)
+bones/0/rotation = Quaternion(-0.04141228, -0.11591358, -0.004837089, 0.9923839)
 bones/1/rotation = Quaternion(0.010954639, -0.010485722, 0.015103955, 0.99977094)
-bones/2/rotation = Quaternion(0.08611064, 0.00011094588, 0.0002573162, 0.99628556)
-bones/3/rotation = Quaternion(0.08611064, 0.00031540217, 0.00025074577, 0.99628556)
-bones/4/rotation = Quaternion(-0.08611066, -0.00021346711, -0.0002628884, 0.99628556)
-bones/5/rotation = Quaternion(0.0494561, 0.09531515, 0.011881799, 0.99414694)
-bones/7/rotation = Quaternion(0.49890998, 0.5226615, 0.5299, -0.44398183)
-bones/8/rotation = Quaternion(-0.026221516, 0.8234414, -0.5667122, 0.00970677)
-bones/9/rotation = Quaternion(0.15996537, -0.68019015, 0.16670774, 0.6956731)
+bones/2/rotation = Quaternion(0.08572491, 0.00011081537, 0.00025743514, 0.9963189)
+bones/3/rotation = Quaternion(0.08572488, 0.00031510467, 0.00025090497, 0.9963189)
+bones/4/rotation = Quaternion(-0.08572485, -0.00021326625, -0.00026297956, 0.9963189)
+bones/5/rotation = Quaternion(0.04970742, 0.09530266, 0.011982892, 0.9941343)
+bones/7/rotation = Quaternion(0.49921513, 0.52255297, 0.5299924, -0.4436561)
+bones/8/rotation = Quaternion(-0.02525792, 0.82360214, -0.5665223, 0.009703451)
+bones/9/rotation = Quaternion(0.15953256, -0.6808649, 0.16658816, 0.6951408)
 bones/10/rotation = Quaternion(0.09913024, 0.70686626, 0.0629003, 0.69753635)
 bones/11/rotation = Quaternion(0.06821108, -0.00028288364, -0.04073584, 0.9968389)
 bones/12/rotation = Quaternion(0.6295969, -4.0978193e-08, -4.61936e-06, 0.77692205)
 bones/13/rotation = Quaternion(0.62334186, 2.9802322e-08, -4.261732e-06, 0.78194946)
 bones/14/rotation = Quaternion(0.62334144, -2.2351742e-07, -4.4703484e-06, 0.78194976)
-bones/15/rotation = Quaternion(0.55093426, -0.47190753, -0.47688216, -0.49634477)
-bones/16/rotation = Quaternion(0.076865345, 0.8226184, -0.56329167, -0.009648279)
-bones/17/rotation = Quaternion(0.29005328, 0.5500365, -0.20778756, 0.755085)
+bones/15/rotation = Quaternion(0.55123377, -0.4718363, -0.47693902, -0.49602544)
+bones/16/rotation = Quaternion(0.07883416, 0.82294667, -0.56253994, -0.009635364)
+bones/17/rotation = Quaternion(0.29038736, 0.54889745, -0.20733362, 0.75590986)
 bones/18/rotation = Quaternion(0.12024976, -0.69903094, -0.056890074, 0.702609)
 bones/19/rotation = Quaternion(0.06821147, 0.00028304753, 0.040735897, 0.99683887)
 bones/20/rotation = Quaternion(0.6295971, 3.7252903e-08, 4.172325e-06, 0.7769218)
 bones/21/rotation = Quaternion(0.62334144, 1.825392e-07, 4.470348e-06, 0.7819497)
 bones/22/rotation = Quaternion(0.62334156, 1.00582824e-07, 4.2319293e-06, 0.78194964)
-bones/23/rotation = Quaternion(-0.0008312818, 0.14326932, 0.9825214, -0.11884891)
-bones/24/rotation = Quaternion(0.019762931, 0.9769668, -0.18154845, 0.110388316)
-bones/25/rotation = Quaternion(-0.09749593, 0.71862257, -0.68848896, 0.0077005997)
+bones/23/rotation = Quaternion(-0.000819239, 0.14622942, 0.9822923, -0.11712531)
+bones/24/rotation = Quaternion(0.0202375, 0.97620636, -0.18550532, 0.110450715)
+bones/25/rotation = Quaternion(-0.09573725, 0.7175393, -0.68988043, 0.006058081)
 bones/26/rotation = Quaternion(4.664862e-08, 1, 5.9604645e-08, 2.7766912e-08)
-bones/28/rotation = Quaternion(0.00092254445, -0.08555038, 0.9875646, 0.13189615)
-bones/29/rotation = Quaternion(-0.048170134, 0.92452997, -0.13247088, -0.35408416)
-bones/30/rotation = Quaternion(0.17030816, 0.6246233, -0.7621252, 0.0024613824)
+bones/28/rotation = Quaternion(0.0009366291, -0.0848285, 0.9873558, 0.13390946)
+bones/29/rotation = Quaternion(-0.04790981, 0.9246522, -0.13182202, -0.35404232)
+bones/30/rotation = Quaternion(0.17140321, 0.62616855, -0.7606129, 0.0014152913)
 bones/31/rotation = Quaternion(-6.703263e-08, 1, 8.940697e-08, 2.1454163e-09)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Model/witch" unique_id=995350853]
@@ -256,6 +371,27 @@ offset_transform_enabled = true
 offset_transform_scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_t1kql")
 
+[node name="EffectVignette" type="TextureRect" parent="CanvasLayer" unique_id=2018843831]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_oqg1i")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer" unique_id=691317662]
+libraries/ = SubResource("AnimationLibrary_txw86")
+
+[node name="EffectFlash" type="ColorRect" parent="CanvasLayer" unique_id=1613728155]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
 [node name="AnimationTree" type="AnimationTree" parent="." unique_id=987385743]
 root_node = NodePath("../Model/witch")
 tree_root = SubResource("AnimationNodeStateMachine_hkjby")
@@ -272,5 +408,9 @@ external_skeleton = NodePath("../Model/witch/GeneralSkeleton")
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 shaded = true
 texture = ExtResource("7_oqg1i")
+
+[node name="HungerTimer" type="Timer" parent="." unique_id=1268630162]
+wait_time = 20.0
+autostart = true
 
 [editable path="Model/witch"]

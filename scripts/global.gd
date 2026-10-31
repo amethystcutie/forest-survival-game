@@ -8,6 +8,7 @@ enum ToolType {
 
 var player: Player
 
+signal player_ready
 var triggers: Dictionary[Signal, bool]
 
 func spawn_item(stack: ItemStack, pos: Vector3):

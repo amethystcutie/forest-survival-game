@@ -38,8 +38,6 @@ func _ready() -> void:
 		)
 
 func _process(_delta: float) -> void:
-	
-	
 	if mouse_item.is_empty():
 		$MouseItem/TextureRect.texture = null
 		$MouseItem/Label.text = ""

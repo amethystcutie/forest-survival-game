@@ -10,8 +10,14 @@ func _ready() -> void:
 	update()
 	
 	$Area3D.body_entered.connect(func(body: Node3D):
-		if body is Player: player = body
+		if body is Player: 
+			if body.dead != true: player = body
 	)
+	
+	$Area3D.body_exited.connect(func(body: Node3D):
+		if body is Player: player = null
+	)
+
 	
 func update() -> void:
 	if !stack is ItemStack: return
