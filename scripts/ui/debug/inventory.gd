@@ -67,3 +67,9 @@ func _process(_delta: float) -> void:
 			slots[i].get_node("TextureRect").texture = stack.item.texture
 			slots[i].get_node("Label").text = str(stack.count)
 			slots[i].tooltip_text = stack.item.name
+	
+	var sel_item = Global.player.inventory.get_item(Global.player.selected_slot)
+	if sel_item.is_empty():
+		$Panel/Label.text = ""
+	else:
+		$Panel/Label.text = sel_item.item.name + " (" +  str(sel_item.count) + ")"

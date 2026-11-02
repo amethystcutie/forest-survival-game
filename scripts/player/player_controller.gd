@@ -134,6 +134,14 @@ func _input(event: InputEvent) -> void:
 	if event.as_text().to_int() in range(1, 8):
 		selected_slot = event.as_text().to_int() - 1
 		
+	if event.is_action_pressed("hotbar_right"):
+		selected_slot += 1
+		if selected_slot > 7: selected_slot = 0
+	if event.is_action_pressed("hotbar_left"):
+		selected_slot -= 1
+		if selected_slot < 0: selected_slot = 7
+			
+		
 	if event.is_action_pressed("inventory"):
 		unlock_camera = !unlock_camera
 

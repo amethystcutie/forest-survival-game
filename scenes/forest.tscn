@@ -127,8 +127,8 @@ shader_parameter/cirrus_absorption = 2.0
 shader_parameter/cirrus_sky_tint_fade = 0.5
 shader_parameter/cirrus_size = 1.0
 shader_parameter/cirrus_uv = Vector2(0.16, 0.11)
-shader_parameter/cirrus_position1 = Vector2(0.32726303, 0.32726303)
-shader_parameter/cirrus_position2 = Vector2(0.32726303, 0.32726303)
+shader_parameter/cirrus_position1 = Vector2(0.04155388, 0.04155388)
+shader_parameter/cirrus_position2 = Vector2(0.04155388, 0.04155388)
 shader_parameter/cirrus_texture = ExtResource("5_cf55d")
 shader_parameter/cumulus_visible = true
 shader_parameter/cumulus_intensity = 0.6
@@ -138,7 +138,7 @@ shader_parameter/cumulus_absorption = 2.0
 shader_parameter/cumulus_noise_freq = 2.7
 shader_parameter/cumulus_sky_tint_fade = 0.0
 shader_parameter/cumulus_size = 0.5
-shader_parameter/cumulus_position = Vector2(1.6363021, 1.6363021)
+shader_parameter/cumulus_position = Vector2(0.20777383, 0.20777383)
 shader_parameter/cumulus_texture = ExtResource("6_di0nb")
 shader_parameter/cumulus_partial_mie_phase = Vector3(0.957564, 1.042436, 0.412)
 shader_parameter/cumulus_mie_intensity = 1.0
@@ -396,3 +396,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.85386, 1.9073486e-06, -40
 
 [node name="BlackberryBush" parent="." unique_id=778868895 instance=ExtResource("48_lvx2t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -1.5336413, -23)
+
+[node name="BlackberryBush2" parent="." unique_id=1604595243 instance=ExtResource("48_lvx2t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.676697, -0.21760559, -47.651245)
+
+[node name="BlackberryBush3" parent="." unique_id=828037799 instance=ExtResource("48_lvx2t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.117268, 1.3216705, -66.26608)
+
+[node name="BlackberryBush4" parent="." unique_id=723557688 instance=ExtResource("48_lvx2t")]
+transform = Transform3D(0.9999185, 0.0014456756, -0.012684007, -0.0016832621, 0.9998229, -0.018742621, 0.012654669, 0.018762443, 0.99974394, 64.76213, 1.6510811, -32.448654)

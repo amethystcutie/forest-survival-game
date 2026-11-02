@@ -145,7 +145,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_s6cnt")
 surface_material_override/1 = SubResource("ShaderMaterial_pq6fm")
 
 [node name="ShadowTree" type="MeshInstance3D" parent="Model" index="1" unique_id=1564835675]
-transform = Transform3D(4.44, 0, 0, 0, 4.44, 0, 1.1920929e-07, 0, 4.44, 0, 11.345822, 0)
+transform = Transform3D(4.44, 0, 0, 0, 4.44, 0, 0, 0, 4.44, 0, -1.676546, 0)
 cast_shadow = 3
 mesh = ExtResource("7_oe3ug")
 surface_material_override/0 = SubResource("StandardMaterial3D_oe3ug")

@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cfc74105cdsqg" path="res://assets/textures/ui/icons/health.png" id="4_hcidf"]
 [ext_resource type="Script" uid="uid://d2mqvtktrkbhr" path="res://scripts/ui/debug/stats.gd" id="4_l6uss"]
 [ext_resource type="Texture2D" uid="uid://bupawcp00qb56" path="res://assets/textures/ui/icons/hunger.png" id="5_l6uss"]
+[ext_resource type="Script" uid="uid://cay72anrcxlxc" path="res://scripts/ui/debug/hints.gd" id="7_mk4nq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lvx2t"]
 content_margin_left = 2.0
@@ -284,6 +285,7 @@ anchor_right = 1.0
 offset_left = -40.0
 offset_bottom = 40.0
 grow_horizontal = 0
+script = ExtResource("7_mk4nq")
 
 [node name="Label" type="Label" parent="Hints" unique_id=1803612636]
 layout_mode = 1
@@ -293,7 +295,8 @@ anchor_right = 1.0
 offset_left = -114.0
 offset_bottom = 23.0
 grow_horizontal = 0
-text = "WASD to move
+text = "-- Controls --
+WASD to move
 Space to jump
 Shift to run
 1-8 or scroll to change item
@@ -301,5 +304,9 @@ E to open/close inventory
 Left click to attack/swing
 Right click to use item
 +/- to zoom
-Esc to quit game"
+Esc to quit game
+H to toggle these hints
+
+Hit things to harvest them
+Collect berries for food!"
 horizontal_alignment = 2
