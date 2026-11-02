@@ -6,6 +6,8 @@ extends Control
 @export var slot_scene: PackedScene
 var slots: Array[Control]
 
+@export var bg: Control
+
 var mouse_item := ItemStack.empty()
 
 func _ready() -> void:
@@ -38,6 +40,8 @@ func _ready() -> void:
 		)
 
 func _process(_delta: float) -> void:
+	bg.visible = !Global.player.unlock_camera
+	
 	if mouse_item.is_empty():
 		$MouseItem/TextureRect.texture = null
 		$MouseItem/Label.text = ""

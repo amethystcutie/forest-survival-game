@@ -1,0 +1,274 @@
+[gd_scene format=3 uid="uid://dwc5g84gwu067"]
+
+[ext_resource type="PackedScene" uid="uid://cpucb4nhx41al" path="res://scenes/objects/resource_node.tscn" id="1_ks80j"]
+[ext_resource type="Script" uid="uid://cdu2cg43ub8dd" path="res://scripts/items/item_stack.gd" id="2_movux"]
+[ext_resource type="ArrayMesh" uid="uid://boi2a78omh5sj" path="res://assets/models/terrain/bush.glb" id="2_ntbde"]
+[ext_resource type="Shader" uid="uid://co7vt81sou20q" path="res://shaders/leaves.gdshader" id="3_7c17u"]
+[ext_resource type="Resource" uid="uid://cowbwmro45xaq" path="res://items/blackberry.tres" id="3_wb5mh"]
+[ext_resource type="Texture2D" uid="uid://cayhuf8l5hiao" path="res://assets/textures/terrain/leaves/misc_leaves.png" id="4_ntbde"]
+[ext_resource type="Resource" uid="uid://dr5skulf2tuwd" path="res://items/leaf.tres" id="4_wb5mh"]
+[ext_resource type="AudioStream" uid="uid://da4gdgulcdhuw" path="res://assets/sounds/dig.ogg" id="5_tcqsa"]
+[ext_resource type="Animation" uid="uid://c1i7pjji0o3q1" path="res://assets/animations/objects/hit_shake.res" id="7_tcqsa"]
+[ext_resource type="Texture2D" uid="uid://dq2lknn60uctw" path="res://assets/textures/items/blackberry.png" id="8_web5h"]
+
+[sub_resource type="Resource" id="Resource_ks80j"]
+script = ExtResource("2_movux")
+item = ExtResource("3_wb5mh")
+count = 4
+metadata/_custom_type_script = "uid://cdu2cg43ub8dd"
+
+[sub_resource type="Resource" id="Resource_0qn8s"]
+script = ExtResource("2_movux")
+item = ExtResource("4_wb5mh")
+count = 2
+metadata/_custom_type_script = "uid://cdu2cg43ub8dd"
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_movux"]
+height = 2.6725464
+radius = 3.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_7c17u"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_idk2a"]
+noise = SubResource("FastNoiseLite_7c17u")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1w2ik"]
+render_priority = 0
+shader = ExtResource("3_7c17u")
+shader_parameter/albedo = ExtResource("4_ntbde")
+shader_parameter/wind_noise = SubResource("NoiseTexture2D_idk2a")
+shader_parameter/wind_strength = 0.1
+shader_parameter/wind_speed = 0.05
+
+[sub_resource type="SphereMesh" id="SphereMesh_7c17u"]
+radius = 0.615
+height = 0.595
+is_hemisphere = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c43ee"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2o7ix"]
+animation = &"RESET"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_oe3ug"]
+animation = &"RESET"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_630vq"]
+animation = &"hit_shake"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_55xtq"]
+animation = &"pick"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2o7ix"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2caav"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_55xtq"]
+advance_mode = 2
+advance_expression = "hit"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7g4ca"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_o1h7k"]
+advance_mode = 2
+advance_expression = "depleted"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_oe3ug"]
+switch_mode = 2
+advance_mode = 2
+advance_expression = "!depleted"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_tcqsa"]
+states/RESET/node = SubResource("AnimationNodeAnimation_2o7ix")
+states/RESET/position = Vector2(470, 100)
+states/grow/node = SubResource("AnimationNodeAnimation_oe3ug")
+states/grow/position = Vector2(325, 100)
+states/hit/node = SubResource("AnimationNodeAnimation_630vq")
+states/hit/position = Vector2(470, 222)
+states/pick/node = SubResource("AnimationNodeAnimation_55xtq")
+states/pick/position = Vector2(470, -7)
+transitions = ["Start", "grow", SubResource("AnimationNodeStateMachineTransition_2o7ix"), "hit", "RESET", SubResource("AnimationNodeStateMachineTransition_2caav"), "RESET", "hit", SubResource("AnimationNodeStateMachineTransition_55xtq"), "grow", "RESET", SubResource("AnimationNodeStateMachineTransition_7g4ca"), "RESET", "pick", SubResource("AnimationNodeStateMachineTransition_o1h7k"), "pick", "grow", SubResource("AnimationNodeStateMachineTransition_oe3ug")]
+graph_offset = Vector2(-32, -84)
+
+[sub_resource type="Animation" id="Animation_idk2a"]
+resource_name = "RESET"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Model:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.3000001, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Model:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.32834125, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Fruit:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Fruit:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wb5mh"]
+resource_name = "pick"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fruit:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.4, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.061757684, 0, -0.08469677), Vector3(0.0750041, 0, -0.009103298), Vector3(-0.18517256, 0, 0.2467196), Vector3(-0.18517256, 0, 0.2467196), Vector3(-0.18517256, -4.2029777, 0.2467196)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Fruit:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.4, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.08916783, 0, 0), Vector3(0.026911583, 0.10490305, -0.006576937), Vector3(0.026911592, -0.003461702, -0.0065769376), Vector3(0.026911592, -0.003461702, -0.0065769376), Vector3(0.026911594, -0.0034617018, -0.006576937)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0n0e4"]
+_data = {
+&"RESET": SubResource("Animation_idk2a"),
+&"hit_shake": ExtResource("7_tcqsa"),
+&"pick": SubResource("Animation_wb5mh")
+}
+
+[node name="BlackberryBush" unique_id=2101333332 node_paths=PackedStringArray("model", "hitbox") instance=ExtResource("1_ks80j")]
+drops = Array[ExtResource("2_movux")]([SubResource("Resource_ks80j"), SubResource("Resource_0qn8s")])
+model = NodePath("Fruit")
+hitbox = NodePath("Area3D")
+max_health = 2
+hit_sound = ExtResource("5_tcqsa")
+min_respawn_time = 40.0
+max_respawn_time = 120.0
+
+[node name="Area3D" type="Area3D" parent="." index="0" unique_id=884362411]
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0" unique_id=382756546]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.27739388, 1.5038927, -0.11270523)
+shape = SubResource("CylinderShape3D_movux")
+
+[node name="Model" type="Node3D" parent="." index="1" unique_id=1489575122]
+transform = Transform3D(0.9465788, 0, -0.3224733, 0, 1, 0, 0.32247344, 0, 0.9465784, 0, 1.3000001, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model" index="0" unique_id=745255303]
+transform = Transform3D(4.44, 0, 0, 0, 4.44, 0, 1.1920929e-07, 0, 4.44, 0, -1.276546, 0)
+cast_shadow = 0
+instance_shader_parameters/tint = Color(1, 1, 1, 1)
+mesh = ExtResource("2_ntbde")
+surface_material_override/0 = SubResource("ShaderMaterial_1w2ik")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Model" index="1" unique_id=1012440323]
+transform = Transform3D(4.44, 0, 0, 0, 4.44, 0, 5.9604645e-07, 0, 4.44, 0.15915248, -0.9519172, 0.15706834)
+cast_shadow = 3
+mesh = SubResource("SphereMesh_7c17u")
+surface_material_override/0 = SubResource("StandardMaterial3D_c43ee")
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="2" unique_id=578436991]
+tree_root = SubResource("AnimationNodeStateMachine_tcqsa")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3" unique_id=1321049736]
+libraries/ = SubResource("AnimationLibrary_0n0e4")
+
+[node name="Fruit" type="Node3D" parent="." index="4" unique_id=46665942]
+transform = Transform3D(0.99999976, 0, 0, 0, 0.9999997, 0, 0, 0, 0.9999998, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="Fruit" index="0" unique_id=2083985041]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0398083, 0.48905182, -1.5880796)
+offset = Vector2(0, 64)
+billboard = 2
+shaded = true
+texture_filter = 0
+texture = ExtResource("8_web5h")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Fruit" index="1" unique_id=369651041]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7126042, 1.3115811, -0.04486692)
+offset = Vector2(0, 64)
+billboard = 2
+shaded = true
+texture_filter = 0
+texture = ExtResource("8_web5h")
+
+[node name="Sprite3D3" type="Sprite3D" parent="Fruit" index="2" unique_id=1893025878]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20672739, 1.0821273, 1.6555269)
+offset = Vector2(0, 64)
+billboard = 2
+shaded = true
+texture_filter = 0
+texture = ExtResource("8_web5h")
+
+[node name="Sprite3D4" type="Sprite3D" parent="Fruit" index="3" unique_id=198275823]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5257667, 0.6382945, 1.338022)
+offset = Vector2(0, 64)
+billboard = 2
+shaded = true
+texture_filter = 0
+texture = ExtResource("8_web5h")
+
+[node name="Sprite3D5" type="Sprite3D" parent="Fruit" index="4" unique_id=1360980366]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8184148, 1.5848898, 0.21779937)
+offset = Vector2(0, 64)
+billboard = 2
+shaded = true
+texture_filter = 0
+texture = ExtResource("8_web5h")
+
+[node name="Sprite3D6" type="Sprite3D" parent="Fruit" index="5" unique_id=1359110089]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9770547, 1.0420985, -1.6119696)
+offset = Vector2(0, 64)
+billboard = 2
+shaded = true
+texture_filter = 0
+texture = ExtResource("8_web5h")

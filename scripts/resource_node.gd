@@ -5,7 +5,7 @@ extends StaticBody3D
 @export var model: Node3D
 @export var hitbox: Area3D
 @export var collider: CollisionShape3D
-@export var required_tool: Global.ToolType
+@export var required_tool: ToolItem.ToolType
 @export var tool_tier: int
 @export var max_health: int = 3
 @export var hit_sound: AudioStream
@@ -41,7 +41,7 @@ func on_hitbox_leave(body: Node3D) -> void:
 
 func on_player_hit(tool: Item) -> void:
 	if depleted: return
-	if Item.is_this_tool(tool, required_tool, tool_tier):
+	if ToolItem.is_this_tool(tool, required_tool, tool_tier):
 		health -= 1
 		AudioManager.play_3d(hit_sound, global_position)
 		if health <= 0:
@@ -53,13 +53,15 @@ func on_player_hit(tool: Item) -> void:
 			if respawns:
 				lives -= 1
 				depleted = true
-				collider.set_deferred("disabled", true)
+				if collider:
+					collider.set_deferred("disabled", true)
 				
 				if lives == 0: respawns = false
 				get_tree().create_timer(randf_range(min_respawn_time, max_respawn_time)).timeout.connect(func():
 					depleted = false
 					health = max_health
-					collider.set_deferred("disabled", false))
+					if collider:
+						collider.set_deferred("disabled", false))
 			else:
 				queue_free()
 		else:

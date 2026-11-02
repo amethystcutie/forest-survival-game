@@ -2,10 +2,6 @@ extends Node
 
 const ITEM = preload("uid://co6ml5s0hw0i")
 
-enum ToolType {
-	NONE, PICKAXE, AXE, SHOVEL
-}
-
 var player: Player
 
 signal player_ready

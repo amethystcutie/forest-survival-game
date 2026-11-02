@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FoodItem" format=3 uid="uid://cowbwmro45xaq"]
+
+[ext_resource type="Script" uid="uid://bi8ar6cenu5mx" path="res://scripts/items/food_item.gd" id="1_tkgid"]
+[ext_resource type="Texture2D" uid="uid://dq2lknn60uctw" path="res://assets/textures/items/blackberry.png" id="2_aeqys"]
+
+[resource]
+script = ExtResource("1_tkgid")
+name = "Blackberry"
+texture = ExtResource("2_aeqys")
+metadata/_custom_type_script = "uid://bi8ar6cenu5mx"

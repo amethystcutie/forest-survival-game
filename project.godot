@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Global="*uid://bqk1ow07fkb6p"
 AudioManager="*uid://fbnd4geplthg"
+UnhandledInput="*uid://wugloffcbnfv"
 
 [display]
 
@@ -167,7 +168,7 @@ pause={
 }
 zoom_out={
 "deadzone": 0.2,
-"events": [Object(InputEventMouseButton,
+"events": [Object(InputEventKey,
 "resource_local_to_scene": false,
 "resource_name": "",
 "device": -1,
@@ -176,20 +177,19 @@ zoom_out={
 "shift_pressed": false,
 "ctrl_pressed": false,
 "meta_pressed": false,
-"button_mask": 16,
-"position": Vector2(255, 21),
-"global_position": Vector2(264, 67),
-"factor": 1.0,
-"button_index": 5,
-"canceled": false,
-"pressed": true,
-"double_click": false,
+"pressed": false,
+"keycode": 0,
+"physical_keycode": 45,
+"key_label": 0,
+"unicode": 45,
+"location": 0,
+"echo": false,
 "script": null
 )]
 }
 zoom_in={
 "deadzone": 0.2,
-"events": [Object(InputEventMouseButton,
+"events": [Object(InputEventKey,
 "resource_local_to_scene": false,
 "resource_name": "",
 "device": -1,
@@ -198,36 +198,13 @@ zoom_in={
 "shift_pressed": false,
 "ctrl_pressed": false,
 "meta_pressed": false,
-"button_mask": 8,
-"position": Vector2(189, 1),
-"global_position": Vector2(198, 47),
-"factor": 1.0,
-"button_index": 4,
-"canceled": false,
-"pressed": true,
-"double_click": false,
-"script": null
-)]
-}
-rotate_cam={
-"deadzone": 0.2,
-"events": [Object(InputEventMouseButton,
-"resource_local_to_scene": false,
-"resource_name": "",
-"device": -1,
-"window_id": 0,
-"alt_pressed": false,
-"shift_pressed": false,
-"ctrl_pressed": false,
-"meta_pressed": false,
-"button_mask": 2,
-"position": Vector2(204, 12),
-"global_position": Vector2(213, 58),
-"factor": 1.0,
-"button_index": 2,
-"canceled": false,
-"pressed": true,
-"double_click": false,
+"pressed": false,
+"keycode": 0,
+"physical_keycode": 61,
+"key_label": 0,
+"unicode": 61,
+"location": 0,
+"echo": false,
 "script": null
 )]
 }
@@ -250,6 +227,135 @@ swing={
 "canceled": false,
 "pressed": true,
 "double_click": false,
+"script": null
+)]
+}
+use={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,
+"resource_local_to_scene": false,
+"resource_name": "",
+"device": -1,
+"window_id": 0,
+"alt_pressed": false,
+"shift_pressed": false,
+"ctrl_pressed": false,
+"meta_pressed": false,
+"button_mask": 2,
+"position": Vector2(86, 9),
+"global_position": Vector2(95, 55),
+"factor": 1.0,
+"button_index": 2,
+"canceled": false,
+"pressed": true,
+"double_click": false,
+"script": null
+)]
+}
+run={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,
+"resource_local_to_scene": false,
+"resource_name": "",
+"device": -1,
+"window_id": 0,
+"alt_pressed": false,
+"shift_pressed": false,
+"ctrl_pressed": false,
+"meta_pressed": false,
+"pressed": false,
+"keycode": 0,
+"physical_keycode": 4194325,
+"key_label": 0,
+"unicode": 0,
+"location": 0,
+"echo": false,
+"script": null
+)]
+}
+crawl={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,
+"resource_local_to_scene": false,
+"resource_name": "",
+"device": -1,
+"window_id": 0,
+"alt_pressed": false,
+"shift_pressed": false,
+"ctrl_pressed": false,
+"meta_pressed": false,
+"pressed": false,
+"keycode": 0,
+"physical_keycode": 4194326,
+"key_label": 0,
+"unicode": 0,
+"location": 0,
+"echo": false,
+"script": null
+)]
+}
+hotbar_left={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,
+"resource_local_to_scene": false,
+"resource_name": "",
+"device": -1,
+"window_id": 0,
+"alt_pressed": false,
+"shift_pressed": false,
+"ctrl_pressed": false,
+"meta_pressed": false,
+"button_mask": 8,
+"position": Vector2(358, 15),
+"global_position": Vector2(367, 61),
+"factor": 1.0,
+"button_index": 4,
+"canceled": false,
+"pressed": true,
+"double_click": false,
+"script": null
+)]
+}
+hotbar_right={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,
+"resource_local_to_scene": false,
+"resource_name": "",
+"device": -1,
+"window_id": 0,
+"alt_pressed": false,
+"shift_pressed": false,
+"ctrl_pressed": false,
+"meta_pressed": false,
+"button_mask": 16,
+"position": Vector2(333, 9),
+"global_position": Vector2(342, 55),
+"factor": 1.0,
+"button_index": 5,
+"canceled": false,
+"pressed": true,
+"double_click": false,
+"script": null
+)]
+}
+inventory={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,
+"resource_local_to_scene": false,
+"resource_name": "",
+"device": -1,
+"window_id": 0,
+"alt_pressed": false,
+"shift_pressed": false,
+"ctrl_pressed": false,
+"meta_pressed": false,
+"pressed": false,
+"keycode": 0,
+"physical_keycode": 69,
+"key_label": 0,
+"unicode": 101,
+"location": 0,
+"echo": false,
 "script": null
 )]
 }

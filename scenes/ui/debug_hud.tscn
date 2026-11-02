@@ -7,30 +7,6 @@
 [ext_resource type="Script" uid="uid://d2mqvtktrkbhr" path="res://scripts/ui/debug/stats.gd" id="4_l6uss"]
 [ext_resource type="Texture2D" uid="uid://bupawcp00qb56" path="res://assets/textures/ui/icons/hunger.png" id="5_l6uss"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dm63b"]
-draw_center = false
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.17233974, 0.12524006, 0.24418163, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r00s7"]
-draw_center = false
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(1, 0.7028652, 0.79515165, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lvx2t"]
 content_margin_left = 2.0
 content_margin_top = 2.0
@@ -79,8 +55,41 @@ corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 corner_detail = 6
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dm63b"]
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.17233974, 0.12524006, 0.24418163, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r00s7"]
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.7028652, 0.79515165, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
 [node name="DebugHUD" type="CanvasLayer" unique_id=770356309]
 layer = 999
+
+[node name="InventoryBG" type="ColorRect" parent="." unique_id=753406550]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.8873088, 0.6084712, 0.72388226, 0.105882354)
 
 [node name="Performance" type="Control" parent="." unique_id=889182041]
 layout_mode = 3
@@ -124,72 +133,6 @@ size_flags_horizontal = 0
 size_flags_vertical = 8
 text = "FPS: 04r890tuy8r54itgounerti8ogther580ghn0er9i85tgni890ejtg98rf"
 resize_font_to_fit = true
-
-[node name="Inventory" type="Control" parent="." unique_id=414744853]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-script = ExtResource("2_r00s7")
-normal_slot_style = SubResource("StyleBoxFlat_dm63b")
-select_slot_style = SubResource("StyleBoxFlat_r00s7")
-slot_scene = ExtResource("2_j6o1s")
-
-[node name="Panel" type="Panel" parent="Inventory" unique_id=1212344405]
-layout_mode = 0
-offset_left = 16.0
-offset_top = 16.0
-offset_right = 336.0
-offset_bottom = 176.0
-
-[node name="Label" type="Label" parent="Inventory/Panel" unique_id=967936079]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Inventory"
-
-[node name="GridContainer" type="GridContainer" parent="Inventory/Panel" unique_id=425832730]
-layout_mode = 0
-offset_left = 16.0
-offset_top = 32.0
-offset_right = 300.0
-offset_bottom = 136.0
-columns = 8
-
-[node name="MouseItem" type="Control" parent="Inventory" unique_id=1202658039]
-custom_minimum_size = Vector2(32, 32)
-anchors_preset = 0
-offset_right = 32.0
-offset_bottom = 32.0
-mouse_filter = 2
-
-[node name="TextureRect" type="TextureRect" parent="Inventory/MouseItem" unique_id=1827448320]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-expand_mode = 3
-
-[node name="Label" type="Label" parent="Inventory/MouseItem" unique_id=517562828]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -23.0
-grow_horizontal = 0
-grow_vertical = 0
-horizontal_alignment = 2
-vertical_alignment = 2
 
 [node name="Stats" type="Control" parent="." unique_id=728299198]
 layout_mode = 3
@@ -265,3 +208,98 @@ theme_override_styles/background = SubResource("StyleBoxFlat_6sryq")
 theme_override_styles/fill = SubResource("StyleBoxFlat_dn1w7")
 value = 50.0
 show_percentage = false
+
+[node name="Inventory" type="Control" parent="." unique_id=414744853 node_paths=PackedStringArray("bg")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("2_r00s7")
+normal_slot_style = SubResource("StyleBoxFlat_dm63b")
+select_slot_style = SubResource("StyleBoxFlat_r00s7")
+slot_scene = ExtResource("2_j6o1s")
+bg = NodePath("../InventoryBG")
+
+[node name="Panel" type="Panel" parent="Inventory" unique_id=1212344405]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 336.0
+offset_bottom = 176.0
+
+[node name="Label" type="Label" parent="Inventory/Panel" unique_id=967936079]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Inventory"
+
+[node name="GridContainer" type="GridContainer" parent="Inventory/Panel" unique_id=425832730]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 32.0
+offset_right = 300.0
+offset_bottom = 136.0
+columns = 8
+
+[node name="MouseItem" type="Control" parent="Inventory" unique_id=1202658039]
+custom_minimum_size = Vector2(32, 32)
+anchors_preset = 0
+offset_right = 32.0
+offset_bottom = 32.0
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="Inventory/MouseItem" unique_id=1827448320]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 3
+
+[node name="Label" type="Label" parent="Inventory/MouseItem" unique_id=517562828]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Hints" type="Control" parent="." unique_id=235148606]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="Label" type="Label" parent="Hints" unique_id=1803612636]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -114.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "WASD to move
+Space to jump
+Shift to run
+1-8 or scroll to change item
+E to open/close inventory
+Left click to attack/swing
+Right click to use item
++/- to zoom
+Esc to quit game"
+horizontal_alignment = 2

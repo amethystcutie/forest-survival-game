@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cb2m2nh6xdy7g"]
+
+[ext_resource type="Script" uid="uid://68che77y2b1v" path="res://scripts/passive_node.gd" id="1_12se4"]
+
+[node name="PassiveNode" type="StaticBody3D" unique_id=2101333332]
+script = ExtResource("1_12se4")
+required_tool = 3

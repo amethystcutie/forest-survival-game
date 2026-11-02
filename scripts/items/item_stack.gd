@@ -20,3 +20,21 @@ static func init(_item: Item, _count: int) -> ItemStack:
 	stack.count = _count
 	
 	return stack
+
+func add(amount: int) -> bool:
+	count += amount
+	return count <= item.max_count
+	
+func subtract(amount: int) -> bool:
+	count -= amount
+	return count > 0
+
+func can_add(amount: int) -> bool:
+	return count + amount <= item.max_count
+	
+func can_subtract(amount: int) -> bool:
+	return count - amount > 0
+
+func usable() -> bool:
+	if is_empty(): return false
+	return item.usable
