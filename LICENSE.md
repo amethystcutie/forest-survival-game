@@ -50,3 +50,5 @@ To view a copy of this license, visit: https://creativecommons.org/licenses/by/4
 - [**AmbientCG Textures:**](https://ambientcg.com/) CC0 1.0 Universal (Public Domain)
 - **[Chibi Witch](https://poly.pizza/m/dKexfKQOOl) by [AliceCassie](https://poly.pizza/u/AliceCassie)** CC0 1.0 Universal (Public Domain)
 - **Godot Engine and Plugins**: Licensed under the MIT License (see `addons/` folder)
+### Music
+- Main theme - **[forest by syncopika](https://opengameart.org/content/forest)**: CC-BY 3.0 (from OpenGameArt.org)

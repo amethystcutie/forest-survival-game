@@ -25,3 +25,7 @@ func on_trigger(trigger: Signal) -> bool:
 		return true
 		
 	return false
+
+func _ready() -> void:
+	if !Engine.is_embedded_in_editor():
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
