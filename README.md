@@ -16,14 +16,22 @@ therre's🍪🍪🍪🍪🍪 not much in the game yet
 - Extract it and run the execuable
 
 ## Controls
-WASD to move. Space to jump
-Roblox-style camera controls. In third person hold right click to move the camera. Scroll to zoom.
-Number keys 1-8 to  select items
-Left click to swing (broken)
-If you stand still for 10 seconds youre dance (crash bandicoot refrence ?)
+Controls are now visible in-game (press H to toggle)
+**As of v0.2-alpha:**
+	WASD to move
+	Space to jump
+	Shift to run
+	1-8 or scroll to change item
+	E to open/close inventory
+	Left click to attack/swing
+	Right click to use item
+	+/- to zoom
+	Esc to quit game
+	H to toggle these hints
 
-## Demonstration (v0.1-alpha)
-https://youtu.be/1wXO1B-P-Iw
+## Demonstration 
+[v0.2-alpha](https://youtu.be/RH62wadd0T4)
+[v0.1-alpha](https://youtu.be/1wXO1B-P-Iw)
 
 ## License
 the code is MIT license or somhing and the assets is the are ones that look bad are mine the 
