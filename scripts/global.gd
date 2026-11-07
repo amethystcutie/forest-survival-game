@@ -9,7 +9,7 @@ var triggers: Dictionary[Signal, bool]
 
 func spawn_item(stack: ItemStack, pos: Vector3):
 	var item: ItemEntity = ITEM.instantiate()
-	item.stack = stack
+	item.stack = stack.copy()
 	item.global_position = pos
 	get_tree().root.add_child(item)
 

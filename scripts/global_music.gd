@@ -1,5 +1,6 @@
 extends AudioStreamPlayer
 
 func _ready() -> void:
-	play()
-	finished.connect(func(): play())
+	if !Engine.is_embedded_in_editor():
+		play()
+		finished.connect(func(): play())

@@ -332,9 +332,37 @@ transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0, 0)
 
 [node name="GeneralSkeleton" parent="Model/witch" index="0" unique_id=684220577]
+bones/0/position = Vector3(0.00052351475, 0.80265, -0.08082451)
+bones/0/rotation = Quaternion(-0.038183205, -0.11592873, -0.0044599203, 0.9925134)
 bones/1/rotation = Quaternion(0.010954639, -0.010485722, 0.015103955, 0.99977094)
+bones/2/rotation = Quaternion(0.08912782, 0.000111716094, 0.00025567226, 0.9960202)
+bones/3/rotation = Quaternion(0.08912785, 0.00031792407, 0.0002490894, 0.9960202)
+bones/4/rotation = Quaternion(-0.08912777, -0.00021510411, -0.0002615991, 0.99602014)
+bones/5/rotation = Quaternion(0.044159885, 0.095322214, 0.011819455, 0.9943963)
+bones/7/rotation = Quaternion(0.5015713, 0.5217103, 0.5307028, -0.44113404)
+bones/8/rotation = Quaternion(-0.017816765, 0.8248506, -0.5649873, 0.00967731)
+bones/9/rotation = Quaternion(0.15701282, -0.68585443, 0.16644803, 0.69082975)
+bones/10/rotation = Quaternion(0.09913024, 0.70686626, 0.0629003, 0.69753635)
 bones/11/rotation = Quaternion(0.06821108, -0.00028288364, -0.04073584, 0.9968389)
+bones/12/rotation = Quaternion(0.6295969, -4.0978193e-08, -4.61936e-06, 0.77692205)
+bones/13/rotation = Quaternion(0.62334186, 2.9802322e-08, -4.261732e-06, 0.78194946)
+bones/14/rotation = Quaternion(0.62334144, -2.2351742e-07, -4.4703484e-06, 0.78194976)
+bones/15/rotation = Quaternion(0.553545, -0.47128242, -0.4773749, -0.49355245)
+bones/16/rotation = Quaternion(0.06988644, 0.82145417, -0.56589323, -0.009692706)
+bones/17/rotation = Quaternion(0.28886658, 0.5540548, -0.20938902, 0.7521541)
+bones/18/rotation = Quaternion(0.12024976, -0.69903094, -0.056890074, 0.702609)
 bones/19/rotation = Quaternion(0.06821147, 0.00028304753, 0.040735897, 0.99683887)
+bones/20/rotation = Quaternion(0.6295971, 3.7252903e-08, 4.172325e-06, 0.7769218)
+bones/21/rotation = Quaternion(0.62334144, 1.825392e-07, 4.470348e-06, 0.7819497)
+bones/22/rotation = Quaternion(0.62334156, 1.00582824e-07, 4.2319293e-06, 0.78194964)
+bones/23/rotation = Quaternion(-0.00083657226, 0.15206482, 0.9811069, -0.11960332)
+bones/24/rotation = Quaternion(0.020768072, 0.9752182, -0.19087902, 0.10992477)
+bones/25/rotation = Quaternion(-0.097065754, 0.71575594, -0.6915333, 0.0073033655)
+bones/26/rotation = Quaternion(4.664862e-08, 1, 5.9604645e-08, 2.7766912e-08)
+bones/28/rotation = Quaternion(0.000953785, -0.077462986, 0.9876257, 0.13636039)
+bones/29/rotation = Quaternion(-0.052072097, 0.9232264, -0.1429619, -0.35285035)
+bones/30/rotation = Quaternion(0.17044626, 0.6207534, -0.7652481, 0.002927468)
+bones/31/rotation = Quaternion(-6.703263e-08, 1, 8.940697e-08, 2.1454163e-09)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Model/witch" unique_id=995350853]
 libraries/UAL1_Standard = ExtResource("5_wl8hw")
@@ -401,7 +429,7 @@ shaded = true
 texture = ExtResource("7_oqg1i")
 
 [node name="HungerTimer" type="Timer" parent="." unique_id=1268630162]
-wait_time = 20.0
+wait_time = 5.0
 autostart = true
 
 [editable path="Model/witch"]

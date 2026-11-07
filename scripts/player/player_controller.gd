@@ -150,7 +150,7 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor(): velocity += get_gravity() * delta
 	
 	# jumping
-	if Input.is_action_just_pressed("jump"): 
+	if Input.is_action_just_pressed("jump") and is_on_floor(): 
 		bored_time = 0
 		velocity.y = jump_power
 	

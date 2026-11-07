@@ -11,3 +11,4 @@ func _init() -> void:
 func use(player: Player, stack: ItemStack) -> void:
 	super.use(player, stack)
 	player.feed(food_value)
+	stack.subtract(1)

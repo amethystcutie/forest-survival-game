@@ -13,6 +13,9 @@ static func empty() -> ItemStack:
 static func of(_item: Item) -> ItemStack:
 	return ItemStack.init(_item, 1)
 
+func copy() -> ItemStack:
+	return ItemStack.init(item, count)
+
 static func init(_item: Item, _count: int) -> ItemStack:
 	var stack = ItemStack.new()
 	
@@ -27,6 +30,8 @@ func add(amount: int) -> bool:
 	
 func subtract(amount: int) -> bool:
 	count -= amount
+	if amount <= 0:
+		item = null
 	return count > 0
 
 func can_add(amount: int) -> bool:
