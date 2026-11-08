@@ -205,7 +205,7 @@ func _process(delta: float) -> void:
 	$Model/witch/GeneralSkeleton/ChibiWitch.transparency = 1.0 - opacity
 	
 	held_item = inventory.get_item(selected_slot)
-	item_cd = 0.4
+	item_cd = 1.0
 	
 	if held_item.is_empty():
 		$RightHand/Sprite3D.texture = null
@@ -219,16 +219,17 @@ func _process(delta: float) -> void:
 		swing_cooldown = true
 		get_tree().create_timer(item_cd).timeout.connect(func():
 			swing_cooldown = false
-			print(swing_cooldown)
-			swing_anim = Item.UseAnim.NONE)
+			print(swing_cooldown))
 		
 		if !held_item.is_empty(): swing_anim = held_item.item.swing_anim
 		else: swing_anim = Item.UseAnim.PUNCH
 		
 		get_tree().create_timer(item_cd / 3).timeout.connect(func(): 
-			swing.emit(held_item.item))
+			swing.emit(held_item.item) 
+			swing_anim = Item.UseAnim.NONE)
 			
 		print(swing_anim)
+		
 		
 	if use_pressed and !use_cooldown and held_item.usable():
 		bored_time = 0.0
@@ -237,7 +238,7 @@ func _process(delta: float) -> void:
 			use_cooldown = false
 			swing_anim = Item.UseAnim.NONE)
 			
-		if !held_item.is_empty(): swing_anim = held_item.item.use_anim
+		if !held_item.is_empty(): swing_anim = held_item.item.get_use_anim()
 		get_tree().create_timer(item_cd / 3).timeout.connect(func(): 
 			held_item.item.use(self, held_item)
 			use.emit(held_item.item))

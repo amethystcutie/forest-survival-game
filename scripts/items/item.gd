@@ -23,6 +23,9 @@ enum UseAnim {
 func get_handle_offset() -> Vector2:
 	return Vector2(handle_offset.y, handle_offset.x) * texture.get_size()
 
+func get_use_anim() -> UseAnim:
+	return use_anim
+
 func use(player: Player, stack: ItemStack) -> void: 
 	pass
 
