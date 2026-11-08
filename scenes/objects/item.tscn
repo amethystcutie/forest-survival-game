@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://co6ml5s0hw0i"]
 
-[ext_resource type="Script" uid="uid://l2apkg560u6j" path="res://scripts/item.gd" id="1_t8k3g"]
+[ext_resource type="Script" uid="uid://l2apkg560u6j" path="res://scripts/nodes/item.gd" id="1_t8k3g"]
 [ext_resource type="Texture2D" uid="uid://cqyw1vbr47rg0" path="res://icon.svg" id="2_t8k3g"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6whfk"]

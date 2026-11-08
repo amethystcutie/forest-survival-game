@@ -3,6 +3,7 @@ extends Node
 const ITEM = preload("uid://co6ml5s0hw0i")
 
 var player: Player
+var environment: EnvironmentManager
 
 signal player_ready
 var triggers: Dictionary[Signal, bool]
