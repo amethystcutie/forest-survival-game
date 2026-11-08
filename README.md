@@ -34,13 +34,13 @@ Controls are now visible in-game (press H to toggle)
 [v0.1-alpha](https://youtu.be/1wXO1B-P-Iw)
 
 ## License
-the code is MIT license or somhing and the assets is the are ones that look bad are mine the 
-the textuers that look bad are mine you can use them with attibution
-the terarin textures from ambeint cg and the witch are cc0
-godot is MIT also all the plugins currently in are in the addons folder are MIT too.
+see LICENSE.md
 
 ### AI Discloseuer
-i didnt use ai for code. but used as last resort to figue out cause of bug. if kuromi method failed
+all code i wrote and thinked of myself
+all debugging was first tried to use kuromi (rubber duck method)
+if that failed, asked ai
+also used it to understand math aaaaaaa
 
 ---
 Made for [Terra](https://terra.hackclub.com)
