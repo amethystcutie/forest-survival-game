@@ -7,7 +7,6 @@
 [ext_resource type="Script" uid="uid://cn28ajqmkw05v" path="res://scripts/items/inventory.gd" id="3_pyn53"]
 [ext_resource type="PackedScene" uid="uid://cdex0gpj15r41" path="res://scenes/ui/debug_hud.tscn" id="4_yj5dr"]
 [ext_resource type="Resource" uid="uid://dr5skulf2tuwd" path="res://items/leaf.tres" id="5_eos0w"]
-[ext_resource type="Resource" uid="uid://cowbwmro45xaq" path="res://items/blackberry.tres" id="9_a88r6"]
 [ext_resource type="PackedScene" uid="uid://cew1nj6fqm5kn" path="res://scenes/objects/environment.tscn" id="11_eomrh"]
 [ext_resource type="Script" uid="uid://cdu2cg43ub8dd" path="res://scripts/items/item_stack.gd" id="14_cf55d"]
 [ext_resource type="Resource" uid="uid://ba3c8un817ufp" path="res://items/stick.tres" id="14_di0nb"]
@@ -60,19 +59,12 @@ item = ExtResource("5_eos0w")
 count = 3
 metadata/_custom_type_script = "uid://cdu2cg43ub8dd"
 
-[sub_resource type="Resource" id="Resource_oqg1i"]
-script = ExtResource("14_cf55d")
-item = ExtResource("9_a88r6")
-count = 39
-metadata/_custom_type_script = "uid://cdu2cg43ub8dd"
-
 [sub_resource type="Resource" id="Resource_lvx2t"]
 script = ExtResource("3_pyn53")
 items = Dictionary[int, ExtResource("14_cf55d")]({
 0: SubResource("Resource_txw86"),
 1: SubResource("Resource_6u8po"),
-2: SubResource("Resource_ja30q"),
-3: SubResource("Resource_oqg1i")
+2: SubResource("Resource_ja30q")
 })
 metadata/_custom_type_script = "uid://cn28ajqmkw05v"
 

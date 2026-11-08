@@ -166,20 +166,35 @@ xfade_time = 0.3
 advance_mode = 2
 advance_expression = "swing_anim == 4"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vax4r"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kmh62"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_62cc6"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xg1iy"]
+switch_mode = 2
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_oqg1i"]
 state_machine_type = 1
-allow_transition_to_self = true
 states/Eating/node = SubResource("AnimationNodeAnimation_vj4dc")
 states/Eating/position = Vector2(366, 243)
 states/End/position = Vector2(817, 84)
-states/Start/position = Vector2(110, 76)
+states/Start/position = Vector2(111, 76)
 states/UAL1_Standard_Punch_Cross/node = SubResource("AnimationNodeAnimation_oqg1i")
 states/UAL1_Standard_Punch_Cross/position = Vector2(444, -3)
 states/UAL1_Standard_Sword_Attack/node = SubResource("AnimationNodeAnimation_ju7gm")
 states/UAL1_Standard_Sword_Attack/position = Vector2(451, 76)
 states/UAL2_Standard_TreeChopping/node = SubResource("AnimationNodeAnimation_mjlu2")
 states/UAL2_Standard_TreeChopping/position = Vector2(451, 159)
-transitions = ["Start", "UAL2_Standard_TreeChopping", SubResource("AnimationNodeStateMachineTransition_q1v31"), "Start", "UAL1_Standard_Punch_Cross", SubResource("AnimationNodeStateMachineTransition_1hyi1"), "Start", "UAL1_Standard_Sword_Attack", SubResource("AnimationNodeStateMachineTransition_4bbtp"), "Start", "Eating", SubResource("AnimationNodeStateMachineTransition_iiywc")]
+transitions = ["Start", "UAL2_Standard_TreeChopping", SubResource("AnimationNodeStateMachineTransition_q1v31"), "Start", "UAL1_Standard_Punch_Cross", SubResource("AnimationNodeStateMachineTransition_1hyi1"), "Start", "UAL1_Standard_Sword_Attack", SubResource("AnimationNodeStateMachineTransition_4bbtp"), "Start", "Eating", SubResource("AnimationNodeStateMachineTransition_iiywc"), "UAL1_Standard_Punch_Cross", "End", SubResource("AnimationNodeStateMachineTransition_vax4r"), "UAL1_Standard_Sword_Attack", "End", SubResource("AnimationNodeStateMachineTransition_kmh62"), "UAL2_Standard_TreeChopping", "End", SubResource("AnimationNodeStateMachineTransition_62cc6"), "Eating", "End", SubResource("AnimationNodeStateMachineTransition_xg1iy")]
 graph_offset = Vector2(-56, -73.87187)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tpw5s"]
@@ -348,39 +363,39 @@ transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0, 0)
 
 [node name="GeneralSkeleton" parent="Model/witch" index="0" unique_id=684220577]
-bones/0/position = Vector3(0.004513547, 0.80691516, -0.08069824)
-bones/0/rotation = Quaternion(-0.039244194, -0.11592388, -0.0045838584, 0.992472)
+bones/0/position = Vector3(-0.0020446382, 0.8088828, -0.080011934)
+bones/0/rotation = Quaternion(-0.04538086, -0.1158933, -0.0053006397, 0.9922103)
 bones/1/rotation = Quaternion(0.010954639, -0.010485722, 0.015103955, 0.99977094)
-bones/2/rotation = Quaternion(0.09930922, 0.00011444954, 0.00025021803, 0.9950566)
-bones/3/rotation = Quaternion(0.09930923, 0.00032612254, 0.00024344525, 0.99505657)
-bones/4/rotation = Quaternion(-0.099309124, -0.00022063415, -0.00025740432, 0.99505657)
-bones/5/rotation = Quaternion(0.07114989, 0.09577966, 0.007199896, 0.99283046)
+bones/2/rotation = Quaternion(0.0927762, 0.0001127015, 0.00025373834, 0.995687)
+bones/3/rotation = Quaternion(0.092776224, 0.0003208184, 0.0002470906, 0.99568695)
+bones/4/rotation = Quaternion(-0.09277395, -0.00021709356, -0.00026012334, 0.9956872)
+bones/5/rotation = Quaternion(0.07873226, 0.09573397, 0.0077910908, 0.9922578)
 bones/5/scale = Vector3(1, 1.0000001, 0.99999994)
-bones/7/rotation = Quaternion(0.49306655, 0.52470946, 0.5281153, -0.4501774)
-bones/8/rotation = Quaternion(-0.044653494, 0.8204349, -0.56991005, 0.00976154)
-bones/9/rotation = Quaternion(0.18742639, -0.6622983, 0.1869094, 0.700926)
+bones/7/rotation = Quaternion(0.4876672, 0.5265528, 0.52643967, -0.45583367)
+bones/8/rotation = Quaternion(-0.061676566, 0.8177641, -0.57215565, 0.009800085)
+bones/9/rotation = Quaternion(0.19138695, -0.6510115, 0.18454053, 0.71098524)
 bones/10/rotation = Quaternion(0.09913024, 0.70686626, 0.0629003, 0.69753635)
 bones/11/rotation = Quaternion(0.06821108, -0.00028288364, -0.04073584, 0.9968389)
 bones/12/rotation = Quaternion(0.6295969, -4.0978193e-08, -4.61936e-06, 0.77692205)
 bones/13/rotation = Quaternion(0.62334186, 2.9802322e-08, -4.261732e-06, 0.78194946)
 bones/14/rotation = Quaternion(0.62334144, -2.2351742e-07, -4.4703484e-06, 0.78194976)
-bones/15/rotation = Quaternion(0.54521245, -0.47324568, -0.4757823, -0.5024073)
-bones/16/rotation = Quaternion(0.07476587, 0.82226616, -0.5640879, -0.009661782)
+bones/15/rotation = Quaternion(0.53990364, -0.47444892, -0.47473797, -0.5079629)
+bones/16/rotation = Quaternion(0.08882383, 0.8246182, -0.55859065, -0.009567563)
 bones/16/scale = Vector3(0.9999998, 1.0000005, 1.0000004)
-bones/17/rotation = Quaternion(0.28968397, 0.5512922, -0.20828788, 0.7541727)
+bones/17/rotation = Quaternion(0.29209778, 0.5430083, -0.20498738, 0.76013225)
 bones/17/scale = Vector3(1.0000005, 0.9999998, 0.9999995)
 bones/18/rotation = Quaternion(0.12024976, -0.69903094, -0.056890074, 0.702609)
 bones/19/rotation = Quaternion(0.06821147, 0.00028304753, 0.040735897, 0.99683887)
 bones/20/rotation = Quaternion(0.6295971, 3.7252903e-08, 4.172325e-06, 0.7769218)
 bones/21/rotation = Quaternion(0.62334144, 1.825392e-07, 4.470348e-06, 0.7819497)
 bones/22/rotation = Quaternion(0.62334156, 1.00582824e-07, 4.2319293e-06, 0.78194964)
-bones/23/rotation = Quaternion(-0.0007986934, 0.13996768, 0.9835493, -0.114189774)
-bones/24/rotation = Quaternion(0.018527268, 0.9790774, -0.16909471, 0.111674555)
-bones/25/rotation = Quaternion(-0.09470474, 0.72300863, -0.6842884, 0.0062426054)
+bones/23/rotation = Quaternion(-0.00080427073, 0.11875623, 0.98624253, -0.114986844)
+bones/24/rotation = Quaternion(0.0155830905, 0.98321146, -0.14269389, 0.11265367)
+bones/25/rotation = Quaternion(-0.0980144, 0.73082066, -0.6754261, 0.009688535)
 bones/26/rotation = Quaternion(4.664862e-08, 1, 5.9604645e-08, 2.7766912e-08)
-bones/28/rotation = Quaternion(0.00088376674, -0.090904996, 0.9878113, 0.12635027)
-bones/29/rotation = Quaternion(-0.03996554, 0.9267236, -0.11042397, -0.35692114)
-bones/30/rotation = Quaternion(0.17127517, 0.6352747, -0.7530542, -0.0005463436)
+bones/28/rotation = Quaternion(0.0007929576, -0.10755807, 0.98771375, 0.1133678)
+bones/29/rotation = Quaternion(-0.03139622, 0.9284458, -0.08767608, -0.3596049)
+bones/30/rotation = Quaternion(0.16932863, 0.6417416, -0.74799436, -0.00022988766)
 bones/31/rotation = Quaternion(-6.703263e-08, 1, 8.940697e-08, 2.1454163e-09)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Model/witch" unique_id=995350853]

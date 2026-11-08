@@ -186,6 +186,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		use_pressed = false
 
 func _process(delta: float) -> void:
+	print(swing_anim)
+	
 	# camera movement
 	$CameraPivot.spring_length = move_toward($CameraPivot.spring_length, camera_length, acceleration * delta)
 	
