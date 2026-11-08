@@ -20,7 +20,7 @@ config/icon="res://icon.svg"
 
 Global="*uid://bqk1ow07fkb6p"
 AudioManager="*uid://fbnd4geplthg"
-UnhandledInput="*uid://wugloffcbnfv"
+TimeManager="*uid://ic3ti7co3b7q"
 
 [display]
 

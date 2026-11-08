@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://c1oknqgvqic0d"]
+
+[ext_resource type="Script" uid="uid://s4hi76wf04of" path="res://scripts/nodes/scene_properties_manager.gd" id="1_y6bev"]
+
+[node name="ScenePropertiesManager" type="Node" unique_id=1619705412 node_paths=PackedStringArray("sky")]
+script = ExtResource("1_y6bev")
+sky = NodePath("")

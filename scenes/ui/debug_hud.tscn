@@ -288,3 +288,97 @@ H to toggle these hints
 Hit things to harvest them
 Collect berries for food!"
 horizontal_alignment = 2
+
+[node name="DateTime" type="Control" parent="." unique_id=281352845]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -56.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 56.0
+grow_horizontal = 0
+script = ExtResource("8_hwst7")
+
+[node name="Label" type="Label" parent="DateTime" unique_id=2008015607]
+layout_mode = 1
+offset_left = -176.0
+offset_right = 7.0
+offset_bottom = 23.0
+text = "day 1, time: 1.0987480"
+
+[node name="DayClock" type="Control" parent="DateTime" unique_id=1504190605]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -80.0
+offset_top = 32.0
+offset_right = -39.999996
+offset_bottom = 72.0
+grow_horizontal = 0
+scale = Vector2(1.66, 1.66)
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="DateTime/DayClock" unique_id=912148506]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.6755161
+pivot_offset_ratio = Vector2(0.5, 0.5)
+max_value = 24.0
+step = 0.001
+value = 17.592
+fill_mode = 4
+nine_patch_stretch = true
+texture_under = ExtResource("9_8toqh")
+texture_progress = ExtResource("9_8toqh")
+tint_under = Color(0.40020004, 0.42435, 0.69, 1)
+tint_progress = Color(0.87, 0.60204005, 0.50460005, 1)
+
+[node name="TextureProgressBar2" type="TextureProgressBar" parent="DateTime/DayClock" unique_id=95454349]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.6755161
+pivot_offset_ratio = Vector2(0.5, 0.5)
+max_value = 24.0
+step = 0.001
+value = 12.792
+fill_mode = 4
+nine_patch_stretch = true
+texture_progress = ExtResource("9_8toqh")
+tint_under = Color(0.1517, 0.16989166, 0.37, 1)
+tint_progress = Color(0.87492144, 0.78504956, 0.50613993, 1)
+
+[node name="TextureRect" type="TextureRect" parent="DateTime/DayClock" unique_id=1380791207]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -0.5
+offset_right = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(0.5, 20)
+texture = SubResource("GradientTexture2D_0hpse")
+stretch_mode = 2
