@@ -1,6 +1,7 @@
 extends Control
 
 @export var normal_slot_style: StyleBox
+@export var hotbar_slot_style: StyleBox
 @export var select_slot_style: StyleBox
 
 @export var slot_scene: PackedScene
@@ -54,7 +55,10 @@ func _process(_delta: float) -> void:
 	for i in range(slots.size()):
 		if i == Global.player.selected_slot:
 			slots[i].get_node("Panel").add_theme_stylebox_override("panel", select_slot_style)
+		elif i < 8:
+			slots[i].get_node("Panel").add_theme_stylebox_override("panel", hotbar_slot_style)
 		else:
+			slots[i].visible = !Global.player.unlock_camera
 			slots[i].get_node("Panel").add_theme_stylebox_override("panel", normal_slot_style)
 		
 		var stack = Global.player.inventory.get_item(i)
