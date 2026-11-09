@@ -17,7 +17,7 @@ therre's🍪🍪🍪🍪🍪 not much in the game yet
 
 ## Controls
 Controls are now visible in-game (press H to toggle)
-**As of v0.2-alpha:**
+**As of v0.3-alpha:**
 	WASD to move
 	Space to jump
 	Shift to run
@@ -26,7 +26,7 @@ Controls are now visible in-game (press H to toggle)
 	Left click to attack/swing
 	Right click to use item
 	+/- to zoom
-	Esc to quit game
+	Esc to pause game
 	H to toggle these hints
 
 ## Demonstration 
