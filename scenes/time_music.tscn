@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b8vrmo3yfko0d"]
+
+[ext_resource type="Script" uid="uid://c687ke2wwpefx" path="res://scripts/nodes/music/time_music.gd" id="1_j2k6v"]
+
+[node name="TimeMusic" type="AudioStreamPlayer" unique_id=1526707259]
+script = ExtResource("1_j2k6v")

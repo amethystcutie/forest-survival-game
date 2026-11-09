@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://q3wg3j5h21lp"]
+
+[ext_resource type="Texture2D" uid="uid://bdftnsa5h8arn" path="res://assets/textures/terrain/bark/Bark014_1K-JPG_Color.jpg" id="1_woucj"]
+[ext_resource type="Texture2D" uid="uid://ctqyhs7pxjhgv" path="res://assets/textures/terrain/bark/Bark014_1K-JPG_NormalGL.jpg" id="2_k5hj0"]
+
+[resource]
+albedo_texture = ExtResource("1_woucj")
+normal_enabled = true
+normal_texture = ExtResource("2_k5hj0")
+texture_filter = 2

@@ -1,0 +1,551 @@
+[gd_scene format=3 uid="uid://cy3nyvp0b8vyq"]
+
+[ext_resource type="Script" uid="uid://i8l2nslsgp7c" path="res://scripts/ui/main_menu.gd" id="1_fe2o3"]
+[ext_resource type="PackedScene" uid="uid://cew1nj6fqm5kn" path="res://scenes/objects/environment.tscn" id="1_sl1te"]
+[ext_resource type="Image" uid="uid://dd1la5vyfb0w1" path="res://scenes/ui/MainMenu/Heightmap_0_0.res" id="3_1g8jr"]
+[ext_resource type="TextureSetsResource" uid="uid://c1v4vnegge8q5" path="res://terrain_texture_sets.res" id="3_8g5eo"]
+[ext_resource type="Script" uid="uid://dbap0gqox0ty1" path="res://addons/markdownlabel/markdownlabel.gd" id="3_jbte4"]
+[ext_resource type="Script" uid="uid://dcx7crs23nf4" path="res://addons/markdownlabel/header_formats/h1_format.gd" id="4_e0hcc"]
+[ext_resource type="Image" uid="uid://cgwcr1wo01s7w" path="res://scenes/ui/MainMenu/Splatmap_0_0_0.res" id="5_otr3d"]
+[ext_resource type="Script" uid="uid://d0sin64i4v3op" path="res://addons/markdownlabel/header_formats/h2_format.gd" id="5_qch7b"]
+[ext_resource type="Script" uid="uid://dlok0dv1tq2bf" path="res://addons/markdownlabel/header_formats/h3_format.gd" id="6_4ovp2"]
+[ext_resource type="Image" uid="uid://ch4mrxsriv3yy" path="res://scenes/ui/MainMenu/Splatmap_0_0_1.res" id="6_8ekit"]
+[ext_resource type="Script" uid="uid://bayuh2vafablg" path="res://addons/markdownlabel/header_formats/h4_format.gd" id="7_1mexh"]
+[ext_resource type="ArrayMesh" uid="uid://dg8guyf2ui7dm" path="res://assets/models/structures/Bonfire.fbx" id="7_otr3d"]
+[ext_resource type="Script" uid="uid://dfr1w7u3jgni3" path="res://addons/markdownlabel/header_formats/h5_format.gd" id="8_6ud2m"]
+[ext_resource type="Material" uid="uid://q3wg3j5h21lp" path="res://assets/materials/bark.tres" id="8_8ekit"]
+[ext_resource type="Material" uid="uid://7aeknkg6eva6" path="res://assets/materials/rock.tres" id="9_n4uci"]
+[ext_resource type="Script" uid="uid://bsi6dexoofpe6" path="res://addons/markdownlabel/header_formats/h6_format.gd" id="9_qqxfm"]
+[ext_resource type="PackedScene" uid="uid://cyyrmpnmi75f3" path="res://assets/models/character/witch.fbx" id="10_877pj"]
+[ext_resource type="AnimationLibrary" uid="uid://bytv7d21sjauf" path="res://assets/animations/UAL1_Standard.glb" id="11_ayp64"]
+[ext_resource type="AnimationLibrary" uid="uid://bt0os51pkfqg1" path="res://assets/animations/UAL2_Standard.glb" id="12_y2j7i"]
+[ext_resource type="PackedScene" uid="uid://c6r2yqhmfm85l" path="res://scenes/objects/resource_nodes/spruce_tree.tscn" id="13_877pj"]
+[ext_resource type="PackedScene" uid="uid://c0jetnrex8nhm" path="res://scenes/objects/resource_nodes/oak_tree.tscn" id="14_ayp64"]
+[ext_resource type="PackedScene" uid="uid://dotvw5487djh" path="res://scenes/objects/resource_nodes/maple_tree.tscn" id="15_y2j7i"]
+[ext_resource type="PackedScene" uid="uid://bupwdu8x7deod" path="res://scenes/global_music.tscn" id="23_qch7b"]
+[ext_resource type="Script" uid="uid://dgf66dbt7wgxn" path="res://scripts/nodes/music/playlist_resource.gd" id="24_1mexh"]
+[ext_resource type="AudioStream" uid="uid://bogebovh1r4l2" path="res://assets/sounds/music/chill_bgm.mp3" id="24_4ovp2"]
+
+[sub_resource type="Resource" id="Resource_ktljq"]
+resource_local_to_scene = true
+script = ExtResource("4_e0hcc")
+override_font_color = true
+
+[sub_resource type="Resource" id="Resource_rbask"]
+resource_local_to_scene = true
+script = ExtResource("5_qch7b")
+font_size = 1.3
+override_font_color = true
+
+[sub_resource type="Resource" id="Resource_e6a60"]
+resource_local_to_scene = true
+script = ExtResource("6_4ovp2")
+override_font_color = true
+
+[sub_resource type="Resource" id="Resource_5et21"]
+resource_local_to_scene = true
+script = ExtResource("7_1mexh")
+
+[sub_resource type="Resource" id="Resource_ei00g"]
+resource_local_to_scene = true
+script = ExtResource("8_6ud2m")
+
+[sub_resource type="Resource" id="Resource_75tx2"]
+resource_local_to_scene = true
+script = ExtResource("9_qqxfm")
+
+[sub_resource type="Animation" id="Animation_j4d8q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CreditsMenu:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(960, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qpknu"]
+resource_name = "credits_close"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CreditsMenu:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(960, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-960, 0), Vector2(-960, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wabu5"]
+resource_name = "credits_open"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-960, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CreditsMenu:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(960, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3e805"]
+_data = {
+&"RESET": SubResource("Animation_j4d8q"),
+&"credits_close": SubResource("Animation_qpknu"),
+&"credits_open": SubResource("Animation_wabu5")
+}
+
+[sub_resource type="ZoneResource" id="ZoneResource_q85j6"]
+heightMapImage = ExtResource("3_1g8jr")
+splatmapsImage = Array[Image]([ExtResource("5_otr3d"), ExtResource("6_8ekit")])
+
+[sub_resource type="ZonesResource" id="ZonesResource_8g5eo"]
+zones = Array[ZoneResource]([SubResource("ZoneResource_q85j6")])
+
+[sub_resource type="Animation" id="Animation_uhagc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpringArm3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_btxxm"]
+resource_name = "spin"
+length = 10.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpringArm3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.2831855, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wb0q5"]
+_data = {
+&"RESET": SubResource("Animation_uhagc"),
+&"spin": SubResource("Animation_btxxm")
+}
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_otr3d"]
+size = Vector2(20, 20)
+
+[sub_resource type="Resource" id="Resource_0fv5i"]
+script = ExtResource("24_1mexh")
+tracks = Array[AudioStream]([ExtResource("24_4ovp2")])
+metadata/_custom_type_script = "uid://dgf66dbt7wgxn"
+
+[node name="MainMenu" type="Node3D" unique_id=1353983215]
+script = ExtResource("1_fe2o3")
+
+[node name="Environment" parent="." unique_id=127690895 instance=ExtResource("1_sl1te")]
+is_static = true
+static_time = 23.0
+
+[node name="SkyDome" parent="Environment/Sky3D" parent_id_path=PackedInt32Array(127690895, 391357526) index="2" unique_id=619039578]
+fog_density = 0.07800175
+fog_end = 143.646
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=462552399]
+
+[node name="Control" type="Control" parent="UI" unique_id=720855666]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="UI/Control" unique_id=304929496]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 32.0
+offset_bottom = 116.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.74329853, 0.5796056, 0.88822395, 1)
+theme_override_font_sizes/font_size = 56
+text = "forest survival game"
+
+[node name="Buttons" type="VBoxContainer" parent="UI/Control" unique_id=1202073236]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 32.0
+offset_top = -129.5
+offset_right = 480.0
+offset_bottom = 129.5
+grow_vertical = 2
+theme_override_constants/separation = 6
+
+[node name="LoadButton" type="Button" parent="UI/Control/Buttons" unique_id=1074961384]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.98646766, 0.8233954, 0.7914164, 1)
+theme_override_font_sizes/font_size = 26
+text = "Continue"
+flat = true
+
+[node name="NewGameButton" type="Button" parent="UI/Control/Buttons" unique_id=589554928]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.98646766, 0.8233954, 0.7914164, 1)
+theme_override_font_sizes/font_size = 26
+text = "New Game"
+flat = true
+
+[node name="OptionsButton" type="Button" parent="UI/Control/Buttons" unique_id=376262075]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.98646766, 0.8233954, 0.7914164, 1)
+theme_override_font_sizes/font_size = 26
+text = "Options"
+flat = true
+
+[node name="CreditsButton" type="Button" parent="UI/Control/Buttons" unique_id=847856697]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.98646766, 0.8233954, 0.7914164, 1)
+theme_override_font_sizes/font_size = 26
+text = "Credits"
+flat = true
+
+[node name="QuitButton" type="Button" parent="UI/Control/Buttons" unique_id=611012544]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.98646766, 0.8233954, 0.7914164, 1)
+theme_override_font_sizes/font_size = 26
+text = "Quit"
+flat = true
+
+[node name="Info" type="VBoxContainer" parent="UI/Control" unique_id=2059141493]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -56.0
+offset_top = -56.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="DebugLabel" type="Label" parent="UI/Control/Info" unique_id=1819443034]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8365974, 0.5101739, 0.42759466, 1)
+text = "Debug mode!!"
+horizontal_alignment = 2
+
+[node name="VersionLabel" type="Label" parent="UI/Control/Info" unique_id=26361076]
+layout_mode = 2
+text = "v0.1-alpha"
+horizontal_alignment = 2
+
+[node name="AuthorLabel" type="Label" parent="UI/Control/Info" unique_id=361462132]
+layout_mode = 2
+text = "Made by amethystcutie for Terra"
+horizontal_alignment = 2
+
+[node name="CreditsMenu" type="Control" parent="UI" unique_id=1163458120]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 960.0
+offset_right = 960.0001
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/CreditsMenu" unique_id=2115639858]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/CreditsMenu/MarginContainer" unique_id=1489085359]
+layout_mode = 2
+
+[node name="Header" type="MarginContainer" parent="UI/CreditsMenu/MarginContainer/VBoxContainer" unique_id=614751296]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="UI/CreditsMenu/MarginContainer/VBoxContainer/Header" unique_id=576287453]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_hover_color = Color(0.98646766, 0.8233954, 0.7914164, 1)
+theme_override_font_sizes/font_size = 32
+text = "<~"
+flat = true
+
+[node name="Label" type="Label" parent="UI/CreditsMenu/MarginContainer/VBoxContainer/Header" unique_id=555458782]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "Credits"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/CreditsMenu/MarginContainer/VBoxContainer" unique_id=668674585]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarkdownLabel" type="RichTextLabel" parent="UI/CreditsMenu/MarginContainer/VBoxContainer/ScrollContainer" unique_id=871936449]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+script = ExtResource("3_jbte4")
+markdown_text = "License file not found"
+h1 = SubResource("Resource_ktljq")
+h2 = SubResource("Resource_rbask")
+h3 = SubResource("Resource_e6a60")
+h4 = SubResource("Resource_5et21")
+h5 = SubResource("Resource_ei00g")
+h6 = SubResource("Resource_75tx2")
+hr_color = Color(0.89481866, 0.8499592, 1, 1)
+metadata/_custom_type_script = "uid://dbap0gqox0ty1"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI" unique_id=1987919677]
+libraries/ = SubResource("AnimationLibrary_3e805")
+
+[node name="TerraBrush" type="TerraBrush" parent="." unique_id=1316459211]
+dataPath = "res://scenes/ui/MainMenu"
+textureSets = ExtResource("3_8g5eo")
+textureDetail = 20
+useAntiTile = false
+nearestTextureFilter = true
+useSharpTransitions = true
+terrainZones = SubResource("ZonesResource_8g5eo")
+physics_interpolation_mode = 2
+metadata/_edit_lock_ = false
+
+[node name="SpringArm3D" type="SpringArm3D" parent="." unique_id=1223258375]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 4, 0)
+spring_length = 6.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SpringArm3D" unique_id=2029434228]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_wb0q5")
+autoplay = &"spin"
+speed_scale = 0.2
+
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D" unique_id=2006865021]
+transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.2588191, 0, -0.2588191, 0.9659258, 0, 0, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1262354021]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+light_color = Color(0.9134956, 0.47324347, 0, 1)
+light_energy = 2.205
+shadow_enabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=767669166]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.1668309, 0)
+cast_shadow = 0
+mesh = ExtResource("7_otr3d")
+surface_material_override/0 = ExtResource("8_8ekit")
+surface_material_override/1 = ExtResource("8_8ekit")
+surface_material_override/2 = ExtResource("9_n4uci")
+surface_material_override/3 = ExtResource("9_n4uci")
+
+[node name="witch" parent="." unique_id=1939359455 instance=ExtResource("10_877pj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0368886, 0.012749076, -1.8690553)
+
+[node name="GeneralSkeleton" parent="witch" index="0" unique_id=684220577]
+bones/0/position = Vector3(0.002578726, 0.4998194, -0.30596018)
+bones/0/rotation = Quaternion(2.682209e-07, 0, 0, 1)
+bones/2/rotation = Quaternion(0.093180835, 0.000119570046, 0.00023891364, 0.99564916)
+bones/3/rotation = Quaternion(0.093181096, 0.00034228075, 0.0002318154, 0.99564916)
+bones/4/rotation = Quaternion(-0.09318103, -0.00023127462, -0.00024560932, 0.9956491)
+bones/5/rotation = Quaternion(0.008277348, 0.095891945, 0.0012075863, 0.9953566)
+bones/7/rotation = Quaternion(0.48748106, 0.52661544, 0.52638143, -0.4560275)
+bones/8/rotation = Quaternion(0.02527824, 0.769204, -0.6384095, 0.010934874)
+bones/9/rotation = Quaternion(0.42151487, -0.56288254, 0.4059503, 0.5836891)
+bones/10/rotation = Quaternion(0.1047876, 0.9247495, 0.17509808, 0.32124567)
+bones/12/rotation = Quaternion(0.061359107, -1.3411045e-07, 0.0065629184, 0.9980942)
+bones/13/rotation = Quaternion(0.08774342, 0.0030781329, -0.0020760596, 0.99613625)
+bones/14/rotation = Quaternion(0.0807703, -0.0016145557, -0.006495476, 0.9967103)
+bones/15/rotation = Quaternion(0.5397211, -0.47448954, -0.47470158, -0.50815284)
+bones/16/rotation = Quaternion(-0.12937617, 0.81586313, -0.5635035, -0.009651884)
+bones/17/rotation = Quaternion(0.44937938, 0.4673242, -0.2943259, 0.70216715)
+bones/18/rotation = Quaternion(0.06386025, -0.90594065, -0.33244097, 0.25431576)
+bones/20/rotation = Quaternion(0.21987945, -1.4901163e-07, 0.03410295, 0.9749309)
+bones/21/rotation = Quaternion(0.17159164, 0.026526138, 0.02043143, 0.9845991)
+bones/22/rotation = Quaternion(0.1340636, -0.008814141, 0.021200448, 0.9907068)
+bones/23/rotation = Quaternion(-0.00084547047, 0.6768311, 0.7261457, -0.12087806)
+bones/24/rotation = Quaternion(0.061149504, 0.7594563, -0.6435506, 0.07300484)
+bones/25/rotation = Quaternion(-0.061733007, 0.7424544, -0.6639869, -0.06381144)
+bones/26/rotation = Quaternion(4.4117336e-08, 1, 5.9604645e-08, 1.9473367e-08)
+bones/28/rotation = Quaternion(0.00037388783, 0.6791327, 0.73206633, 0.053456027)
+bones/29/rotation = Quaternion(0.03222787, 0.76883984, -0.6374222, 0.03923926)
+bones/30/rotation = Quaternion(0.062766604, 0.74271846, -0.6635231, -0.06455036)
+bones/31/rotation = Quaternion(3.791776e-09, 1, 5.9604645e-08, 2.0224519e-08)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="witch" unique_id=744834983]
+libraries/UAL1_Standard = ExtResource("11_ayp64")
+libraries/UAL2_Standard = ExtResource("12_y2j7i")
+autoplay = &"UAL1_Standard/Sitting_Idle"
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=168707833]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
+mesh = SubResource("PlaneMesh_otr3d")
+
+[node name="SpruceTree" parent="." unique_id=2101333332 instance=ExtResource("13_877pj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.823875, 4.7683716e-07, -9.038548)
+
+[node name="SpruceTree2" parent="." unique_id=1279308475 instance=ExtResource("13_877pj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.432816, 4.7683716e-07, 7.756115)
+
+[node name="SpruceTree3" parent="." unique_id=1525738463 instance=ExtResource("13_877pj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.039039, 9.536743e-07, 18.022488)
+
+[node name="SpruceTree7" parent="." unique_id=1787620906 instance=ExtResource("13_877pj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.259956, 9.536743e-07, 9.961623)
+
+[node name="SpruceTree8" parent="." unique_id=249064796 instance=ExtResource("13_877pj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7141075, 9.536743e-07, 16.186066)
+
+[node name="SpruceTree9" parent="." unique_id=1497748034 instance=ExtResource("13_877pj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.820679, 9.536743e-07, 5.2719603)
+
+[node name="SpruceTree10" parent="." unique_id=354765969 instance=ExtResource("13_877pj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.319584, 9.536743e-07, -3.7603254)
+
+[node name="SpruceTree11" parent="." unique_id=785787436 instance=ExtResource("13_877pj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4996433, 9.536743e-07, -8.414164)
+
+[node name="SpruceTree12" parent="." unique_id=1171011052 instance=ExtResource("13_877pj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.0344353, 9.536743e-07, -8.520924)
+
+[node name="SpruceTree13" parent="." unique_id=2045181673 instance=ExtResource("13_877pj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.387871, 9.536743e-07, 7.23158)
+
+[node name="SpruceTree14" parent="." unique_id=333780510 instance=ExtResource("13_877pj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.4975557, 9.536743e-07, 21.247116)
+
+[node name="SpruceTree4" parent="." unique_id=183791579 instance=ExtResource("13_877pj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.409878, 9.536743e-07, 13.451652)
+
+[node name="SpruceTree5" parent="." unique_id=1677633105 instance=ExtResource("13_877pj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.6193495, 9.536743e-07, -0.8866744)
+
+[node name="SpruceTree6" parent="." unique_id=1950215168 instance=ExtResource("13_877pj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5610294, 9.536743e-07, -15.218959)
+
+[node name="OakTree" parent="." unique_id=470150571 instance=ExtResource("14_ayp64")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.862423, 0, 15.166125)
+
+[node name="OakTree2" parent="." unique_id=1895314598 instance=ExtResource("14_ayp64")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8175926, 0, 13.4890585)
+
+[node name="OakTree3" parent="." unique_id=1604011435 instance=ExtResource("14_ayp64")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.960669, 0, 21.003326)
+
+[node name="OakTree4" parent="." unique_id=257848961 instance=ExtResource("14_ayp64")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.664911, 0, 0.3962593)
+
+[node name="OakTree5" parent="." unique_id=1658271171 instance=ExtResource("14_ayp64")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.858202, 0, -4.7954493)
+
+[node name="OakTree6" parent="." unique_id=1809816103 instance=ExtResource("14_ayp64")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.502701, 0, -19.890228)
+
+[node name="OakTree7" parent="." unique_id=2114319315 instance=ExtResource("14_ayp64")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.314548, 0, -7.811737)
+
+[node name="OakTree8" parent="." unique_id=771167344 instance=ExtResource("14_ayp64")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.283644, 0, 17.312958)
+
+[node name="MapleTree" parent="." unique_id=38234977 instance=ExtResource("15_y2j7i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.3109, 0, 5.2829967)
+
+[node name="MapleTree2" parent="." unique_id=902283627 instance=ExtResource("15_y2j7i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.015894, 0, -17.16156)
+
+[node name="MapleTree3" parent="." unique_id=1401261581 instance=ExtResource("15_y2j7i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6910057, 0, -27.344925)
+
+[node name="MapleTree4" parent="." unique_id=438483854 instance=ExtResource("15_y2j7i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.610271, 0, -13.163658)
+
+[node name="MapleTree5" parent="." unique_id=1809732994 instance=ExtResource("15_y2j7i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.180187, 0, 3.3018608)
+
+[node name="MapleTree6" parent="." unique_id=1885985579 instance=ExtResource("15_y2j7i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.545455, 0, 23.17744)
+
+[node name="GlobalMusic" parent="." unique_id=1681396820 instance=ExtResource("23_qch7b")]
+playlist = SubResource("Resource_0fv5i")
+
+[editable path="Environment"]
+[editable path="witch"]

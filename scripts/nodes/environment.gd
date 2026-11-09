@@ -1,6 +1,9 @@
 class_name EnvironmentManager
 extends Node
 
+@export var is_static := false
+@export var static_time := 9.0
+
 @export var day_length := 8.0
 @export var evening_length := 3.0
 @export var night_length := 4.0
@@ -47,6 +50,10 @@ func _ready() -> void:
 	print(night_time)
 
 func _process(delta: float) -> void:
+	if is_static: 
+		$Sky3D.current_time = static_time
+		return
+	
 	# advance time
 	time += delta * delta_multiplier
 	
@@ -74,7 +81,7 @@ func _process(delta: float) -> void:
 		sun_time = sun_time_day
 		
 	if $Sky3D.current_time != sun_time:
-		$Sky3D.current_time = move_toward($Sky3D.current_time, sun_time, delta * 4.0)
+		$Sky3D.current_time = move_toward($Sky3D.current_time, sun_time, delta * 7.0)
 		
 func set_day() -> void:
 	if time_of_day == TimeManager.DayTime.DAY: return

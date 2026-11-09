@@ -1,0 +1,70 @@
+[remap]
+
+importer="ArrayMesh"
+importer_version=1
+type="ArrayMesh"
+uid="uid://dg8guyf2ui7dm"
+path="res://.godot/imported/Bonfire.fbx-464af0160951e5aea56a9b512954bbda.res"
+
+[deps]
+
+source_file="res://assets/models/structures/Bonfire.fbx"
+dest_files=["res://.godot/imported/Bonfire.fbx-464af0160951e5aea56a9b512954bbda.res"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/root_script=null
+mesh_library/use_node_names_as_mesh_names=false
+mesh_library/create_categories_from_hierarchy=false
+array_mesh/deduplicate_surfaces=true
+nodes/apply_root_scale=true
+nodes/root_scale=500.0
+nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=true
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+materials/extract=0
+materials/extract_format=0
+materials/extract_path=""
+_subresources={
+"materials": {
+"Stone_Dark": {
+"use_external/enabled": false,
+"use_external/fallback_path": "res://assets/materials/rock.tres",
+"use_external/path": "uid://7aeknkg6eva6"
+},
+"Stone_Light": {
+"use_external/enabled": false,
+"use_external/fallback_path": "res://assets/materials/rock.tres",
+"use_external/path": "uid://7aeknkg6eva6"
+},
+"Wood": {
+"use_external/enabled": false,
+"use_external/fallback_path": "res://assets/materials/bark.tres",
+"use_external/path": "uid://q3wg3j5h21lp"
+},
+"WoodSide": {
+"use_external/enabled": false,
+"use_external/fallback_path": "res://assets/materials/bark.tres",
+"use_external/path": "uid://q3wg3j5h21lp"
+}
+}
+}
+fbx/importer=0
+fbx/allow_geometry_helper_nodes=false
+fbx/embedded_image_handling=1
+fbx/naming_version=2

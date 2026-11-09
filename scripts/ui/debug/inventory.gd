@@ -41,7 +41,7 @@ func _ready() -> void:
 		)
 
 func _process(_delta: float) -> void:
-	bg.visible = !Global.player.unlock_camera
+	bg.visible = Global.player.inv_open
 	
 	if mouse_item.is_empty():
 		$MouseItem/TextureRect.texture = null
@@ -58,7 +58,7 @@ func _process(_delta: float) -> void:
 		elif i < 8:
 			slots[i].get_node("Panel").add_theme_stylebox_override("panel", hotbar_slot_style)
 		else:
-			slots[i].visible = !Global.player.unlock_camera
+			slots[i].visible = Global.player.inv_open
 			slots[i].get_node("Panel").add_theme_stylebox_override("panel", normal_slot_style)
 		
 		var stack = Global.player.inventory.get_item(i)

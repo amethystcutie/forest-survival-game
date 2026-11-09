@@ -11,16 +11,19 @@ config_version=5
 [application]
 
 config/name="Forest survival game"
-config/version="v0.2-alpha"
-run/main_scene="uid://c1qf51tjgpht1"
+config/version="v0.3-alpha"
+run/main_scene="uid://cy3nyvp0b8vyq"
 config/features=PackedStringArray("4.8", "Forward Plus")
 config/icon="res://icon.svg"
+run/main_scene.editor="uid://c1qf51tjgpht1"
 
 [autoload]
 
 Global="*uid://bqk1ow07fkb6p"
 AudioManager="*uid://fbnd4geplthg"
 TimeManager="*uid://ic3ti7co3b7q"
+GameSettings="*uid://kjys6y8808qw"
+SceneManager="*uid://b7tngb7uoojt1"
 
 [display]
 
@@ -37,7 +40,42 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg", "res://addons/sky_3d/plugin.cfg")
+enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg", "res://addons/markdownlabel/plugin.cfg", "res://addons/sky_3d/plugin.cfg")
+
+[gui]
+
+theme/custom="uid://71fle6rpettp"
+
+[importer_defaults]
+
+texture={
+"compress/channel_pack": 0,
+"compress/hdr_compression": 1,
+"compress/high_quality": false,
+"compress/high_quality_mode": 0,
+"compress/lossy_quality": 0.7,
+"compress/mode": 0,
+"compress/normal_map": 0,
+"compress/rdo_quality_loss": 0.0,
+"compress/uastc_level": 0,
+"detect_3d/compress_to": 1,
+"mipmaps/alpha_test_threshold": 0.5,
+"mipmaps/generate": false,
+"mipmaps/limit": -1,
+"mipmaps/preserve_alpha_test_coverage": false,
+"process/channel_remap/alpha": 3,
+"process/channel_remap/blue": 2,
+"process/channel_remap/green": 1,
+"process/channel_remap/red": 0,
+"process/fix_alpha_border": true,
+"process/hdr_as_srgb": false,
+"process/hdr_clamp_exposure": false,
+"process/normal_map_invert_y": false,
+"process/premult_alpha": false,
+"process/size_limit": 0,
+"roughness/mode": 0,
+"roughness/src_normal": ""
+}
 
 [input]
 
@@ -399,11 +437,11 @@ hint={
 
 textures/canvas_textures/default_texture_filter=0
 textures/streaming/enabled=true
+textures/streaming/max_lod=6
 rendering_device/driver.windows="d3d12"
 lights_and_shadows/contact_shadow/enabled=true
 lights_and_shadows/contact_shadow/shadow_length=0
 lights_and_shadows/directional_shadow/size=2048
-lights_and_shadows/directional_shadow/soft_shadow_filter_quality=0
 lights_and_shadows/positional_shadow/soft_shadow_filter_quality=1
 global_illumination/gi/use_half_resolution=true
 scaling_3d/mode=1

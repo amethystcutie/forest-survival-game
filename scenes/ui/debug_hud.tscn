@@ -10,6 +10,13 @@
 [ext_resource type="Script" uid="uid://kghra7kty8au" path="res://scripts/ui/debug/date_time.gd" id="8_hwst7"]
 [ext_resource type="Texture2D" uid="uid://bp2ewxr8f8rud" path="res://assets/textures/ui/circle.png" id="9_8toqh"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a88r6"]
+bg_color = Color(0.66541487, 0.3969, 0.81, 0.42745098)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hwst7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mk4nq"]
@@ -68,16 +75,15 @@ width = 1
 height = 20
 
 [node name="DebugHUD" type="CanvasLayer" unique_id=770356309]
-layer = 999
+layer = 30
 
-[node name="InventoryBG" type="ColorRect" parent="." unique_id=753406550]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="InventoryBG" type="Panel" parent="." unique_id=319725386]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 336.0
+offset_bottom = 176.0
 mouse_filter = 2
-color = Color(0.17936599, 0.058120184, 0.115212254, 0.45490196)
+theme_override_styles/panel = SubResource("StyleBoxFlat_a88r6")
 
 [node name="Performance" type="Control" parent="." unique_id=889182041]
 layout_mode = 3
@@ -149,7 +155,7 @@ pivot_offset = Vector2(1, 1)
 size_flags_horizontal = 10
 size_flags_vertical = 8
 step = 0.01
-value = 50.0
+value = 100.0
 texture_under = SubResource("AtlasTexture_mk4nq")
 texture_progress = SubResource("AtlasTexture_mk4nq")
 tint_under = Color(0.9234981, 0.42836347, 0.61065406, 0.32156864)
@@ -171,7 +177,7 @@ pivot_offset = Vector2(1, 1)
 size_flags_horizontal = 10
 size_flags_vertical = 8
 step = 0.01
-value = 50.0
+value = 100.0
 texture_under = SubResource("AtlasTexture_hwst7")
 texture_progress = SubResource("AtlasTexture_hwst7")
 tint_under = Color(0.85368645, 0.5324414, 0.25116462, 0.32156864)
@@ -202,8 +208,10 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_mk4nq")
 
 [node name="Label" type="Label" parent="Inventory/Panel" unique_id=967936079]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 16.0
+offset_top = 6.0
+offset_right = 91.0
+offset_bottom = 29.0
 text = "Inventory"
 
 [node name="GridContainer" type="GridContainer" parent="Inventory/Panel" unique_id=425832730]

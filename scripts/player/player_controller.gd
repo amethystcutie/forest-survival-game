@@ -22,6 +22,8 @@ var first_person := false
 var unlock_camera := true
 var opacity: float
 
+var inv_open := false
+
 var selected_slot: int = 0
 
 var held_item := ItemStack.empty()
@@ -128,8 +130,6 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("zoom_in"): camera_length -= zoom_step
 	if event.is_action_pressed("zoom_out"): camera_length += zoom_step
 	camera_length = clamp(camera_length, 0, max_zoom)
-		
-	if event.is_action_pressed("pause"): get_tree().quit()
 
 	if event.as_text().to_int() in range(1, 8):
 		selected_slot = event.as_text().to_int() - 1
@@ -143,7 +143,7 @@ func _input(event: InputEvent) -> void:
 			
 		
 	if event.is_action_pressed("inventory"):
-		unlock_camera = !unlock_camera
+		inv_open = !inv_open
 
 func _physics_process(delta: float) -> void:
 	# gravity
@@ -186,8 +186,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		use_pressed = false
 
 func _process(delta: float) -> void:
-	print(swing_anim)
-	
 	# camera movement
 	$CameraPivot.spring_length = move_toward($CameraPivot.spring_length, camera_length, acceleration * delta)
 	
@@ -196,6 +194,8 @@ func _process(delta: float) -> void:
 	
 	# camera controls
 	first_person = camera_length == 0
+	
+	unlock_camera = !(Global.paused or inv_open)
 	
 	if unlock_camera: Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	else: Input.mouse_mode = Input.MOUSE_MODE_VISIBLE

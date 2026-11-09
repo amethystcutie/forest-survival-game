@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://c56kbkxyi3ff3"]
+
+[ext_resource type="Script" uid="uid://d2ewcnj1ny352" path="res://scripts/ui/pause_menu.gd" id="1_6tw0m"]
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=216537010]
+layer = 80
+script = ExtResource("1_6tw0m")
+
+[node name="Control" type="Control" parent="." unique_id=2119242952]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control" unique_id=508687176]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.30704802, 0.5875243, 0.34117648)
+
+[node name="Panel" type="PanelContainer" parent="Control" unique_id=1132785344]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -64.0
+offset_right = 48.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/Panel" unique_id=402499504]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Panel/MarginContainer" unique_id=155295145]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/Panel/MarginContainer/VBoxContainer" unique_id=217345140]
+layout_mode = 2
+text = "Paused"
+horizontal_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="Control/Panel/MarginContainer/VBoxContainer" unique_id=1711254331]
+layout_mode = 2
+text = "Resume"
+
+[node name="OptionsButton" type="Button" parent="Control/Panel/MarginContainer/VBoxContainer" unique_id=2034969323]
+layout_mode = 2
+text = "Options"
+
+[node name="MainMenuButton" type="Button" parent="Control/Panel/MarginContainer/VBoxContainer" unique_id=1729200197]
+layout_mode = 2
+text = "Main Menu"
+
+[node name="QuitButton" type="Button" parent="Control/Panel/MarginContainer/VBoxContainer" unique_id=312457608]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.64571065, 0.49264413, 1)
+text = "Quit (Debug)"

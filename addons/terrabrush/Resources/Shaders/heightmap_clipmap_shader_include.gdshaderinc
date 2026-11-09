@@ -3,23 +3,29 @@
 uniform bool ApplyLockTextures = false;
 uniform sampler2DArray ColorTextures: hint_default_transparent, repeat_disable;
 #if CURRENT_RENDERER != RENDERER_COMPATIBILITY
-uniform sampler2DArray LockTextures : hint_default_black;
+uniform sampler2DArray LockTextures: hint_default_black;
 #endif
-uniform sampler2DArray WaterTextures : hint_default_transparent, repeat_disable;
+uniform sampler2DArray WaterTextures: hint_default_transparent, repeat_disable;
 uniform float WaterFactor = 1;
-uniform sampler2DArray Textures : source_color, filter_linear_mipmap;
-uniform sampler2DArray TexturesNearest : source_color, filter_nearest_mipmap;
-uniform sampler2DArray Splatmaps : repeat_disable;
+uniform sampler2DArray Textures: source_color, filter_linear_mipmap;
+uniform sampler2DArray TexturesNearest: source_color, filter_nearest_mipmap;
+#if CURRENT_RENDERER != RENDERER_COMPATIBILITY
+uniform sampler2DArray TextureAlbedoColorMaps: hint_default_white, source_color, filter_linear_mipmap, repeat_disable;
+uniform sampler2DArray TextureAlbedoCurves: hint_default_white, source_color, filter_linear_mipmap, repeat_disable;
+#endif
+uniform sampler2DArray Splatmaps: repeat_disable;
+uniform int[100] TextureAlbedoHasColorMaps;
+uniform int[100] TextureAlbedoHasCurves;
 uniform int[100] TexturesDetail;
 uniform int NumberOfTextures;
-uniform sampler2DArray Normals : filter_linear_mipmap;
-uniform sampler2DArray NormalsNearest : filter_nearest_mipmap;
+uniform sampler2DArray Normals: filter_linear_mipmap;
+uniform sampler2DArray NormalsNearest: filter_nearest_mipmap;
 uniform bool HasNormalTextures;
-uniform sampler2DArray RoughnessTextures : filter_linear_mipmap;
-uniform sampler2DArray RoughnessTexturesNearest : filter_nearest_mipmap;
+uniform sampler2DArray RoughnessTextures: filter_linear_mipmap;
+uniform sampler2DArray RoughnessTexturesNearest: filter_nearest_mipmap;
 uniform bool HasRoughnessTextures;
-uniform sampler2DArray HeightTextures : filter_linear_mipmap;
-uniform sampler2DArray HeightTexturesNearest : filter_nearest_mipmap;
+uniform sampler2DArray HeightTextures: filter_linear_mipmap;
+uniform sampler2DArray HeightTexturesNearest: filter_nearest_mipmap;
 uniform bool HasHeightTextures;
 uniform bool UseAntitile = true;
 uniform float BlendFactor;
@@ -113,6 +119,7 @@ vec4 texture_array_antitile(sampler2DArray texLinear, sampler2DArray texNearest,
 
 void calculateHeightmapVertex(
 	mat4 modelMatrix,
+	vec4 custom0,
 	inout vec4 color,
 	inout vec3 vertex,
 	inout vec3 normal,
@@ -121,7 +128,7 @@ void calculateHeightmapVertex(
 	inout vec3 triplanarPos,
 	inout vec3 triplanarPowerNormal
 ) {
-	calculateVertex(modelMatrix, color, vertex, worldVertex);
+	calculateVertex(modelMatrix, custom0, color, vertex, worldVertex);
 
 	const vec3 off = vec3(1.0, 1.0, 0.0);
 	float hL = calculateVertexHeight(color, vertex, worldVertex, -off.xz);
@@ -134,10 +141,11 @@ void calculateHeightmapVertex(
 
 	if (WaterFactor > 0.0) {
 		vec4 levelsMeta = color;
+		vec3 zoneUV = calculateZoneUV(worldVertex);
+		
 		if (levelsMeta.g > 0.0 || levelsMeta.b > 0.0) {
-			vertex.y -= calculateMidZoneHeightValue(WaterTextures, levelsMeta, worldVertex) * WaterFactor;
-		} else {
-			vec3 zoneUV = calculateZoneUV(worldVertex);
+			vertex.y -= calculateMidZoneHeightValue(WaterTextures, levelsMeta, worldVertex, zoneUV) * WaterFactor;
+		} else {			
 			vec4 waterTexture = texture(WaterTextures, zoneUV);
 			vertex.y -= waterTexture.r * WaterFactor;
 		}
@@ -193,60 +201,60 @@ vec4 getVec4Texture(
 }
 
 int getChannelIndex(int textureIndex) {
-    return textureIndex % 4;
+	return textureIndex % 4;
 }
 
 int getSplatmapIndex(int textureIndex) {
-    return textureIndex / 4;
+	return textureIndex / 4;
 }
 
 int findDominantTextureIndex(vec3 worldVertex) {
-    vec3 zoneUV = calculateZoneUV(worldVertex);
-    float maxValue = -1.0;
-    int dominantTextureIndex = 0;
+	vec3 zoneUV = calculateZoneUV(worldVertex);
+	float maxValue = -1.0;
+	int dominantTextureIndex = 0;
 
-    for (int i = 0; i < NumberOfTextures; i++) {
-        int splatmapIdx = getSplatmapIndex(i);
-        int channelIdx = getChannelIndex(i);
+	for (int i = 0; i < NumberOfTextures; i++) {
+		int splatmapIdx = getSplatmapIndex(i);
+		int channelIdx = getChannelIndex(i);
 
-        vec3 textureZoneUV = zoneUV;
-        if (Resolution > 1.0) {
-            textureZoneUV = calculateZoneUVResolution(worldVertex, false);
-        }
+		vec3 textureZoneUV = zoneUV;
+		if (Resolution > 1.0) {
+			textureZoneUV = calculateZoneUVResolution(worldVertex, false);
+		}
 
-        vec3 splatmapUV = vec3(textureZoneUV.x, textureZoneUV.y,
-                             float(splatmapIdx) + (textureZoneUV.z * ceil(float(NumberOfTextures) / 4.0)));
+		vec3 splatmapUV = vec3(textureZoneUV.x, textureZoneUV.y,
+							 float(splatmapIdx) + (textureZoneUV.z * ceil(float(NumberOfTextures) / 4.0)));
 
-        vec4 currentSplatmap = texture(Splatmaps, splatmapUV);
-        float value = currentSplatmap[channelIdx];
+		vec4 currentSplatmap = texture(Splatmaps, splatmapUV);
+		float value = currentSplatmap[channelIdx];
 
-        if (HasHeightTextures || AlbedoAlphaChannelUsage == ALPHA_CHANNEL_USAGE_HEIGHT ||
-            NormalAlphaChannelUsage == ALPHA_CHANNEL_USAGE_HEIGHT) {
-            int textureDetail = TexturesDetail[i];
-            vec2 worldVertexUV = worldVertex.xz * (float(textureDetail) * (1.0 / ZonesSize));
-            vec3 textureUV = vec3(worldVertexUV.x, worldVertexUV.y, float(i));
+		if (HasHeightTextures || AlbedoAlphaChannelUsage == ALPHA_CHANNEL_USAGE_HEIGHT ||
+			NormalAlphaChannelUsage == ALPHA_CHANNEL_USAGE_HEIGHT) {
+			int textureDetail = TexturesDetail[i];
+			vec2 worldVertexUV = worldVertex.xz * (float(textureDetail) * (1.0 / ZonesSize));
+			vec3 textureUV = vec3(worldVertexUV.x, worldVertexUV.y, float(i));
 
-            vec4 heightSample = vec4(0.0);
-            if (HasHeightTextures) {
-                heightSample = getVec4Texture(textureUV, vec3(0.0), vec3(0.0),
-                                        HeightTextures, HeightTexturesNearest, false);
-            } else {
-                vec4 albedoSample = getVec4Texture(textureUV, vec3(0.0), vec3(0.0),
-                                          Textures, TexturesNearest, false);
-                heightSample.r = albedoSample.a * float(AlbedoAlphaChannelUsage == ALPHA_CHANNEL_USAGE_HEIGHT);
-            }
+			vec4 heightSample = vec4(0.0);
+			if (HasHeightTextures) {
+				heightSample = getVec4Texture(textureUV, vec3(0.0), vec3(0.0),
+										HeightTextures, HeightTexturesNearest, false);
+			} else {
+				vec4 albedoSample = getVec4Texture(textureUV, vec3(0.0), vec3(0.0),
+										  Textures, TexturesNearest, false);
+				heightSample.r = albedoSample.a * float(AlbedoAlphaChannelUsage == ALPHA_CHANNEL_USAGE_HEIGHT);
+			}
 
-            float heightInfluence = contrast(BlendFactor * 2.0, heightSample.r) * 0.2;
-            value += heightInfluence;
-        }
+			float heightInfluence = contrast(BlendFactor * 2.0, heightSample.r) * 0.2;
+			value += heightInfluence;
+		}
 
-        if (value > maxValue) {
-            maxValue = value;
-            dominantTextureIndex = i;
-        }
-    }
+		if (value > maxValue) {
+			maxValue = value;
+			dominantTextureIndex = i;
+		}
+	}
 
-    return dominantTextureIndex;
+	return dominantTextureIndex;
 }
 
 void calculateHeightmapFragment(
@@ -254,6 +262,7 @@ void calculateHeightmapFragment(
 	vec3 worldNormal,
 	vec3 triplanarPos,
 	vec3 triplanarPowerNormal,
+	vec4 levelsMeta,
 	inout vec3 albedo,
 	inout vec3 normalMap,
 	inout float metallic,
@@ -261,9 +270,23 @@ void calculateHeightmapFragment(
 	inout float roughness
 ) {
 	vec3 zoneUV = calculateZoneUV(worldVertex);
+		
+	if (levelsMeta.r < 0.0) {
+		discard;
+		return;
+	} else if (zoneUV.z < 0.0) {
+		discard;
+		return;
+	} else {
+		float hole = texture(HeightmapTextures, zoneUV).g;
+		if (hole > 0.0) {
+			discard;
+			return;
+		}
+	}	
 
 	if (UseSharpTransitions) {
-        int dominantTextureIndex = findDominantTextureIndex(worldVertex);
+		int dominantTextureIndex = findDominantTextureIndex(worldVertex);
 		if (SlopeTexturing && dominantTextureIndex == 0) {
 			float slope = 1.0 - dot(normalize(worldNormal), vec3(0.0, 1.0, 0.0));
 			if (slope >= SlopeTextureThreshold) {
@@ -271,64 +294,79 @@ void calculateHeightmapFragment(
 			}
 		}
 
-        int textureDetail = TexturesDetail[dominantTextureIndex];
-        vec2 worldVertexUV = worldVertex.xz * (float(textureDetail) * (1.0 / ZonesSize));
-        vec3 textureUV = vec3(worldVertexUV.x, worldVertexUV.y, float(dominantTextureIndex));
+		int textureDetail = TexturesDetail[dominantTextureIndex];
+		vec2 worldVertexUV = worldVertex.xz * (float(textureDetail) * (1.0 / ZonesSize));
+		vec3 textureUV = vec3(worldVertexUV.x, worldVertexUV.y, float(dominantTextureIndex));
 
-        vec4 dominantTexture = getVec4Texture(textureUV, triplanarPos, triplanarPowerNormal,
-                                           Textures, TexturesNearest, false);
+		vec4 dominantTexture = vec4(0);
+#if CURRENT_RENDERER != RENDERER_COMPATIBILITY		
+		if (TextureAlbedoHasColorMaps[dominantTextureIndex] == 1) {
+			vec4 textureAlbedo = getVec4Texture(textureUV, triplanarPos, triplanarPowerNormal, Textures, TexturesNearest, false);
+			float textureAlbedoSample = textureAlbedo.r;
+			
+			if (TextureAlbedoHasCurves[dominantTextureIndex] == 1) {
+				textureAlbedoSample = texture(TextureAlbedoCurves, vec3(vec2(textureAlbedoSample), textureUV.z)).r;
+			}			
+			
+			dominantTexture = texture(TextureAlbedoColorMaps, vec3(vec2(textureAlbedoSample), textureUV.z));						
+		} else {
+			dominantTexture = getVec4Texture(textureUV, triplanarPos, triplanarPowerNormal, Textures, TexturesNearest, false);			
+		}
+#else
+		dominantTexture = getVec4Texture(textureUV, triplanarPos, triplanarPowerNormal, Textures, TexturesNearest, false);					
+#endif		
 
-        albedo = dominantTexture.rgb;
+		albedo = dominantTexture.rgb;
 
-        if (HasRoughnessTextures) {
-            vec4 roughnessTexture = getVec4Texture(textureUV, triplanarPos, triplanarPowerNormal,
-                                              RoughnessTextures, RoughnessTexturesNearest, false);
-            roughness = roughnessTexture.r;
-        } else if (AlbedoAlphaChannelUsage == ALPHA_CHANNEL_USAGE_ROUGHNESS) {
-            roughness = dominantTexture.a;
-        } else {
-            roughness = 1.0;
-        }
+		if (HasRoughnessTextures) {
+			vec4 roughnessTexture = getVec4Texture(textureUV, triplanarPos, triplanarPowerNormal,
+											  RoughnessTextures, RoughnessTexturesNearest, false);
+			roughness = roughnessTexture.r;
+		} else if (AlbedoAlphaChannelUsage == ALPHA_CHANNEL_USAGE_ROUGHNESS) {
+			roughness = dominantTexture.a;
+		} else {
+			roughness = 1.0;
+		}
 
-        if (HasNormalTextures) {
-            vec4 normalTexture = getVec4Texture(textureUV, triplanarPos, triplanarPowerNormal,
-                                           Normals, NormalsNearest, true);
-            normalMap = normalTexture.rgb;
+		if (HasNormalTextures) {
+			vec4 normalTexture = getVec4Texture(textureUV, triplanarPos, triplanarPowerNormal,
+										   Normals, NormalsNearest, true);
+			normalMap = normalTexture.rgb;
 
-            if (NormalAlphaChannelUsage == ALPHA_CHANNEL_USAGE_ROUGHNESS &&
-                AlbedoAlphaChannelUsage != ALPHA_CHANNEL_USAGE_ROUGHNESS) {
-                roughness = normalTexture.a;
-            }
-        }
+			if (NormalAlphaChannelUsage == ALPHA_CHANNEL_USAGE_ROUGHNESS &&
+				AlbedoAlphaChannelUsage != ALPHA_CHANNEL_USAGE_ROUGHNESS) {
+				roughness = normalTexture.a;
+			}
+		}
 
 		metallic = TexturesMetallic[dominantTextureIndex];
 		specular = TexturesSpecular[dominantTextureIndex];
-    } else {
+	} else {
 		bool useHeightTextures = HasHeightTextures || AlbedoAlphaChannelUsage == ALPHA_CHANNEL_USAGE_HEIGHT || NormalAlphaChannelUsage == ALPHA_CHANNEL_USAGE_HEIGHT;
-        vec4 resultTexture = vec4(0.0);
-        vec4 resultNormal = vec4(0.0);
-        vec4 resultRoughness = vec4(0.0);
+		vec4 resultTexture = vec4(0.0);
+		vec4 resultNormal = vec4(0.0);
+		vec4 resultRoughness = vec4(0.0);
 		float resultMetallic = 0.0;
 		float resultSpecular = 0.0;
 
-        float channelSum = 0.0;
+		float channelSum = 0.0;
 
-        vec3 textureZoneUV = zoneUV;
-        if (Resolution > 1.0) {
-            textureZoneUV = calculateZoneUVResolution(worldVertex, false);
-        }
-        float splatmapLayers = (textureZoneUV.z * ceil(float(NumberOfTextures) / 4.0));
+		vec3 textureZoneUV = zoneUV;
+		if (Resolution > 1.0) {
+			textureZoneUV = calculateZoneUVResolution(worldVertex, false);
+		}
+		float splatmapLayers = (textureZoneUV.z * ceil(float(NumberOfTextures) / 4.0));
 
 		float maxSlopeValue = 0.0;
-        for (int i = 0; i < NumberOfTextures; i++) {
-            int textureDetail = TexturesDetail[i];
-            vec2 worldVertexUV = worldVertex.xz * (float(textureDetail) * (1.0 / ZonesSize));
-            vec3 textureUV = vec3(worldVertexUV.x, worldVertexUV.y, float(i));
-            vec3 splatmapUV = vec3(textureZoneUV.x, textureZoneUV.y, floor(float(i/4)) + splatmapLayers);
+		for (int i = 0; i < NumberOfTextures; i++) {
+			int textureDetail = TexturesDetail[i];
+			vec2 worldVertexUV = worldVertex.xz * (float(textureDetail) * (1.0 / ZonesSize));
+			vec3 textureUV = vec3(worldVertexUV.x, worldVertexUV.y, float(i));
+			vec3 splatmapUV = vec3(textureZoneUV.x, textureZoneUV.y, floor(float(i/4)) + splatmapLayers);
 
-            vec4 currentSplatmap = texture(Splatmaps, splatmapUV);
-            int currentChannel = i % 4;
-            float channelValue = getChannelValue(currentChannel, currentSplatmap);
+			vec4 currentSplatmap = texture(Splatmaps, splatmapUV);
+			int currentChannel = i % 4;
+			float channelValue = getChannelValue(currentChannel, currentSplatmap);
 
 			if (SlopeTexturing) {
 				if (i == 0) {
@@ -348,99 +386,106 @@ void calculateHeightmapFragment(
 				}
 			}
 
-            if (channelValue <= 0.0001) {
-                continue;
-            }
+			if (channelValue <= 0.0001) {
+				continue;
+			}
 
-            vec4 currentTexture = vec4(0);
-            vec4 currentNormal = vec4(0);
-            vec4 currentRoughness = vec4(0);
-            vec4 currentHeight = vec4(0);
+			vec4 currentTexture = vec4(0);
+			vec4 currentNormal = vec4(0);
+			vec4 currentRoughness = vec4(0);
+			vec4 currentHeight = vec4(0);
 			float currentMetallic = 0.0;
 			float currentSpecular = 0.0;
 
-            currentTexture = getVec4Texture(textureUV, triplanarPos, triplanarPowerNormal, Textures, TexturesNearest, false);
-            currentRoughness = vec4(currentTexture.a * float(AlbedoAlphaChannelUsage == ALPHA_CHANNEL_USAGE_ROUGHNESS));
-            currentHeight = vec4(currentTexture.a * float(AlbedoAlphaChannelUsage == ALPHA_CHANNEL_USAGE_HEIGHT));
-            if (HasNormalTextures) {
-                currentNormal = getVec4Texture(textureUV, triplanarPos, triplanarPowerNormal, Normals, NormalsNearest, true);
-                currentRoughness = max(currentRoughness, vec4(currentNormal.a * float(AlbedoAlphaChannelUsage != ALPHA_CHANNEL_USAGE_ROUGHNESS && NormalAlphaChannelUsage == ALPHA_CHANNEL_USAGE_ROUGHNESS)));
-                currentHeight = max(currentHeight, vec4(currentNormal.a * float(AlbedoAlphaChannelUsage != ALPHA_CHANNEL_USAGE_HEIGHT && NormalAlphaChannelUsage == ALPHA_CHANNEL_USAGE_HEIGHT)));
-            }
-            if (HasRoughnessTextures) {
-                currentRoughness = getVec4Texture(textureUV, triplanarPos, triplanarPowerNormal, RoughnessTextures, RoughnessTexturesNearest, false);
-            }
-            if (HasHeightTextures) {
-                currentHeight = getVec4Texture(textureUV, triplanarPos, triplanarPowerNormal, HeightTextures, HeightTexturesNearest, false);
-            }
+#if CURRENT_RENDERER != RENDERER_COMPATIBILITY
+			if (TextureAlbedoHasColorMaps[i] == 1) {
+				vec4 textureAlbedo = getVec4Texture(textureUV, triplanarPos, triplanarPowerNormal, Textures, TexturesNearest, false);
+				float textureAlbedoSample = textureAlbedo.r;
+				
+				if (TextureAlbedoHasCurves[i] == 1) {
+					textureAlbedoSample = texture(TextureAlbedoCurves, vec3(vec2(textureAlbedoSample), textureUV.z)).r;
+				}
+				
+				currentTexture = texture(TextureAlbedoColorMaps, vec3(vec2(textureAlbedoSample), textureUV.z));			
+			} else {
+				currentTexture = getVec4Texture(textureUV, triplanarPos, triplanarPowerNormal, Textures, TexturesNearest, false);
+			}
+#else
+			currentTexture = getVec4Texture(textureUV, triplanarPos, triplanarPowerNormal, Textures, TexturesNearest, false);			
+#endif			
+			
+			currentRoughness = vec4(currentTexture.a * float(AlbedoAlphaChannelUsage == ALPHA_CHANNEL_USAGE_ROUGHNESS));
+			currentHeight = vec4(currentTexture.a * float(AlbedoAlphaChannelUsage == ALPHA_CHANNEL_USAGE_HEIGHT));
+			if (HasNormalTextures) {
+				currentNormal = getVec4Texture(textureUV, triplanarPos, triplanarPowerNormal, Normals, NormalsNearest, true);
+				currentRoughness = max(currentRoughness, vec4(currentNormal.a * float(AlbedoAlphaChannelUsage != ALPHA_CHANNEL_USAGE_ROUGHNESS && NormalAlphaChannelUsage == ALPHA_CHANNEL_USAGE_ROUGHNESS)));
+				currentHeight = max(currentHeight, vec4(currentNormal.a * float(AlbedoAlphaChannelUsage != ALPHA_CHANNEL_USAGE_HEIGHT && NormalAlphaChannelUsage == ALPHA_CHANNEL_USAGE_HEIGHT)));
+			}
+			if (HasRoughnessTextures) {
+				currentRoughness = getVec4Texture(textureUV, triplanarPos, triplanarPowerNormal, RoughnessTextures, RoughnessTexturesNearest, false);
+			}
+			if (HasHeightTextures) {
+				currentHeight = getVec4Texture(textureUV, triplanarPos, triplanarPowerNormal, HeightTextures, HeightTexturesNearest, false);
+			}
 
 			currentMetallic = TexturesMetallic[i];
 			currentSpecular = TexturesSpecular[i];
 
-            float heightBlendedChannelValue = channelValue;
-            if (useHeightTextures) {
-                heightBlendedChannelValue = min(contrast(BlendFactor, currentHeight.x) + channelValue, 1.0) * sqrt(channelValue);
-            }
+			float heightBlendedChannelValue = channelValue;
+			if (useHeightTextures) {
+				heightBlendedChannelValue = min(contrast(BlendFactor, currentHeight.x) + channelValue, 1.0) * sqrt(channelValue);
+			}
 
-            if (heightBlendedChannelValue <= 0.0001) {
-                continue;
-            }
+			if (heightBlendedChannelValue <= 0.0001) {
+				continue;
+			}
 
-            channelSum += heightBlendedChannelValue;
+			channelSum += heightBlendedChannelValue;
 
-            resultTexture += currentTexture * heightBlendedChannelValue;
-            resultNormal += currentNormal * heightBlendedChannelValue;
-            resultRoughness += currentRoughness * heightBlendedChannelValue;
+			resultTexture += currentTexture * heightBlendedChannelValue;
+			resultNormal += currentNormal * heightBlendedChannelValue;
+			resultRoughness += currentRoughness * heightBlendedChannelValue;
 			resultMetallic += currentMetallic * heightBlendedChannelValue;
 			resultSpecular += currentSpecular * heightBlendedChannelValue;
-        }
+		}
 
 		if (channelSum > 0.0) {
-	        albedo = resultTexture.xyz / channelSum;
+			albedo = resultTexture.xyz / channelSum;
 
-	        if (HasRoughnessTextures || AlbedoAlphaChannelUsage == ALPHA_CHANNEL_USAGE_ROUGHNESS || NormalAlphaChannelUsage == ALPHA_CHANNEL_USAGE_ROUGHNESS) {
-	            roughness = resultRoughness.x / channelSum;
-	        }
+			if (HasRoughnessTextures || AlbedoAlphaChannelUsage == ALPHA_CHANNEL_USAGE_ROUGHNESS || NormalAlphaChannelUsage == ALPHA_CHANNEL_USAGE_ROUGHNESS) {
+				roughness = resultRoughness.x / channelSum;
+			}
 
-	        if (HasNormalTextures) {
-	            normalMap = resultNormal.xyz / channelSum;
-	        }
+			if (HasNormalTextures) {
+				normalMap = resultNormal.xyz / channelSum;
+			}
 
 			metallic = resultMetallic / channelSum;
 			specular = resultSpecular / channelSum;
 		} else {
-            albedo = vec3(0.0);
-            normalMap = vec3(0.0, 1.0, 0.0);
-            roughness = 1.0;
+			albedo = vec3(0.0);
+			normalMap = vec3(0.0, 1.0, 0.0);
+			roughness = 1.0;
 			metallic = 0.0;
 			specular = 0.5;
 		}
-    }
+	}
 
 	vec4 color = texture(ColorTextures, zoneUV);
 	albedo = mix(albedo, color.rgb, color.a);
 
 #if CURRENT_RENDERER != RENDERER_COMPATIBILITY
-    if (ApplyLockTextures) {
-        vec4 lockTexture = texture(LockTextures, zoneUV);
-        float lockValue = (1.0 - lockTexture.r);
-        albedo *= vec3(max(lockValue, 0.5), lockValue, lockValue);
-    }
+	if (ApplyLockTextures) {
+		vec4 lockTexture = texture(LockTextures, zoneUV);
+		float lockValue = (1.0 - lockTexture.r);
+		albedo *= vec3(max(lockValue, 0.5), lockValue, lockValue);
+	}
 
-    if (ApplyMetaInfoTextures) {
-        vec4 metaInfoTexture = texture(MetaInfoTextures, zoneUV);
+	if (ApplyMetaInfoTextures) {
+		vec4 metaInfoTexture = texture(MetaInfoTextures, zoneUV);
 		if (metaInfoTexture.r >= 0.0) {
 			albedo *= MetaInfoColors[int(metaInfoTexture.r)].rgb;
 		}
-    }
+	}
 #endif
-
-    if (zoneUV.z < 0.0) {
-        discard;
-    } else {
-        float hole = texture(HeightmapTextures, zoneUV).g;
-        if (hole > 0.0) {
-            discard;
-        }
-    }
 }

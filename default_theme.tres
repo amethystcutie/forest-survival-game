@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=3 uid="uid://71fle6rpettp"]
+
+[ext_resource type="FontFile" uid="uid://dyyvjio5ta25r" path="res://assets/fonts/FingerPaint-Regular.ttf" id="1_e7bfs"]
+
+[resource]
+default_font = ExtResource("1_e7bfs")
+default_font_size = 16

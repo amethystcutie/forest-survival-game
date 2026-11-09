@@ -1,43 +1,32 @@
 [gd_scene format=3 uid="uid://c1qf51tjgpht1"]
 
 [ext_resource type="PackedScene" uid="uid://c1oknqgvqic0d" path="res://scenes/objects/scene_properties_manager.tscn" id="1_2arrk"]
-[ext_resource type="PackedScene" uid="uid://bupwdu8x7deod" path="res://scenes/global_music.tscn" id="1_6sryq"]
 [ext_resource type="PackedScene" uid="uid://cketgn30t226f" path="res://scenes/objects/characters/player.tscn" id="1_j3csf"]
 [ext_resource type="AudioStream" uid="uid://b5woxpl8cvfuf" path="res://assets/sounds/music/forest.mp3" id="2_2arrk"]
 [ext_resource type="Script" uid="uid://cn28ajqmkw05v" path="res://scripts/items/inventory.gd" id="3_pyn53"]
 [ext_resource type="PackedScene" uid="uid://cdex0gpj15r41" path="res://scenes/ui/debug_hud.tscn" id="4_yj5dr"]
 [ext_resource type="Resource" uid="uid://dr5skulf2tuwd" path="res://items/leaf.tres" id="5_eos0w"]
 [ext_resource type="PackedScene" uid="uid://cew1nj6fqm5kn" path="res://scenes/objects/environment.tscn" id="11_eomrh"]
+[ext_resource type="TextureSetsResource" uid="uid://c1v4vnegge8q5" path="res://terrain_texture_sets.res" id="12_bjond"]
 [ext_resource type="Script" uid="uid://cdu2cg43ub8dd" path="res://scripts/items/item_stack.gd" id="14_cf55d"]
 [ext_resource type="Resource" uid="uid://ba3c8un817ufp" path="res://items/stick.tres" id="14_di0nb"]
-[ext_resource type="Texture2D" uid="uid://vom0tkdeswuv" path="res://assets/textures/terrain/grass/Grass002_1K-JPG_Color.jpg" id="16_3h1w1"]
-[ext_resource type="Texture2D" uid="uid://bsm2njwjumg1v" path="res://assets/textures/terrain/grass/Grass002_1K-JPG_NormalGL.jpg" id="17_qavbn"]
-[ext_resource type="Texture2D" uid="uid://dywhr0103ryi7" path="res://assets/textures/terrain/grass/Grass002_1K-JPG_Roughness.jpg" id="18_c2vyo"]
 [ext_resource type="Image" uid="uid://dvsti7llxil40" path="res://scenes/Forest/Heightmap_0_0.res" id="19_65srx"]
-[ext_resource type="Texture2D" uid="uid://dmokt7tvfqrfe" path="res://assets/textures/terrain/dirt/Ground038_1K-JPG_Color.jpg" id="19_igjew"]
 [ext_resource type="Image" uid="uid://dgpj3sp8e5i5v" path="res://scenes/Forest/Splatmap_0_0_0.res" id="20_di3lw"]
-[ext_resource type="Texture2D" uid="uid://4rsvq7vjpauy" path="res://assets/textures/terrain/dirt/Ground038_1K-JPG_NormalGL.jpg" id="20_o06ba"]
-[ext_resource type="Texture2D" uid="uid://dlih6xnlfhad7" path="res://assets/textures/terrain/dirt/Ground038_1K-JPG_Roughness.jpg" id="21_a8hxt"]
 [ext_resource type="PackedScene" uid="uid://bdom7t3rb0ajb" path="res://scenes/objects/item_spawner.tscn" id="21_qavbn"]
-[ext_resource type="Texture2D" uid="uid://5ios4rx86msg" path="res://assets/textures/terrain/rock/Rock051_1K-JPG_Color.jpg" id="22_7q4h0"]
 [ext_resource type="Resource" uid="uid://bnfr26e27sukl" path="res://items/rock.tres" id="22_c2vyo"]
-[ext_resource type="Texture2D" uid="uid://d2mxdn2l6l0cb" path="res://assets/textures/terrain/rock/Rock051_1K-JPG_Displacement.jpg" id="23_igjew"]
-[ext_resource type="Texture2D" uid="uid://dh3766fs6f4vy" path="res://assets/textures/terrain/rock/Rock051_1K-JPG_NormalGL.jpg" id="23_lr7uy"]
-[ext_resource type="Texture2D" uid="uid://xak0b3yt5ihm" path="res://assets/textures/terrain/rock/Rock051_1K-JPG_Roughness.jpg" id="24_igjew"]
-[ext_resource type="Texture2D" uid="uid://707doj4mclj4" path="res://assets/textures/terrain/sand/Ground087_1K-JPG_Color.jpg" id="25_o06ba"]
-[ext_resource type="Texture2D" uid="uid://bos38gw5b7mjk" path="res://assets/textures/terrain/sand/Ground087_1K-JPG_NormalGL.jpg" id="26_a8hxt"]
-[ext_resource type="Texture2D" uid="uid://b7x82157q4irb" path="res://assets/textures/terrain/sand/Ground087_1K-JPG_Roughness.jpg" id="27_eomrh"]
+[ext_resource type="PackedScene" uid="uid://b8vrmo3yfko0d" path="res://scenes/time_music.tscn" id="27_soql2"]
 [ext_resource type="Texture2D" uid="uid://oaexdmr344vv" path="res://assets/textures/terrain/snow/Snow010A_1K-JPG_Color.jpg" id="28_a88r6"]
+[ext_resource type="Script" uid="uid://dgf66dbt7wgxn" path="res://scripts/nodes/music/playlist_resource.gd" id="28_u01n2"]
 [ext_resource type="Texture2D" uid="uid://bd4ioqs61ib3l" path="res://assets/textures/terrain/snow/Snow010A_1K-JPG_NormalGL.jpg" id="29_okwed"]
 [ext_resource type="Texture2D" uid="uid://c263my4etawvh" path="res://assets/textures/terrain/snow/Snow010A_1K-JPG_Roughness.jpg" id="30_eos0w"]
+[ext_resource type="AudioStream" uid="uid://cy44nwyff0it5" path="res://assets/sounds/music/dusk.mp3" id="30_qu0hn"]
+[ext_resource type="AudioStream" uid="uid://bmubyljotffn4" path="res://assets/sounds/music/melancholy_piano_bgm.ogg" id="31_u01n2"]
 [ext_resource type="Image" uid="uid://b4dbhqqgab1he" path="res://scenes/Forest/Splatmap_0_0_1.res" id="33_len2l"]
-[ext_resource type="Texture2D" uid="uid://d2x624aeqe34m" path="res://assets/textures/terrain/ground/Ground040_1K-JPG_Color.jpg" id="33_o06ba"]
-[ext_resource type="Texture2D" uid="uid://kc0h52eu5vyo" path="res://assets/textures/terrain/ground/Ground040_1K-JPG_NormalGL.jpg" id="34_a8hxt"]
-[ext_resource type="Texture2D" uid="uid://c0kmvulyj7rps" path="res://assets/textures/terrain/ground/Ground040_1K-JPG_Roughness.jpg" id="35_eomrh"]
 [ext_resource type="Image" uid="uid://bjqmocpnuttfr" path="res://scenes/Forest/Snow_0_0.res" id="36_a8hxt"]
 [ext_resource type="Image" uid="uid://bedjfk65urvfo" path="res://scenes/Forest/Foliage_0_0_0.res" id="36_eos0w"]
 [ext_resource type="Image" uid="uid://d3hckt3civi20" path="res://scenes/Forest/Water_0_0.res" id="38_o06ba"]
 [ext_resource type="Shader" uid="uid://dsgsecsjl1mf6" path="res://shaders/water.gdshader" id="42_eomrh"]
+[ext_resource type="PackedScene" uid="uid://c56kbkxyi3ff3" path="res://scenes/ui/pause_menu.tscn" id="43_a88r6"]
 [ext_resource type="PackedScene" uid="uid://dotvw5487djh" path="res://scenes/objects/resource_nodes/maple_tree.tscn" id="45_eos0w"]
 [ext_resource type="PackedScene" uid="uid://c0jetnrex8nhm" path="res://scenes/objects/resource_nodes/oak_tree.tscn" id="46_7jawt"]
 [ext_resource type="PackedScene" uid="uid://c6r2yqhmfm85l" path="res://scenes/objects/resource_nodes/spruce_tree.tscn" id="47_jyv4r"]
@@ -67,52 +56,6 @@ items = Dictionary[int, ExtResource("14_cf55d")]({
 2: SubResource("Resource_ja30q")
 })
 metadata/_custom_type_script = "uid://cn28ajqmkw05v"
-
-[sub_resource type="TextureSetResource" id="TextureSetResource_uo5au"]
-name = "Grass"
-albedoTexture = ExtResource("16_3h1w1")
-normalTexture = ExtResource("17_qavbn")
-roughnessTexture = ExtResource("18_c2vyo")
-specular = 0.0
-resource_name = "Grass"
-
-[sub_resource type="TextureSetResource" id="TextureSetResource_bamcy"]
-name = "Dirt"
-albedoTexture = ExtResource("19_igjew")
-normalTexture = ExtResource("20_o06ba")
-roughnessTexture = ExtResource("21_a8hxt")
-specular = 0.0
-resource_name = "Dirt"
-
-[sub_resource type="TextureSetResource" id="TextureSetResource_c2vyo"]
-name = "Rock"
-albedoTexture = ExtResource("22_7q4h0")
-normalTexture = ExtResource("23_lr7uy")
-roughnessTexture = ExtResource("24_igjew")
-heightTexture = ExtResource("23_igjew")
-textureDetail = 10
-specular = 0.0
-resource_name = "Rock"
-
-[sub_resource type="TextureSetResource" id="TextureSetResource_65srx"]
-name = "Sand"
-albedoTexture = ExtResource("25_o06ba")
-normalTexture = ExtResource("26_a8hxt")
-roughnessTexture = ExtResource("27_eomrh")
-specular = 0.0
-resource_name = "Sand"
-
-[sub_resource type="TextureSetResource" id="TextureSetResource_len2l"]
-name = "Ground"
-albedoTexture = ExtResource("33_o06ba")
-normalTexture = ExtResource("34_a8hxt")
-roughnessTexture = ExtResource("35_eomrh")
-textureDetail = 15
-specular = 0.0
-resource_name = "Ground"
-
-[sub_resource type="TextureSetsResource" id="TextureSetsResource_i4ufp"]
-textureSets = Array[TextureSetResource]([SubResource("TextureSetResource_uo5au"), SubResource("TextureSetResource_bamcy"), SubResource("TextureSetResource_c2vyo"), SubResource("TextureSetResource_65srx"), SubResource("TextureSetResource_len2l")])
 
 [sub_resource type="SnowResource" id="SnowResource_lr7uy"]
 snowColorTexture = ExtResource("28_a88r6")
@@ -186,12 +129,24 @@ shader_parameter/refraction_amount = 0.5
 shader_parameter/refraction_exponent = 0.5
 shader_parameter/displacement_amount = 0.3
 
+[sub_resource type="Resource" id="Resource_oinuj"]
+script = ExtResource("28_u01n2")
+tracks = Array[AudioStream]([ExtResource("2_2arrk")])
+metadata/_custom_type_script = "uid://dgf66dbt7wgxn"
+
+[sub_resource type="Resource" id="Resource_1kho5"]
+script = ExtResource("28_u01n2")
+tracks = Array[AudioStream]([ExtResource("30_qu0hn")])
+metadata/_custom_type_script = "uid://dgf66dbt7wgxn"
+
+[sub_resource type="Resource" id="Resource_qu0hn"]
+script = ExtResource("28_u01n2")
+tracks = Array[AudioStream]([ExtResource("31_u01n2")])
+metadata/_custom_type_script = "uid://dgf66dbt7wgxn"
+
 [node name="Forest" type="Node3D" unique_id=2055480750]
 
 [node name="ScenePropertiesManager" parent="." unique_id=1619705412 instance=ExtResource("1_2arrk")]
-
-[node name="GlobalMusic" parent="." unique_id=1681396820 instance=ExtResource("1_6sryq")]
-stream = ExtResource("2_2arrk")
 
 [node name="Player" parent="." unique_id=1810151707 node_paths=PackedStringArray("spawn_point") instance=ExtResource("1_j3csf")]
 inventory = SubResource("Resource_lvx2t")
@@ -200,11 +155,10 @@ spawn_point = NodePath("../SpawnPoint")
 [node name="DebugHUD" parent="." unique_id=770356309 instance=ExtResource("4_yj5dr")]
 
 [node name="Environment" parent="." unique_id=127690895 instance=ExtResource("11_eomrh")]
-fast_forward = true
 
 [node name="TerraBrush" type="TerraBrush" parent="." unique_id=1124876626]
 dataPath = "res://scenes/Forest"
-textureSets = SubResource("TextureSetsResource_i4ufp")
+textureSets = ExtResource("12_bjond")
 textureDetail = 20
 useAntiTile = false
 nearestTextureFilter = true
@@ -268,3 +222,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.117268, 1.3216705, -66.266
 
 [node name="BlackberryBush4" parent="." unique_id=723557688 instance=ExtResource("48_lvx2t")]
 transform = Transform3D(0.9999185, 0.0014456756, -0.012684007, -0.0016832621, 0.9998229, -0.018742621, 0.012654669, 0.018762443, 0.99974394, 64.76213, 1.6510811, -32.448654)
+
+[node name="PauseMenu" parent="." unique_id=216537010 instance=ExtResource("43_a88r6")]
+
+[node name="TimeMusic" parent="." unique_id=1526707259 instance=ExtResource("27_soql2")]
+playlist = Dictionary[int, ExtResource("28_u01n2")]({
+0: SubResource("Resource_oinuj"),
+1: SubResource("Resource_1kho5"),
+2: SubResource("Resource_qu0hn")
+})
